@@ -1,7 +1,10 @@
+import { useState } from 'react';
+
 export default function Home() {
-    return (
-     <div>
-       <h1>home page</h1>
-     </div>
-    )
-  }
+  const [test, setTest] = useState([]);
+  return (
+    <div>
+      <h1>home page</h1>
+    </div>
+  );
+}
