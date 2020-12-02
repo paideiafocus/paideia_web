@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import React from 'react';
 
-export default function Home() {
-  const [test, setTest] = useState([]);
+import Page from '@/components/Page';
+import Banner from './Banner';
+import Depositions from './Depositions';
+import SelectiveProcess from './SelectiveProcess';
+
+const Home: React.FC = () => {
   return (
-    <div>
+    <Page>
       <h1>home page</h1>
-    </div>
+
+      <Banner />
+
+      <SelectiveProcess />
+
+      <Depositions />
+    </Page>
   );
-}
+};
+
+export default Home;
