@@ -1,4 +1,11 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-// export const PageContainer = styled.section``;
-// export const PageContent = styled.div``;
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 86%;
+  }
+`;
