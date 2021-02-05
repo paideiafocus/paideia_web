@@ -1,4 +1,5 @@
-import React from 'react';
+import { memo } from 'react';
+
 import Image from 'next/image';
 
 import * as S from './styles';
@@ -18,4 +19,4 @@ const Banner: React.FC = () => {
   );
 };
 
-export default Banner;
+export default memo(Banner);

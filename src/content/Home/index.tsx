@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 import Page from '@/components/Page';
 import Banner from './Banner';
@@ -8,8 +8,6 @@ import SelectiveProcess from './SelectiveProcess';
 const Home: React.FC = () => {
   return (
     <Page>
-      <h1>home page</h1>
-
       <Banner />
 
       <SelectiveProcess />
@@ -19,4 +17,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

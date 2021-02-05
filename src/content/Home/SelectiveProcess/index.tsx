@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 import Text from '@/components/Text';
 import * as S from './styles';
@@ -41,4 +41,4 @@ const SelectiveProcess: React.FC = () => {
   );
 };
 
-export default SelectiveProcess;
+export default memo(SelectiveProcess);
