@@ -1,4 +1,5 @@
-import React from 'react';
+import { memo } from 'react';
+import Button from '@material-ui/core/Button';
 
 import * as S from './styles';
 
@@ -19,19 +20,20 @@ const Depositions: React.FC = () => {
 
         <S.DepositionsCard borderDirection="left">
           <p>
-            Não há palavras suficientes para descrever a imensa gratidão que
-            tenho pelo Cursinho Focus e por cada um dos professores que nos
-            ensinou, e tenho certeza que continuam ensinando, com muita
-            sabedoria...
+            Aos professores, queridos professores, meu muito obrigada. Muito
+            obrigada pelo interesse em formar pessoas muito mais que formar
+            alunos. Muito obrigada por todas as vezes que nos escutaram...
           </p>
-          <strong>Patricia Evelin</strong>
+          <strong>Caroline Cândido Veroneze</strong>
         </S.DepositionsCard>
       </S.DepositionsContent>
       <S.SeeMoreDepositions>
-        <button type="button">Ver mais depoimentos</button>
+        <Button variant="contained" color="secondary">
+          Ver mais depoimentos
+        </Button>
       </S.SeeMoreDepositions>
     </S.DepositionsContainer>
   );
 };
 
-export default Depositions;
+export default memo(Depositions);

@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
+import theme from '@/config/theme';
 
-export const DepositionsContainer = styled.section``;
+const { color } = theme;
+
+export const DepositionsContainer = styled.section`
+  h2 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+`;
 
 export const DepositionsContent = styled.div`
   display: flex;
@@ -18,13 +26,13 @@ export const DepositionsCard = styled.article`
   ${(p: IDepositionsCardProps) =>
     p.borderDirection === 'right' &&
     css`
-      border-right: 1px solid;
+      border-right: 0.2rem solid ${color.pink.dark};
     `}
 
   ${(p: IDepositionsCardProps) =>
     p.borderDirection === 'left' &&
     css`
-      border-left: 1px solid;
+      border-left: 0.2rem solid ${color.pink.dark};
     `}
 
   strong {
