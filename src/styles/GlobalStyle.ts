@@ -19,6 +19,8 @@ export default createGlobalStyle`
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
     color: ${color.pink.dark};
   }
 
