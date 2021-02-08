@@ -3,11 +3,15 @@ import Header from '../Header';
 
 import * as S from './styles';
 
-const Page: React.FC = ({ children }) => {
+interface PageProps {
+  align?: string;
+}
+
+const Page: React.FC<PageProps> = ({ align, children }) => {
   return (
     <S.PageContainer>
       <Header />
-      <S.PageContent>{children}</S.PageContent>
+      <S.PageContent align={align}>{children}</S.PageContent>
       <Footer />
     </S.PageContainer>
   );
