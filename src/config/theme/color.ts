@@ -16,6 +16,18 @@ const color = {
     light: '#dedede',
     lighter: '#E0E0E0',
   },
+  red: {
+    dark: '#721c24',
+    normal: '#f41628',
+    light: '#f5c6cb',
+    lighter: '#f8d7da',
+  },
+  yellow: {
+    dark: '#856404',
+    normal: '#f3f722',
+    light: '#ffeeba',
+    lighter: '#fff3cd',
+  },
 };
 
 export default color;
