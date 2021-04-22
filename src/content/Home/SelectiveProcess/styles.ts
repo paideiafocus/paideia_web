@@ -28,6 +28,10 @@ export const Link = styled.a`
   p {
     margin-top: 0.5rem;
   }
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const NextLink = styled.div`
@@ -38,5 +42,9 @@ export const NextLink = styled.div`
 
   p {
     margin-top: 0.5rem;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 `;

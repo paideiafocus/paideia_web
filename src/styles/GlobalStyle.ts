@@ -32,7 +32,21 @@ export default createGlobalStyle`
     font-weight: 500;
   }
 
+  h4 {
+    margin-top: 26px;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
   a {
     color: ${color.green.dark};
+  }
+
+  p{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
   }
 `;
