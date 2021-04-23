@@ -4,6 +4,7 @@
 import { memo } from 'react';
 
 import Page from '@/components/Page';
+import Alert from '@/components/Alert';
 import * as S from './styles';
 
 const Faq = () => {
@@ -46,9 +47,9 @@ const Faq = () => {
           (www.associacaopaideia.org.br).
         </a>
       </p>
-      <S.Alert kind="danger" role="alert">
+      <Alert kind="danger">
         <b>ATENÇÃO!</b> As inscrições são EXCLUSIVAMENTE pela internet.
-      </S.Alert>
+      </Alert>
 
       <h4>O Cursinho Focus oferece algum curso à distância?</h4>
       <p>
@@ -61,7 +62,7 @@ const Faq = () => {
         Fiz minha inscrição, mas não compareci a uma das etapas do processo
         seletivo. O que eu faço?
       </h4>
-      <S.Alert kind="danger" role="alert"><b>ATENÇÃO!</b></S.Alert>
+      <Alert kind="danger"><b>ATENÇÃO!</b></Alert>
       <p>
         Caso o (a) candidato (a), tenha faltado a <b>Reunião de Confirmação de Matrícula</b>, ele(a)
         deverá entrar em contato
@@ -85,10 +86,10 @@ const Faq = () => {
         <b>ANEXAR</b> a documentação válida (atestado de trabalho, doença ou óbito);
       </p>
       <p><b>ENTREGAR</b> os documentos no dia da <b>Prova Diagnóstica</b>.</p>
-      <S.Alert kind="warning" role="alert">
+      <Alert kind="warning">
         <b>FIQUE ATENTO(A)! É OBRIGATÓRIO</b> o <b>ENVIO DO E-MAIL</b> confirmando
         o interesse pela vaga e a presença na <b>Prova Diagnóstica</b>.
-      </S.Alert>
+      </Alert>
 
       <h4>
         Onde fica a sede cursinho Focus? Tem algum telefone em que eu possa ligar?
@@ -117,13 +118,13 @@ const Faq = () => {
           no MANUAL DO CANDIDATO
         </b>.
       </p>
-      <S.Alert kind="danger" role="alert">
+      <Alert kind="danger">
         CUIDADO! NÃO PREENCHA A FICHA DE INSCRIÇÃO NOVAMENTE.
-      </S.Alert>
-      <S.Alert kind="warning" role="alert">
+      </Alert>
+      <Alert kind="warning">
         FIQUE LIGADO(A)! Na inscrição NÃO UTILIZE e-mail que não seja do(a)
         próprio(a) candidato(a).
-      </S.Alert>
+      </Alert>
 
       <h4>Não tenho algum dos documentos exigidos. O que faço?</h4>
       <p>
@@ -132,10 +133,10 @@ const Faq = () => {
         a documentação solicitada entre em contato pelo e-mail:
         contato@associacaopaideia.org.br.
       </p>
-      <S.Alert kind="danger" role="alert">
+      <Alert kind="danger">
         ATENÇÃO! É responsabilidade do (a) candidato (a) PROVIDÊNCIAR
         ANTECIPADAMENTE todos os documentos exigidos no Processo Seletivo.
-      </S.Alert>
+      </Alert>
 
       <h4>Estou prestando Concurso Público, posso fazer o Focus Cursinho?</h4>
       <p>
