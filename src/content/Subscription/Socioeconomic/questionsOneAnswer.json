@@ -1,0 +1,189 @@
+[
+  {
+    "id": 1,
+    "fieldName": "genre",
+    "text": "Gênero",
+    "answers": ["Masculino","Feminino","Outros"]
+  },
+  {
+    "id": 2,
+    "fieldName": "age",
+    "text": "Qual a sua idade?",
+    "answers": ["17 ou menos","18 a 20 anos","21 a 29 anos", "30 ou mais"]
+  },
+  {
+    "id": 3,
+    "fieldName": "live_time",
+    "text": "Há quanto tempo você mora em Louveira?",
+    "answers": ["Desde que nasci","Entre 1 e 2 anos","Entre 2 e 3 anos","Mais de 3 anos"]
+  },
+  {
+    "id": 4,
+    "fieldName": "place",
+    "text": "Em que localidade da cidade a sua residência se encontra?",
+    "answers": [
+      "Bairro na região periférica da cidade",
+      "Bairro na região central",
+      "Região central da cidade ou centro expandido",
+      "Condomínio",
+      "Zona Rural (Fazenda, Sítio, Chácara)"
+    ]
+  },
+  {
+    "id": 5,
+    "fieldName": "live_qtd",
+    "text": "Quantas pessoas moram na sua casa? (Contando com pais, irmãos ou outros parentes que moram em uma mesma casa)",
+    "answers": [
+      "Duas pessoas",
+      "Três pessoas",
+      "Quatro pessoas",
+      "Cinco pessoas",
+      "Seis pessoas",
+      "Moro sozinho (a)"
+    ]
+  },
+  {
+    "id": 6,
+    "fieldName": "live_type",
+    "text": "A casa onde você mora é?",
+    "answers": [
+      "Própria",
+      "Alugada",
+      "Cedida"
+    ]
+  },
+  {
+    "id": 7,
+    "fieldName": "work_candidate",
+    "text": "Você exerce alguma atividade remunerada?",
+    "answers": [
+      "Sim, em tempo parcial (até 20 horas semanais)",
+      "Sim, em tempo integral (até 30 horas semanais)",
+      "Sim, mas se trata de trabalho eventual",
+      "Estou desempregado (a)"
+    ]
+  },
+  {
+    "id": 8,
+    "fieldName": "work_father",
+    "text": "Quais das alternativas expressa melhor a condição de trabalho de seus pais?",
+    "answers": [
+      "Trabalham regularmente",
+      "Estão desempregados",
+      "Vivem de renda",
+      "São falecidos e deixaram pensão",
+      "Outra situação"
+    ]
+  },
+  {
+    "id": 9,
+    "fieldName": "elementary_school",
+    "text": "Como você realizou os seus estudos de Ensino Fundamental ou equivalente (EJA)?",
+    "answers": [
+      "Escola pública municipal ou estadual",
+      "Escola da rede privada de ensino (escola particular)",
+      "Escola do Serviço Social da Industria (SESI)",
+      "Outros"
+    ]
+  },
+  {
+    "id": 10,
+    "fieldName": "high_school",
+    "text": "Como você realizou os seus estudos de Ensino Médio ou equivalente (EJA)?",
+    "answers": [
+      "Escola pública municipal ou estadual",
+      "Escola da rede privada de ensino (escola particular)",
+      "Escola do Serviço Social da Industria (SESI)",
+      "Outros"
+    ]
+  },
+  {
+    "id": 11,
+    "fieldName": "read",
+    "text": "Você tem hábito de ler jornais e revistas?",
+    "answers": [
+      "Diariamente",
+      "Semanalmente",
+      "Ocasionalmente"
+    ]
+  },
+  {
+    "id": 12,
+    "fieldName": "read_qtd",
+    "text": "Excluindo os livros escolares, quantos livros você lê por ano?",
+    "answers": [
+      "Nenhum",
+      "De 1 a 2 livros",
+      "De 3 a 5 livros",
+      "Mais de 5 livros"
+    ]
+  },
+  {
+    "id": 13,
+    "fieldName": "informed",
+    "text": "Qual é o meio que você mais utiliza para se manter informado?",
+    "answers": [
+      "Jornal impresso",
+      "Televisão",
+      "Internet",
+      "Rádio",
+      "Nenhum dos meios citados"
+    ]
+  },
+  {
+    "id": 14,
+    "fieldName": "internet",
+    "text": "Na sua residência você dispões de internet?",
+    "answers": [
+      "Sim e utilizo mais o meu computador para acessar sites",
+      "Sim e utilizo mais o meu celular para acessar sites",
+      "Sim e utilizo mais o meu tablet para acessar sites",
+      "Eu não tenho acesso a internet em minha residência"
+    ]
+  },
+  {
+    "id": 15,
+    "fieldName": "",
+    "text": "Você já prestou vestibular ou Enem?",
+    "answers": [
+      "Sim",
+      "Não"
+    ]
+  },
+  {
+    "id": 16,
+    "fieldName": "work_study",
+    "text": "Como você avalia ter estudado e trabalhado durante os seus estudos?",
+    "answers": [
+      "Atrapalhou os meus estudos",
+      "Possibilitou os meus estudos",
+      "Possibilitou o meu crescimento pessoal",
+      "Não atrapalhou os meus estudos",
+      "Não trabalho"
+    ]
+  },
+  {
+    "id": 17,
+    "fieldName": "study_why",
+    "text": "Qual o principal motivo que faria você voltar a estudar ou continuar estudando?",
+    "answers": [
+      "Conseguir um emprego",
+      "Progredir no emprego atual",
+      "Conseguir um emprego melhor",
+      "Adquirir mais conhecimento e ficar atualizado",
+      "Atender às expectativas de meus familiares sobre meus estudos",
+      "Nenhum dos motivos acima"
+    ]
+  },
+  {
+    "id": 18,
+    "fieldName": "transport",
+    "text": "Como você faz para se deslocar pela cidade?",
+    "answers": [
+      "Uso o transporte público (ônibus)",
+      "Uso veículo próprio (motocicleta, automóvel, bicicleta)",
+      "Desloco-me a pé",
+      "Faço uso combinado de dois ou mais meios de transportess"
+    ]
+  }
+]

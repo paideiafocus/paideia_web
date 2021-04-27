@@ -1,0 +1,14 @@
+[
+  {
+    "id": 5,
+    "text": "Quem mora com você?",
+    "answers": [
+      {"label": "Moro sozinho (a)", "fieldName": "live_with_alone"},
+      {"label": "Pai/Padrasto", "fieldName": "live_with_father"},
+      {"label": "Mãe/Madrasta", "fieldName": "live_with_mother"},
+      {"label": "Esposo (a)/ Companheiro (a)", "fieldName": "live_with_couple"},
+      {"label": "Avós/outros parentes", "fieldName": "live_with_grandfather"},
+      {"label": "Amigos ou colegas", "fieldName": "live_with_friend"}
+    ]
+  }
+]
