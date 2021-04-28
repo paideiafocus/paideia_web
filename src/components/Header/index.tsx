@@ -1,47 +1,49 @@
 import { memo, useState, useCallback } from 'react';
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { BottomNavigationAction } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 import { useRouter } from 'next/router';
 import * as S from './styles';
 
-const navLinks = [
-  { id: 0, path: '/' },
-  { id: 1, path: '/sobre' },
-  { id: 2, path: '/noticias' },
-  { id: 3, path: '/contato' },
-  { id: 4, path: '/perguntas' },
-  { id: 5, path: '/acesso' },
-];
+interface INavLinks {
+  id: number;
+  path: string;
+  label: string;
+}
 
-// const useStyles = makeStyles({
-//   list: {
-//     width: 250,
-//   },
-//   fullList: {
-//     width: 'auto',
-//   },
-// });
+const navLinks: INavLinks[] = [
+  { id: 0, path: '/', label: 'Início' },
+  { id: 1, path: '/sobre', label: 'Sobre' },
+  { id: 2, path: '/noticias', label: 'Notícias' },
+  { id: 3, path: '/contato', label: 'Contato' },
+  { id: 4, path: '/perguntas', label: 'FAQ' },
+  { id: 5, path: '/acesso', label: 'Acesse sua conta' },
+  { id: 6, path: '/cadastro', label: 'Cadastre-se' },
+];
 
 const Header = () => {
   const router = useRouter();
-  const [navId, setNavId] = useState(0);
+  const [navId] = useState(() => {
+    const currentLink = navLinks.find(link => link.path === router.pathname);
+
+    if (!currentLink) {
+      return 0;
+    }
+
+    return currentLink.id;
+  });
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   const toggleDrawer = open => event => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
+    const { type, key } = event;
+
+    if (type === 'keydown' && (key === 'Tab' || key === 'Shift')) {
       return;
     }
 
@@ -55,24 +57,13 @@ const Header = () => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {navLinks.map(link => (
+          <div key={link.id}>
+            <ListItem button onClick={() => router.push(link.path)}>
+              <ListItemText primary={link.label} />
+            </ListItem>
+            <Divider />
+          </div>
         ))}
       </List>
     </div>
@@ -80,10 +71,8 @@ const Header = () => {
 
   const handleNavigation = useCallback(
     (event, newNavId) => {
-      console.log(newNavId);
       const slug = navLinks.find(link => link.id === newNavId);
       router.push(slug.path);
-      setNavId(newNavId);
     },
     [router]
   );
@@ -95,29 +84,28 @@ const Header = () => {
       </S.ImageContainer>
 
       <S.DesktopMenu>
-        <BottomNavigation value={navId} onChange={handleNavigation} showLabels>
-          <BottomNavigationAction label="Início" />
-          <BottomNavigationAction label="Sobre" />
-          <BottomNavigationAction label="Notícias" />
-          <BottomNavigationAction label="Contato" />
-          <BottomNavigationAction label="Perguntas Frequentes" />
-          <BottomNavigationAction label="Acesse sua conta" />
-        </BottomNavigation>
+        <S.NavigationContainer
+          value={navId}
+          onChange={handleNavigation}
+          showLabels
+        >
+          {navLinks.map(link => (
+            <BottomNavigationAction key={link.id} label={link.label} />
+          ))}
+        </S.NavigationContainer>
       </S.DesktopMenu>
 
       <S.MobileMenu>
-        <div>
-          <Button onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </Button>
-          <Drawer
-            anchor="left"
-            open={mobileMenuIsOpen}
-            onClose={toggleDrawer(false)}
-          >
-            {list()}
-          </Drawer>
-        </div>
+        <Button onClick={toggleDrawer(true)}>
+          <MenuIcon fontSize="large" />
+        </Button>
+        <Drawer
+          anchor="left"
+          open={mobileMenuIsOpen}
+          onClose={toggleDrawer(false)}
+        >
+          {list()}
+        </Drawer>
       </S.MobileMenu>
     </nav>
   );
