@@ -1,6 +1,6 @@
 [
   {
-    "id": 5,
+    "id": 19,
     "text": "Quem mora com você?",
     "answers": [
       {"label": "Moro sozinho (a)", "fieldName": "live_with_alone"},
@@ -9,6 +9,19 @@
       {"label": "Esposo (a)/ Companheiro (a)", "fieldName": "live_with_couple"},
       {"label": "Avós/outros parentes", "fieldName": "live_with_grandfather"},
       {"label": "Amigos ou colegas", "fieldName": "live_with_friend"}
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Com quais atividades citadas abaixo você ocupa mais o seu tempo?",
+    "answers": [
+      {"label": "Televisão", "fieldName": "tv"},
+      {"label": "Música", "fieldName": "music"},
+      {"label": "Cinema", "fieldName": "cinema"},
+      {"label": "Leitura", "fieldName": "reading_activity"},
+      {"label": "Internet", "fieldName": "internet_activity"},
+      {"label": "Esporte", "fieldName": "sports"},
+      {"label": "Nenhuma das atividades", "fieldName": "no_activity"}
     ]
   }
 ]

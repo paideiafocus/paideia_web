@@ -143,7 +143,7 @@
   },
   {
     "id": 15,
-    "fieldName": "",
+    "fieldName": "exam_entrance",
     "text": "Você já prestou vestibular ou Enem?",
     "answers": [
       "Sim",
