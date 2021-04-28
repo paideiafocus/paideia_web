@@ -1,7 +1,6 @@
-/* eslint-disable prettier/prettier */
 import { memo, useCallback, useState } from 'react';
 import Page from '@/components/Page';
-import { Button, Checkbox, Grid, TextField } from '@material-ui/core';
+import { Button, Checkbox, Grid } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -12,38 +11,6 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 import questionsOneAnswer from './questionsOneAnswer.json';
 import questionsMultipleAnswer from './questionsMultipleAnswer.json';
-
-// cinema,
-// sports,
-// exam_entrance,
-// elementary_school,
-// age, X
-// informed,
-// internet,
-// internet_activity,
-// reading_activity,
-// read,
-// read_qtd,
-// place, X
-// high_school,
-// live_with_friend,
-// live_with_grandfather,
-// live_with_couple,
-// live_with_mother,
-// live_with_father,
-// live_with_alone,
-// live_qtd,
-// live_time, X
-// live_type,
-// study_why,
-// music,
-// no_activity,
-// genre, Gênero
-// tv,
-// work_candidate,
-// work_study,
-// work_father,
-// transport,
 
 interface IMultiple {
   label: string;
@@ -65,15 +32,15 @@ interface IQuestionOneAnswer {
 
 const FORM = {
   genre: { value: '', error: '' },
-  cinema: { value: '', error: '' },
-  sports: { value: '', error: '' },
+  cinema: { value: false, error: '' },
+  sports: { value: false, error: '' },
   exam_entrance: { value: '', error: '' },
   elementary_school: { value: '', error: '' },
   age: { value: '', error: '' },
   informed: { value: '', error: '' },
   internet: { value: '', error: '' },
-  internet_activity: { value: '', error: '' },
-  reading_activity: { value: '', error: '' },
+  internet_activity: { value: false, error: '' },
+  reading_activity: { value: false, error: '' },
   read: { value: '', error: '' },
   read_qtd: { value: '', error: '' },
   place: { value: '', error: '' },
@@ -88,23 +55,37 @@ const FORM = {
   live_time: { value: '', error: '' },
   live_type: { value: '', error: '' },
   study_why: { value: '', error: '' },
-  music: { value: '', error: '' },
-  no_activity: { value: '', error: '' },
-  tv: { value: '', error: '' },
+  music: { value: false, error: '' },
+  no_activity: { value: false, error: '' },
+  tv: { value: false, error: '' },
   work_candidate: { value: '', error: '' },
   work_study: { value: '', error: '' },
   work_father: { value: '', error: '' },
   transport: { value: '', error: '' },
 };
 
-const fieldsBoolean = [
+const fieldsActivity = [
+  'no_activity',
+  'sports',
+  'internet_activity',
+  'reading_activity',
+  'cinema',
+  'music',
+  'tv',
+];
+
+const fieldsLive = [
   'live_with_friend',
   'live_with_grandfather',
   'live_with_couple',
   'live_with_mother',
   'live_with_father',
   'live_with_alone',
-]
+];
+
+const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+const fieldsBoolean = [...fieldsActivity, ...fieldsLive];
 
 const Socioeconomic = () => {
   const [socioeconomic, setSocioeconomic] = useState(FORM);
@@ -112,7 +93,7 @@ const Socioeconomic = () => {
   const router = useRouter();
 
   const handleNavigation = useCallback(() => {
-    router.push('/inscricao/arquivos');
+    router.push('/inscricao/conclui');
   }, [router]);
 
   const handleChangeField = useCallback(
@@ -121,7 +102,7 @@ const Socioeconomic = () => {
       const error = !value ? 'campo é obrigatório' : '';
       let newValue = value;
 
-      if(fieldsBoolean.includes(name)){
+      if (fieldsBoolean.includes(name)) {
         newValue = !socioeconomic[name].value;
       }
 
@@ -135,17 +116,23 @@ const Socioeconomic = () => {
 
       setSocioeconomic(() => newSocioeconomic);
 
-      // const formError = Object.keys(newPersonal).some(
-      //   key => !newPersonal[key].value
-      // );
-      // setIsFormError(() => formError);
-      // console.log('formError');
-      // console.log(formError);
+      const validRadioButton = Object.keys(newSocioeconomic).some(
+        key => !newSocioeconomic[key].value && !fieldsBoolean.includes(key)
+      );
+      const validActivityField = fieldsActivity.some(
+        key => newSocioeconomic[key].value
+      );
+      const validLiveField = fieldsLive.some(
+        key => newSocioeconomic[key].value
+      );
+
+      const formError =
+        validRadioButton || !validActivityField || !validLiveField;
+
+      setIsFormError(() => formError);
     },
     [socioeconomic]
   );
-
-  console.log(socioeconomic);
 
   return (
     <Page align="center">
@@ -154,22 +141,38 @@ const Socioeconomic = () => {
       <S.Form>
         <Grid container spacing={3}>
           {questionsOneAnswer.map((question: IQuestionOneAnswer) => (
-            <Grid item xs={12} lg={4} key={question.id}>
+            <Grid
+              item
+              xs={12}
+              lg={4}
+              key={question.id}
+              style={{ margin: '1.5rem 0' }}
+            >
               <FormControl component="fieldset">
-                <FormLabel component="legend">{question.text}</FormLabel>
+                <FormLabel
+                  component="legend"
+                  style={{
+                    textAlign: 'initial',
+                    fontWeight: 'bold',
+                    color: '#000',
+                  }}
+                >
+                  {`${question.id}) ${question.text}`}
+                </FormLabel>
                 <RadioGroup
                   aria-label={question.fieldName}
                   name={question.fieldName}
                   onChange={handleChangeField}
                 >
-                  {question.answers.map(answer => (
+                  {question.answers.map((answer, index) => (
                     <FormControlLabel
                       value={answer}
                       control={<Radio color="primary" />}
-                      label={answer}
+                      label={`${letters[index]}) ${answer}`}
                       key={answer}
+                      style={{ textAlign: 'initial' }}
                     />
-                    ))}
+                  ))}
                 </RadioGroup>
               </FormControl>
             </Grid>
@@ -178,28 +181,37 @@ const Socioeconomic = () => {
           {questionsMultipleAnswer.map((question: IQuestionMultipleAnswer) => (
             <Grid item xs={12} lg={4} key={question.id}>
               <FormControl component="fieldset">
-                <FormLabel component="legend">{question.text}</FormLabel>
-                {question.answers.map(answer => (
+                <FormLabel
+                  component="legend"
+                  style={{
+                    textAlign: 'initial',
+                    fontWeight: 'bold',
+                    color: '#000',
+                  }}
+                >
+                  {`${question.id}) ${question.text}`}
+                </FormLabel>
+                {question.answers.map((answer, index) => (
                   <FormControlLabel
                     value
-                    control={(
+                    control={
+                      // eslint-disable-next-line react/jsx-wrap-multilines
                       <Checkbox
                         checked={socioeconomic[answer.fieldName].value}
                         onChange={handleChangeField}
                         name={answer.fieldName}
                         color="primary"
                       />
-                        )}
-                    label={answer.label}
+                    }
+                    label={`${letters[index]}) ${answer.label}`}
                     key={answer.fieldName}
+                    style={{ textAlign: 'initial' }}
                   />
                 ))}
               </FormControl>
             </Grid>
           ))}
         </Grid>
-
-
 
         <S.ButtonContainer>
           <Button
@@ -208,7 +220,7 @@ const Socioeconomic = () => {
             disabled={isFormError}
             onClick={handleNavigation}
           >
-            Salvar dados pessoais
+            Salvar dados socioeconômicos
           </Button>
         </S.ButtonContainer>
       </S.Form>
