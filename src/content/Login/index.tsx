@@ -1,12 +1,21 @@
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import Page from '@/components/Page';
 import * as S from './styles';
 
 const Login = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleOpenModal = useCallback(() => setModalIsOpen(true), []);
+  const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
+
   return (
     <Page>
       <h1>ACESSE SUA CONTA</h1>
@@ -34,7 +43,7 @@ const Login = () => {
           </S.GroupField>
 
           <S.ForgotPassword>
-            <a href="/">Esqueceu sua senha?</a>
+            <Button onClick={handleOpenModal}>Esqueceu sua senha?</Button>
           </S.ForgotPassword>
 
           <S.Submit>
@@ -45,49 +54,41 @@ const Login = () => {
         </S.Form>
       </S.LoginSection>
 
-      {/* <div className="row" style="justify-content: center;">
-        <div className="col-sm-6"> */}
-      {/* <form>
-            <div className="form-group">
-              <label className="labelCampo" htmlFor="">
-                E-mail:
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="email"
-                id="email"
-                formControlName="email"
-                required
+      <Dialog
+        open={modalIsOpen}
+        onClose={handleCloseModal}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">Recuperação de senha</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <div style={{ minWidth: '28rem' }}>
+              <TextField
+                id="email_recover"
+                name="email_recover"
+                label="E-mail cadastrado"
+                variant="outlined"
+                size="small"
+                style={{ width: '100%' }}
               />
             </div>
-            <div className="form-group">
-              <label className="labelCampo" htmlFor="">
-                Senha:
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                name="senha"
-                id="senha"
-                formControlName="senha"
-                required
-              />
-            </div>
-
-            <a href="/recuperacao" className="col-sm-12">
-              Esqueceu sua senha?
-            </a>
-
-            <div className="col-sm-12 text-center">
-              <button type="submit" className="btn btn-primary mt-2">
-                Entrar
-              </button>
-            </div>
-          </form>
-         */}
-      {/* </div>
-      </div> */}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal} color="primary">
+            Cancelar
+          </Button>
+          <Button
+            onClick={handleCloseModal}
+            color="primary"
+            variant="contained"
+            autoFocus
+          >
+            Enviar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Page>
   );
 };

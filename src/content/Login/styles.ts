@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import theme from '@/config/theme';
+
+const { color } = theme;
 
 export const LoginSection = styled.section`
   display: flex;
@@ -28,12 +31,8 @@ export const ForgotPassword = styled.div`
   margin: 0.25rem 0 1rem;
   text-align: left;
 
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
+  button {
+    color: ${color.green.dark};
   }
 `;
 
