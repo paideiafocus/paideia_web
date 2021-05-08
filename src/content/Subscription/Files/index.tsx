@@ -7,15 +7,19 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 
 const FORM = {
-  RG: { value: '', error: '' },
-  CPF: { value: '', error: '' },
-  HISTORIC: { value: '', error: '' },
-  CITIZEN: { value: '', error: '' },
-  ADDRESS: { value: '', error: '' },
-  SCHOLARSHIP: { value: '', error: '' },
-  PHOTO: { value: '', error: '' },
-  EJA: { value: '', error: '' }, // TERM
+  RG: { value: '' },
+  CPF: { value: '' },
+  HISTORIC: { value: '' },
+  CITIZEN: { value: '' },
+  ADDRESS: { value: '' },
+  SCHOLARSHIP: { value: '' },
+  PHOTO: { value: '' },
+  EJA: { value: '' }, // TERM
 };
+
+interface IFile extends HTMLElement {
+  files?: Blob[];
+}
 
 const Files = () => {
   const [files, setFiles] = useState(FORM);
@@ -23,30 +27,24 @@ const Files = () => {
   const router = useRouter();
 
   const handleNavigation = useCallback(() => {
-    router.push('/');
+    router.push('/inscricao/socioeconomico');
   }, [router]);
 
-  const handleChangeField = useCallback(
-    event => {
-      // const { value, name } = event.currentTarget;
-      // const error = !value ? 'campo é obrigatório' : '';
-      // const newPersonal = {
-      //   ...files,
-      //   [name]: {
-      //     value,
-      //     error,
-      //   },
-      // };
-      // setFiles(() => newPersonal);
-      // const formError = Object.keys(newPersonal).some(
-      //   key => !newPersonal[key].value
-      // );
-      // setIsFormError(() => formError);
-      // console.log('formError');
-      // console.log(formError);
-    },
-    [files]
-  );
+  const convertBase64 = useCallback(event => {
+    const { name } = event.target;
+    const filesSelected: IFile = document.getElementById(name);
+
+    if (filesSelected.files.length > 0) {
+      const fileToLoad = filesSelected.files[0];
+      const fileReader = new FileReader();
+
+      fileReader.onload = fileLoadedEvent => {
+        const srcData = fileLoadedEvent.target.result; // <--- data: base64
+        setFiles(oldFiles => ({ ...oldFiles, [name]: { value: srcData } }));
+      };
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }, []);
 
   return (
     <Page align="center">
@@ -101,12 +99,8 @@ const Files = () => {
               <TextField
                 id="RG"
                 name="RG"
-                value={files.RG.value}
-                helperText={files.RG.error}
-                error={Boolean(files.RG.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -117,12 +111,8 @@ const Files = () => {
               <TextField
                 id="CPF"
                 name="CPF"
-                value={files.CPF.value}
-                helperText={files.CPF.error}
-                error={Boolean(files.CPF.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -133,12 +123,8 @@ const Files = () => {
               <TextField
                 id="HISTORIC"
                 name="HISTORIC"
-                value={files.HISTORIC.value}
-                helperText={files.HISTORIC.error}
-                error={Boolean(files.HISTORIC.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -149,12 +135,8 @@ const Files = () => {
               <TextField
                 id="CITIZEN"
                 name="CITIZEN"
-                value={files.CITIZEN.value}
-                helperText={files.CITIZEN.error}
-                error={Boolean(files.CITIZEN.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -165,12 +147,8 @@ const Files = () => {
               <TextField
                 id="ADDRESS"
                 name="ADDRESS"
-                value={files.ADDRESS.value}
-                helperText={files.ADDRESS.error}
-                error={Boolean(files.ADDRESS.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -181,12 +159,8 @@ const Files = () => {
               <TextField
                 id="SCHOLARSHIP"
                 name="SCHOLARSHIP"
-                value={files.SCHOLARSHIP.value}
-                helperText={files.SCHOLARSHIP.error}
-                error={Boolean(files.SCHOLARSHIP.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -197,12 +171,8 @@ const Files = () => {
               <TextField
                 id="PHOTO"
                 name="PHOTO"
-                value={files.PHOTO.value}
-                helperText={files.PHOTO.error}
-                error={Boolean(files.PHOTO.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
@@ -222,19 +192,20 @@ const Files = () => {
               <TextField
                 id="EJA"
                 name="EJA"
-                value={files.EJA.value}
-                helperText={files.EJA.error}
-                error={Boolean(files.EJA.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
                 type="file"
+                onChange={convertBase64}
               />
             </S.FileField>
           </Grid>
         </Grid>
 
         <S.ButtonContainer>
-          <Button variant="contained" color="secondary" disabled={isFormError}>
+          <Button
+            variant="contained"
+            color="secondary"
+            disabled={isFormError}
+            onClick={handleNavigation}
+          >
             Salvar arquivos
           </Button>
         </S.ButtonContainer>
