@@ -16,7 +16,6 @@ export default createGlobalStyle`
   }
 
   div h1 {
-    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     font-size: 2.5rem;
@@ -28,8 +27,12 @@ export default createGlobalStyle`
     margin-top: 22px;
     margin-bottom: 18px;
     color: ${color.pink.dark};
-    font-size: 2.2rem;
+    font-size: 1.9rem;
     font-weight: 500;
+
+    @media (min-width: 46rem) {
+      font-size: 2.2rem;
+    }
   }
 
   h4 {

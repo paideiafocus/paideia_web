@@ -78,7 +78,7 @@ const Header = () => {
   );
 
   return (
-    <nav>
+    <S.HeaderNav>
       <S.ImageContainer>
         <img src="/logo/logo_paideia.png" alt="Logo Paideia" />
       </S.ImageContainer>
@@ -107,7 +107,7 @@ const Header = () => {
           {list()}
         </Drawer>
       </S.MobileMenu>
-    </nav>
+    </S.HeaderNav>
   );
 };
 

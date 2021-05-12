@@ -11,12 +11,6 @@ export const AboutContainer = styled.section`
     text-align: justify;
   }
 
-  .separa {
-    border-top: 4px ${color.green.normal} solid;
-    margin-bottom: 13px;
-    margin-top: 5px;
-  }
-
   h6 {
     color: ${color.pink.dark};
     text-align: center;
@@ -28,6 +22,12 @@ export const AboutContainer = styled.section`
   h2 {
     text-align: center;
   }
+`;
+
+export const Line = styled.div`
+  border-top: 4px ${color.green.normal} solid;
+  margin-bottom: 13px;
+  margin-top: 5px;
 `;
 
 export const TextBlock = styled.p`

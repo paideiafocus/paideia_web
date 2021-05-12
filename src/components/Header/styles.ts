@@ -5,13 +5,22 @@ import theme from '@/config/theme';
 
 const { color } = theme;
 
+export const HeaderNav = styled.nav`
+  margin-bottom: 1.5rem;
+`;
+
 export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0.25rem 0;
 
   img {
     width: 86%;
+
+    @media (min-width: 46rem) {
+      width: 60%;
+    }
   }
 `;
 

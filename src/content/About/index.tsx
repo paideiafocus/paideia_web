@@ -62,13 +62,13 @@ const About = () => {
           <br />
 
           <Grid item xs={12}>
-            <div className="separa" />
+            <S.Line />
             <h2> NOSSOS SERVIÇOS </h2>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Preparatório ENEM</h6>
               <p>
                 Além da preparação para o vestibular os nossos alunos contam
@@ -78,9 +78,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Aulas Complementares Específicas</h6>
               <p>
                 Nestas aulas os alunos recebem orientação específica sobre cada
@@ -90,9 +90,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Material Didático</h6>
               <p>
                 Ético Sistema de Ensino, da Editora Saraiva tem o conteúdo
@@ -102,9 +102,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Simulados</h6>
               <p>
                 Com questões dos principais vestibulares para que os alunos
@@ -113,9 +113,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Oficinas de Redação</h6>
               <p>
                 Necessárias para o aprimoramento tanto nos vestibulares como
@@ -124,9 +124,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Acompanhamento Psicológico</h6>
               <p>
                 Atendimento especializado visando ajudar na escolha
@@ -135,9 +135,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Roteiros Culturais</h6>
               <p>
                 Visitas a Centros Culturais, Teatros, Museus, Universidades
@@ -146,9 +146,9 @@ const About = () => {
             </S.ServiceColumn>
           </Grid>
 
-          <Grid item xs={3}>
+          <Grid item xs={12} lg={3}>
             <S.ServiceColumn>
-              <div className="separa" />
+              <S.Line />
               <h6>Cursinho Online</h6>
               <p>Plantão de dúvidas virtual (em implantação).</p>
             </S.ServiceColumn>

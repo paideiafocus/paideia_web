@@ -19,8 +19,9 @@ const Term = () => {
     <Page>
       <h1>INSCRIÇÃO 1º SEMESTRE 2021</h1>
 
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <h3>TERMO DE RESPONSABILIDADE - REGRAS DE FREQUÊNCIA E CONDUTA</h3>
+        <br />
         <b>
           Ao se inscrever no CURSINHO FOCUS da ASSOCIAÇÃO PAIDEIA, o (a) aluno
           (a) assume a responsabilidade de cumprir e respeitar as seguintes

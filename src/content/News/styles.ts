@@ -11,8 +11,12 @@ export const FaceContainer = styled.div`
     iframe {
       border: none;
       visibility: visible;
-      width: 340px;
+      width: 100%;
       height: 500px;
+
+      @media (min-width: 46rem) {
+        width: 340px;
+      }
     }
   }
 `;

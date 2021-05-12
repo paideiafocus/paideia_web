@@ -22,8 +22,8 @@ export const TermItem = styled.div`
 `;
 
 export const Confirm = styled.div`
-  margin-top: 16px;
-  padding: 8px;
+  margin: 1rem 0 2rem;
+  padding: 0.5rem;
 
   input {
     margin-right: 0.25rem;
