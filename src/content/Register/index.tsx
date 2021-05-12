@@ -1,13 +1,18 @@
-import { memo } from 'react';
-import TextField from '@material-ui/core/TextField';
+import { memo, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@/components/Alert';
 import Page from '@/components/Page';
 
 import * as S from './styles';
+import api from '../../utils/api';
 
 const Register = () => {
+  // TESTE AXIOS REQUEST
+  useEffect(() => {
+    api({ url: '/password/validate', method: 'POST', data: { token: 'aaaa' } });
+  }, []);
+
   return (
     <Page>
       <div>
@@ -40,7 +45,7 @@ const Register = () => {
 
           <S.Form>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
                   id="name"
                   name="name"
@@ -50,7 +55,7 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
                   id="lastname"
                   name="lastname"
@@ -60,7 +65,7 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
                   id="email"
                   name="email"
@@ -70,7 +75,7 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
                   id="password"
                   name="password"
@@ -80,7 +85,7 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
                   id="confirm_password"
                   name="confirm_password"
@@ -90,7 +95,11 @@ const Register = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} style={{ textAlign: 'center' }}>
+              <Grid
+                item
+                xs={12}
+                style={{ textAlign: 'center', marginTop: '1rem' }}
+              >
                 <Button variant="contained" color="primary">
                   Cadastrar
                 </Button>
