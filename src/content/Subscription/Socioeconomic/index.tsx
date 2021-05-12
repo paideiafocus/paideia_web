@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState, useEffect } from 'react';
 import Page from '@/components/Page';
 import { Button, Checkbox, Grid } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
@@ -91,6 +91,12 @@ const Socioeconomic = () => {
   const [socioeconomic, setSocioeconomic] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (window) {
+      window.scroll(0, 0);
+    }
+  }, []);
 
   const handleNavigation = useCallback(() => {
     router.push('/inscricao/conclui');

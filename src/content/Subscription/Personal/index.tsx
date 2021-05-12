@@ -1,9 +1,9 @@
-import { memo, useCallback, useState } from 'react';
-import Page from '@/components/Page';
-
-import Alert from '@/components/Alert';
-import { Button, Grid, TextField } from '@material-ui/core';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { Button, Grid, TextField } from '@material-ui/core';
+
+import Page from '@/components/Page';
+import Alert from '@/components/Alert';
 import * as S from './styles';
 
 const FORM = {
@@ -21,6 +21,12 @@ const Personal = () => {
   const [personal, setPersonal] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (window) {
+      window.scroll(0, 0);
+    }
+  }, []);
 
   const handleNavigation = useCallback(() => {
     router.push('/inscricao/arquivos');
@@ -45,13 +51,9 @@ const Personal = () => {
         key => !newPersonal[key].value
       );
       setIsFormError(() => formError);
-      console.log('formError');
-      console.log(formError);
     },
     [personal]
   );
-
-  console.log(personal);
 
   return (
     <Page align="center">
@@ -100,6 +102,7 @@ const Personal = () => {
               id="birth_date"
               name="birth_date"
               label="Data Nascimento"
+              placeholder="dd/mm/yyyy"
               value={personal.birth_date.value}
               helperText={personal.birth_date.error}
               error={Boolean(personal.birth_date.error)}

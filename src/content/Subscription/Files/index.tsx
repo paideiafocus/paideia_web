@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import Page from '@/components/Page';
 
 import Alert from '@/components/Alert';
@@ -25,6 +25,12 @@ const Files = () => {
   const [files, setFiles] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    if (window) {
+      window.scroll(0, 0);
+    }
+  }, []);
 
   const handleNavigation = useCallback(() => {
     router.push('/inscricao/socioeconomico');
@@ -203,7 +209,7 @@ const Files = () => {
           <Button
             variant="contained"
             color="secondary"
-            disabled={isFormError}
+            // disabled={isFormError}
             onClick={handleNavigation}
           >
             Salvar arquivos
