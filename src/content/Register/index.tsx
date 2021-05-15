@@ -1,17 +1,65 @@
-import { memo, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
+import { memo, useCallback, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@/components/Alert';
 import Page from '@/components/Page';
+import { useRouter } from 'next/router';
 
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
+import ButtonForm from '@/components/ButtonForm';
 import * as S from './styles';
-import api from '../../utils/api';
+import useCreateUser from './useCreateUser';
+
+const FORM = {
+  name: { value: '', error: '' },
+  lastname: { value: '', error: '' },
+  email: { value: '', error: '' },
+  confirm_email: { value: '', error: '' },
+  password: { value: '', error: '' },
+  confirm_password: { value: '', error: '' },
+};
 
 const Register = () => {
-  // TESTE AXIOS REQUEST
-  useEffect(() => {
-    api({ url: '/password/validate', method: 'POST', data: { token: 'aaaa' } });
-  }, []);
+  const router = useRouter();
+  const [openModal, setOpenModal] = useState(false);
+  const [user, setUser] = useState(FORM);
+  const [isFormError, setIsFormError] = useState(true);
+  const { createUser, loading, feedback } = useCreateUser();
+
+  const handleChangeField = useCallback(
+    event => {
+      const { value, name } = event.currentTarget;
+      const error = !value ? 'campo é obrigatório' : '';
+
+      const newUser = {
+        ...user,
+        [name]: {
+          value,
+          error,
+        },
+      };
+
+      setUser(() => newUser);
+
+      const formError = Object.keys(newUser).some(key => !newUser[key].value);
+      setIsFormError(() => formError);
+    },
+    [user]
+  );
+
+  const handleCreateUser = useCallback(() => {
+    createUser(user, setOpenModal);
+  }, [createUser, user]);
+
+  const handleNavigation = useCallback(() => {
+    setOpenModal(false);
+    router.push('/acesso');
+  }, [router]);
 
   return (
     <Page>
@@ -52,6 +100,11 @@ const Register = () => {
                   label="Digite seu nome"
                   variant="outlined"
                   size="small"
+                  value={user.name.value}
+                  helperText={user.name.error}
+                  error={Boolean(user.name.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
                 />
               </Grid>
 
@@ -62,6 +115,11 @@ const Register = () => {
                   label="Sobrenome (completo)"
                   variant="outlined"
                   size="small"
+                  value={user.lastname.value}
+                  helperText={user.lastname.error}
+                  error={Boolean(user.lastname.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
                 />
               </Grid>
 
@@ -72,6 +130,26 @@ const Register = () => {
                   label="Digite seu e-mail"
                   variant="outlined"
                   size="small"
+                  value={user.email.value}
+                  helperText={user.email.error}
+                  error={Boolean(user.email.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
+                />
+              </Grid>
+
+              <Grid item xs={12} lg={6}>
+                <S.TextFieldCustom
+                  id="confirm_email"
+                  name="confirm_email"
+                  label="Confirme seu e-mail"
+                  variant="outlined"
+                  size="small"
+                  value={user.confirm_email.value}
+                  helperText={user.confirm_email.error}
+                  error={Boolean(user.confirm_email.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
                 />
               </Grid>
 
@@ -82,6 +160,12 @@ const Register = () => {
                   label="Senha"
                   variant="outlined"
                   size="small"
+                  value={user.password.value}
+                  helperText={user.password.error}
+                  error={Boolean(user.password.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
+                  type="password"
                 />
               </Grid>
 
@@ -92,6 +176,12 @@ const Register = () => {
                   label="Confirme sua senha"
                   variant="outlined"
                   size="small"
+                  value={user.confirm_password.value}
+                  helperText={user.confirm_password.error}
+                  error={Boolean(user.confirm_password.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
+                  type="password"
                 />
               </Grid>
 
@@ -100,14 +190,47 @@ const Register = () => {
                 xs={12}
                 style={{ textAlign: 'center', marginTop: '1rem' }}
               >
-                <Button variant="contained" color="primary">
+                <ButtonForm
+                  disabled={isFormError}
+                  onClick={handleCreateUser}
+                  loading={loading}
+                >
                   Cadastrar
-                </Button>
+                </ButtonForm>
               </Grid>
             </Grid>
           </S.Form>
         </div>
       </div>
+
+      {openModal && (
+        <Dialog
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {feedback.type === 'danger' ? 'Erro!' : 'Sucesso!'}
+          </DialogTitle>
+
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <div style={{ minWidth: '28rem' }}>{feedback.message}</div>
+            </DialogContentText>
+          </DialogContent>
+
+          <DialogActions>
+            {feedback.type === 'danger' && (
+              <ButtonForm onClick={() => setOpenModal(false)}>OK</ButtonForm>
+            )}
+
+            {feedback.type === 'success' && (
+              <ButtonForm onClick={handleNavigation}>Fazer login</ButtonForm>
+            )}
+          </DialogActions>
+        </Dialog>
+      )}
     </Page>
   );
 };
