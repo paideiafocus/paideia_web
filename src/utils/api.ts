@@ -31,7 +31,7 @@ const config: IConfig = {
   baseURL: `http://localhost:3333`,
 };
 
-const api = ({ url, method, data }: IApi): AxiosPromise<AxiosInstance> => {
+const api = ({ url, method, data }: IApi): AxiosPromise => {
   const token = localStorage && localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
