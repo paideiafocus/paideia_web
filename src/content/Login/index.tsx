@@ -8,13 +8,64 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import Page from '@/components/Page';
+import ButtonForm from '@/components/ButtonForm';
+import { useRouter } from 'next/router';
 import * as S from './styles';
+import useLoginUser from './useLoginUser';
+import useRecoverPassword from './useRecoverPassword';
+
+const FORM = {
+  email: { value: '', error: '' },
+  password: { value: '', error: '' },
+  email_recover: { value: '', error: '' },
+};
 
 const Login = () => {
+  const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isFormError, setIsFormError] = useState(true);
+  const [user, setUser] = useState(FORM);
+  const { authUser, feedbackError, loading: loadingLogin } = useLoginUser();
+  const {
+    recoverUserPassword,
+    feedbackMessage,
+    loading: loadingRecover,
+  } = useRecoverPassword();
 
   const handleOpenModal = useCallback(() => setModalIsOpen(true), []);
   const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
+
+  const handleChangeField = useCallback(
+    event => {
+      const { value, name } = event.currentTarget;
+      const error = !value ? 'campo é obrigatório' : '';
+
+      const newUser = {
+        ...user,
+        [name]: {
+          value,
+          error,
+        },
+      };
+
+      setUser(() => newUser);
+
+      const formError = Object.keys(newUser).some(key => !newUser[key].value);
+      setIsFormError(() => formError);
+    },
+    [user]
+  );
+
+  const handleNavigation = useCallback(
+    status => router.push(status === 'common' ? '/valida' : '/'),
+    [router]
+  );
+
+  const handleAuthUser = useCallback(() => {
+    authUser(user, handleNavigation);
+  }, [authUser, handleNavigation, user]);
+
+  const handleRecover = useCallback(() => {}, []);
 
   return (
     <Page>
@@ -29,6 +80,11 @@ const Login = () => {
               label="E-mail"
               variant="outlined"
               size="small"
+              value={user.email.value}
+              helperText={user.email.error}
+              error={Boolean(user.email.error)}
+              onChange={handleChangeField}
+              onBlur={handleChangeField}
             />
           </S.GroupField>
 
@@ -39,7 +95,14 @@ const Login = () => {
               label="Senha"
               variant="outlined"
               size="small"
+              value={user.password.value}
+              helperText={user.password.error}
+              error={Boolean(user.password.error)}
+              onChange={handleChangeField}
+              onBlur={handleChangeField}
+              type="password"
             />
+            {feedbackError && <S.ErrorMessage>{feedbackError}</S.ErrorMessage>}
           </S.GroupField>
 
           <S.ForgotPassword>
@@ -47,9 +110,13 @@ const Login = () => {
           </S.ForgotPassword>
 
           <S.Submit>
-            <Button variant="contained" color="primary">
+            <ButtonForm
+              disabled={isFormError}
+              onClick={handleAuthUser}
+              loading={loadingLogin}
+            >
               Entrar
-            </Button>
+            </ButtonForm>
           </S.Submit>
         </S.Form>
       </S.LoginSection>
@@ -70,8 +137,16 @@ const Login = () => {
                 label="E-mail cadastrado"
                 variant="outlined"
                 size="small"
+                value={user.email_recover.value}
+                helperText={user.email_recover.error}
+                error={Boolean(user.email_recover.error)}
+                onChange={handleChangeField}
+                onBlur={handleChangeField}
                 style={{ width: '100%' }}
               />
+              {/* {feedbackMessage && (
+                <S.ErrorMessage>{feedbackMessage}</S.ErrorMessage>
+              )} */}
             </div>
           </DialogContentText>
         </DialogContent>
@@ -79,14 +154,13 @@ const Login = () => {
           <Button onClick={handleCloseModal} color="primary">
             Cancelar
           </Button>
-          <Button
-            onClick={handleCloseModal}
-            color="primary"
-            variant="contained"
-            autoFocus
+          <ButtonForm
+            disabled={!user.email_recover.value}
+            loading={loadingRecover}
+            onClick={handleRecover}
           >
             Enviar
-          </Button>
+          </ButtonForm>
         </DialogActions>
       </Dialog>
     </Page>

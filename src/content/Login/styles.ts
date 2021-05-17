@@ -41,6 +41,12 @@ export const ForgotPassword = styled.div`
   }
 `;
 
+export const ErrorMessage = styled.span`
+  margin-top: 1rem;
+  color: red;
+  font-weight: bold;
+`;
+
 export const Submit = styled.div`
   margin-bottom: 2rem;
 `;
