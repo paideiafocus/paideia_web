@@ -41,9 +41,13 @@ export const ForgotPassword = styled.div`
   }
 `;
 
-export const ErrorMessage = styled.span`
+interface IMessageProps {
+  type: 'danger' | 'success';
+}
+
+export const Message = styled.span`
   margin-top: 1rem;
-  color: red;
+  color: ${(p: IMessageProps) => (p.type === 'danger' ? 'red' : 'green')};
   font-weight: bold;
 `;
 

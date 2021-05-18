@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -28,7 +28,7 @@ const Login = () => {
   const { authUser, feedbackError, loading: loadingLogin } = useLoginUser();
   const {
     recoverUserPassword,
-    feedbackMessage,
+    feedback,
     loading: loadingRecover,
   } = useRecoverPassword();
 
@@ -65,7 +65,9 @@ const Login = () => {
     authUser(user, handleNavigation);
   }, [authUser, handleNavigation, user]);
 
-  const handleRecover = useCallback(() => {}, []);
+  const handleRecover = useCallback(() => {
+    recoverUserPassword(user.email_recover.value);
+  }, [recoverUserPassword, user.email_recover.value]);
 
   return (
     <Page>
@@ -102,7 +104,9 @@ const Login = () => {
               onBlur={handleChangeField}
               type="password"
             />
-            {feedbackError && <S.ErrorMessage>{feedbackError}</S.ErrorMessage>}
+            {feedbackError && (
+              <S.Message type="danger">{feedbackError}</S.Message>
+            )}
           </S.GroupField>
 
           <S.ForgotPassword>
@@ -131,36 +135,42 @@ const Login = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <div style={{ minWidth: '28rem' }}>
-              <TextField
-                id="email_recover"
-                name="email_recover"
-                label="E-mail cadastrado"
-                variant="outlined"
-                size="small"
-                value={user.email_recover.value}
-                helperText={user.email_recover.error}
-                error={Boolean(user.email_recover.error)}
-                onChange={handleChangeField}
-                onBlur={handleChangeField}
-                style={{ width: '100%' }}
-              />
-              {/* {feedbackMessage && (
-                <S.ErrorMessage>{feedbackMessage}</S.ErrorMessage>
-              )} */}
+              {feedback.type !== 'success' && (
+                <TextField
+                  id="email_recover"
+                  name="email_recover"
+                  label="E-mail cadastrado"
+                  variant="outlined"
+                  size="small"
+                  value={user.email_recover.value}
+                  helperText={user.email_recover.error}
+                  error={Boolean(user.email_recover.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
+                  style={{ width: '100%' }}
+                />
+              )}
+
+              {feedback.type !== '' && (
+                <S.Message type={feedback.type}>{feedback.message}</S.Message>
+              )}
             </div>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseModal} color="primary">
-            Cancelar
+            {feedback.type === 'success' ? 'OK' : 'Cancelar'}
           </Button>
-          <ButtonForm
-            disabled={!user.email_recover.value}
-            loading={loadingRecover}
-            onClick={handleRecover}
-          >
-            Enviar
-          </ButtonForm>
+
+          {feedback.type !== 'success' && (
+            <ButtonForm
+              disabled={!user.email_recover.value}
+              loading={loadingRecover}
+              onClick={handleRecover}
+            >
+              Enviar
+            </ButtonForm>
+          )}
         </DialogActions>
       </Dialog>
     </Page>
