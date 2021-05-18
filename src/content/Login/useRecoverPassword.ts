@@ -6,15 +6,22 @@ interface IErrorResponse {
   message: string;
 }
 
+interface IFeedback {
+  type: '' | 'danger' | 'success';
+  message: string;
+}
 interface IRecoverPassword {
   loading: boolean;
-  feedbackMessage: string;
+  feedback: IFeedback;
   recoverUserPassword: any;
 }
 
 const useRecoverPassword = (): IRecoverPassword => {
   const [loading, setLoading] = useState(false);
-  const [feedbackMessage, setFeedbackMessage] = useState(''); // MUDAR PARA OBJETO (IGUAL OUTRAS PAGINAS)
+  const [feedback, setFeedback] = useState<IFeedback>({
+    type: '',
+    message: '',
+  });
 
   const recoverUserPassword = useCallback(email => {
     setLoading(true);
@@ -22,20 +29,22 @@ const useRecoverPassword = (): IRecoverPassword => {
     api({
       url: '/password/recover',
       method: 'POST',
-      data: { email: email.value },
+      data: { email },
     })
       .then(() => {
-        setFeedbackMessage(
-          'Foi enviado ao seu e-mail instruções para a recuperação de sua senha'
-        );
+        setFeedback({
+          type: 'success',
+          message:
+            'Foi enviado ao seu e-mail instruções para a recuperação de sua senha',
+        });
       })
       .catch(({ response: { data } }: AxiosError<IErrorResponse>) => {
-        setFeedbackMessage(data.message);
+        setFeedback({ type: 'danger', message: data.message });
       })
       .finally(() => setLoading(false));
   }, []);
 
-  return { recoverUserPassword, loading, feedbackMessage };
+  return { recoverUserPassword, loading, feedback };
 };
 
 export default useRecoverPassword;
