@@ -1,14 +1,16 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 
 import Page from '@/components/Page';
 import Alert from '@/components/Alert';
+import ButtonForm from '@/components/ButtonForm';
+import WarningMessage from '@/components/WarningMessage';
 import * as S from './styles';
+import useCandidate from './useCandidate';
 
 const FORM = {
-  name: { value: '', error: '' },
-  lastname: { value: '', error: '' },
+  fullname: { value: '', error: '' },
   birth_date: { value: '', error: '' },
   phone1: { value: '', error: '' },
   cpf: { value: '', error: '' },
@@ -18,19 +20,16 @@ const FORM = {
 };
 
 const Personal = () => {
+  const router = useRouter();
   const [personal, setPersonal] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
-  const router = useRouter();
+  const { createCandidate, loading, feedbackError } = useCandidate();
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
-
-  const handleNavigation = useCallback(() => {
-    router.push('/inscricao/arquivos');
-  }, [router]);
 
   const handleChangeField = useCallback(
     event => {
@@ -55,6 +54,14 @@ const Personal = () => {
     [personal]
   );
 
+  const handleNavigation = useCallback(() => {
+    router.push('/inscricao/arquivos');
+  }, [router]);
+
+  const handleCreateCandidate = useCallback(() => {
+    createCandidate(personal, handleNavigation);
+  }, [createCandidate, handleNavigation, personal]);
+
   return (
     <Page align="center">
       <h2>DADOS PESSOAIS</h2>
@@ -71,33 +78,20 @@ const Personal = () => {
 
       <S.Form>
         <Grid container spacing={3}>
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
-              id="name"
-              name="name"
-              label="Nome"
-              value={personal.name.value}
-              helperText={personal.name.error}
-              error={Boolean(personal.name.error)}
+              id="fullname"
+              name="fullname"
+              label="Nome completo"
+              value={personal.fullname.value}
+              helperText={personal.fullname.error}
+              error={Boolean(personal.fullname.error)}
               onChange={handleChangeField}
               onBlur={handleChangeField}
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
-            <TextField
-              id="lastname"
-              name="lastname"
-              label="Sobrenome"
-              value={personal.lastname.value}
-              helperText={personal.lastname.error}
-              error={Boolean(personal.lastname.error)}
-              onChange={handleChangeField}
-              onBlur={handleChangeField}
-            />
-          </Grid>
-
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="birth_date"
               name="birth_date"
@@ -111,7 +105,7 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="phone1"
               name="phone1"
@@ -124,7 +118,7 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="cpf"
               name="cpf"
@@ -137,7 +131,7 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="rg"
               name="rg"
@@ -150,11 +144,11 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="citizen"
               name="citizen"
-              label="Cartão Cidadão (Louveira)"
+              label="Cartão Cidadão"
               value={personal.citizen.value}
               helperText={personal.citizen.error}
               error={Boolean(personal.citizen.error)}
@@ -163,7 +157,7 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={4}>
             <TextField
               id="course"
               name="course"
@@ -177,15 +171,16 @@ const Personal = () => {
           </Grid>
         </Grid>
 
+        {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}
+
         <S.ButtonContainer>
-          <Button
-            variant="contained"
-            color="secondary"
+          <ButtonForm
+            loading={loading}
             disabled={isFormError}
-            onClick={handleNavigation}
+            onClick={handleCreateCandidate}
           >
             Salvar dados pessoais
-          </Button>
+          </ButtonForm>
         </S.ButtonContainer>
       </S.Form>
     </Page>

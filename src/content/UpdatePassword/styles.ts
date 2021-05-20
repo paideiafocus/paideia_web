@@ -1,8 +1,5 @@
 import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
-// import theme from '@/config/theme';
-
-// const { color } = theme;
 
 export const UpdatePasswordSection = styled.section`
   display: flex;

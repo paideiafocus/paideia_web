@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import Page from '@/components/Page';
 
 import Alert from '@/components/Alert';
@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import rules from './rules.json';
 import * as S from './styles';
 
-const Term = () => {
+const Term: FC = () => {
   const [isConfirm, setIsConfirm] = useState(false);
   const router = useRouter();
 
