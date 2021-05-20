@@ -50,7 +50,9 @@ const Login = () => {
 
       setUser(() => newUser);
 
-      const formError = Object.keys(newUser).some(key => !newUser[key].value);
+      const formError = Object.keys(newUser).some(
+        key => key !== 'email_recover' && !newUser[key].value
+      );
       setIsFormError(() => formError);
     },
     [user]
