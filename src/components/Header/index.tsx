@@ -1,4 +1,4 @@
-import { memo, useState, useCallback } from 'react';
+import { memo, useState, useCallback, useEffect } from 'react';
 import { BottomNavigationAction } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import { useRouter } from 'next/router';
 import * as S from './styles';
+import getFilteredNavLinks from './getFilteredNavLinks';
+import getNavId from './getNavId';
 
 interface INavLinks {
   id: number;
@@ -17,28 +19,22 @@ interface INavLinks {
   label: string;
 }
 
-const navLinks: INavLinks[] = [
-  { id: 0, path: '/', label: 'Início' },
-  { id: 1, path: '/sobre', label: 'Sobre' },
-  { id: 2, path: '/noticias', label: 'Notícias' },
-  { id: 3, path: '/contato', label: 'Contato' },
-  { id: 4, path: '/perguntas', label: 'FAQ' },
-  { id: 5, path: '/acesso', label: 'Acesse sua conta' },
-  { id: 6, path: '/cadastro', label: 'Cadastre-se' },
-];
-
 const Header = () => {
   const router = useRouter();
-  const [navId] = useState(() => {
-    const currentLink = navLinks.find(link => link.path === router.pathname);
-
-    if (!currentLink) {
-      return 0;
-    }
-
-    return currentLink.id;
-  });
+  const [navLinks, setNavLinks] = useState(getFilteredNavLinks());
+  const [navId, setNavId] = useState<number | undefined>(
+    getNavId(navLinks, router.pathname)
+  );
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (localStorage) {
+      const token = localStorage.getItem('token');
+      const filteredNavLinks = getFilteredNavLinks(token);
+      setNavLinks(filteredNavLinks);
+      setNavId(getNavId(filteredNavLinks, router.pathname));
+    }
+  }, [router.pathname]);
 
   const toggleDrawer = open => event => {
     const { type, key } = event;
@@ -74,7 +70,7 @@ const Header = () => {
       const slug = navLinks.find(link => link.id === newNavId);
       router.push(slug.path);
     },
-    [router]
+    [navLinks, router]
   );
 
   return (
