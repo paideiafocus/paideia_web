@@ -5,6 +5,7 @@ import Alert from '@/components/Alert';
 import { Button, Grid, TextField } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import * as S from './styles';
+import useFile from './useFile';
 
 const FORM = {
   RG: { value: '' },
@@ -22,9 +23,10 @@ interface IFile extends HTMLElement {
 }
 
 const Files = () => {
+  const router = useRouter();
   const [files, setFiles] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
-  const router = useRouter();
+  const { createFiles, loading, feedbackError } = useFile(); // CONTINUE...
 
   useEffect(() => {
     if (window) {
