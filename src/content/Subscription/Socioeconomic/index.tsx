@@ -8,9 +8,12 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { useRouter } from 'next/router';
 
+import ButtonForm from '@/components/ButtonForm';
+import WarningMessage from '@/components/WarningMessage';
 import * as S from './styles';
 import questionsOneAnswer from './questionsOneAnswer.json';
 import questionsMultipleAnswer from './questionsMultipleAnswer.json';
+import useSocioeconomic from './useSocioeconomic';
 
 interface IMultiple {
   label: string;
@@ -88,19 +91,16 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 const fieldsBoolean = [...fieldsActivity, ...fieldsLive];
 
 const Socioeconomic = () => {
+  const router = useRouter();
   const [socioeconomic, setSocioeconomic] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
-  const router = useRouter();
+  const { createSocioeconomic, loading, feedbackError } = useSocioeconomic();
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
-
-  const handleNavigation = useCallback(() => {
-    router.push('/inscricao/conclui');
-  }, [router]);
 
   const handleChangeField = useCallback(
     event => {
@@ -139,6 +139,14 @@ const Socioeconomic = () => {
     },
     [socioeconomic]
   );
+
+  const handleNavigation = useCallback(() => {
+    router.push('/inscricao/conclui');
+  }, [router]);
+
+  const handleCreateSocioeconomic = useCallback(() => {
+    createSocioeconomic(socioeconomic, handleNavigation);
+  }, [createSocioeconomic, handleNavigation, socioeconomic]);
 
   return (
     <Page align="center">
@@ -219,15 +227,18 @@ const Socioeconomic = () => {
           ))}
         </Grid>
 
+        <br />
+
+        {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}
+
         <S.ButtonContainer>
-          <Button
-            variant="contained"
-            color="secondary"
+          <ButtonForm
             disabled={isFormError}
-            onClick={handleNavigation}
+            loading={loading}
+            onClick={handleCreateSocioeconomic}
           >
             Salvar dados socioeconômicos
-          </Button>
+          </ButtonForm>
         </S.ButtonContainer>
       </S.Form>
     </Page>

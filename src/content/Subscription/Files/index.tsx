@@ -2,8 +2,10 @@ import { memo, useCallback, useEffect, useState } from 'react';
 import Page from '@/components/Page';
 
 import Alert from '@/components/Alert';
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import ButtonForm from '@/components/ButtonForm';
+import WarningMessage from '@/components/WarningMessage';
 import * as S from './styles';
 import useFile from './useFile';
 
@@ -18,6 +20,16 @@ const FORM = {
   EJA: { value: '' }, // TERM
 };
 
+const errorFieldMessages = {
+  RG: 'Campo RG é obrigatório',
+  CPF: 'Campo CPF é obrigatório',
+  HISTORIC: 'Campo Histórico escolar é obrigatório',
+  CITIZEN: 'Campo Cartão cidadão é obrigatório',
+  ADDRESS: 'Campo Comprovante de endereço é obrigatório',
+  PHOTO: 'Campo Foto é obrigatório',
+  EJA: 'Campo Termo de responsabilidade é obrigatório',
+};
+
 interface IFile extends HTMLElement {
   files?: Blob[];
 }
@@ -25,18 +37,14 @@ interface IFile extends HTMLElement {
 const Files = () => {
   const router = useRouter();
   const [files, setFiles] = useState(FORM);
-  const [isFormError, setIsFormError] = useState(true);
-  const { createFiles, loading, feedbackError } = useFile(); // CONTINUE...
+  const [fieldErrors, setFieldErrors] = useState([]);
+  const { createFiles, loading, feedbackError } = useFile();
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
-
-  const handleNavigation = useCallback(() => {
-    router.push('/inscricao/socioeconomico');
-  }, [router]);
 
   const convertBase64 = useCallback(event => {
     const { name } = event.target;
@@ -53,6 +61,36 @@ const Files = () => {
       fileReader.readAsDataURL(fileToLoad);
     }
   }, []);
+
+  const handleNavigation = useCallback(() => {
+    router.push('/inscricao/socioeconomico');
+  }, [router]);
+
+  const handleCreateFiles = useCallback(() => {
+    const requiredFields = [
+      'RG',
+      'CPF',
+      'HISTORIC',
+      'CITIZEN',
+      'ADDRESS',
+      'PHOTO',
+      'EJA',
+    ];
+
+    const errors = requiredFields.reduce((acc, curr) => {
+      if (!files[curr].value) {
+        return [...acc, errorFieldMessages[curr]];
+      }
+
+      return acc;
+    }, []);
+
+    setFieldErrors(errors);
+
+    if (errors.length === 0) {
+      createFiles(files, handleNavigation);
+    }
+  }, [createFiles, files, handleNavigation]);
 
   return (
     <Page align="center">
@@ -207,15 +245,22 @@ const Files = () => {
           </Grid>
         </Grid>
 
+        <br />
+
+        {fieldErrors.length > 0 &&
+          fieldErrors.map(erro => (
+            <>
+              <WarningMessage key={erro}>{erro}</WarningMessage>
+              <br />
+            </>
+          ))}
+
+        {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}
+
         <S.ButtonContainer>
-          <Button
-            variant="contained"
-            color="secondary"
-            // disabled={isFormError}
-            onClick={handleNavigation}
-          >
+          <ButtonForm loading={loading} onClick={handleCreateFiles}>
             Salvar arquivos
-          </Button>
+          </ButtonForm>
         </S.ButtonContainer>
       </S.Form>
     </Page>
