@@ -1,12 +1,20 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import Button from '@material-ui/core/Button';
 
+import { useRouter } from 'next/router';
 import * as S from './styles';
 
 const Depositions: React.FC = () => {
+  const router = useRouter();
+
+  const handleNavigation = useCallback(() => {
+    router.push('/mais-depoimentos');
+  }, [router]);
+
   return (
     <S.DepositionsContainer>
       <h2>depoimentos</h2>
+
       <S.DepositionsContent>
         <S.DepositionsCard borderDirection="right">
           <p>
@@ -27,8 +35,13 @@ const Depositions: React.FC = () => {
           <strong>Caroline Cândido Veroneze</strong>
         </S.DepositionsCard>
       </S.DepositionsContent>
+
       <S.SeeMoreDepositions>
-        <Button variant="contained" color="secondary">
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={handleNavigation}
+        >
           Ver mais depoimentos
         </Button>
       </S.SeeMoreDepositions>

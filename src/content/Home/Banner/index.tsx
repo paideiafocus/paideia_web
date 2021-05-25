@@ -1,21 +1,18 @@
 import { memo } from 'react';
-
-import Image from 'next/image';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 
 import * as S from './styles';
 
 const Banner: React.FC = () => {
   return (
-    <S.BannerImage>
-      <Image
-        src="/image_01.png"
-        alt="Curso pré-vestibular gratuito"
-        height="auto"
-        width="900"
-        // layout="responsive"
-        priority
-      />
-    </S.BannerImage>
+    <Carousel autoPlay interval={5000} infiniteLoop>
+      <img src="/image_01.png" alt="Curso pré-vestibular gratuito 1" />
+
+      <img src="/image_02.png" alt="Curso pré-vestibular gratuito 2" />
+
+      <img src="/image_03.png" alt="Curso pré-vestibular gratuito 2" />
+    </Carousel>
   );
 };
 

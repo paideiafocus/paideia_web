@@ -10,12 +10,22 @@ export const SelectiveProcessContainer = styled.section`
 
 export const Options = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 2rem 0;
+
+  @media (min-width: 46rem) {
+    justify-content: space-between;
+  }
 `;
 
 export const OptionCard = styled.div`
+  margin-bottom: 1rem;
   text-transform: uppercase;
+
+  @media (min-width: 46rem) {
+    margin-bottom: 0;
+  }
 `;
 
 export const Link = styled.a`

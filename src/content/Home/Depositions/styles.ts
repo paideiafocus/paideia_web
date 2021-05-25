@@ -12,6 +12,11 @@ export const DepositionsContainer = styled.section`
 
 export const DepositionsContent = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 46rem) {
+    flex-direction: row;
+  }
 `;
 
 interface IDepositionsCardProps {

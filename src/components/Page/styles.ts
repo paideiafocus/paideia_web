@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface PageContentProps {
   align: string;
+  isFull: boolean;
 }
 
 export const PageContainer = styled.section`
@@ -9,12 +10,12 @@ export const PageContainer = styled.section`
   margin: auto;
 `;
 
-export const PageContent = styled.div`
-  width: 86%;
+export const PageContent = styled.div<PageContentProps>`
+  width: ${p => (p.isFull ? '96%' : ' 86%')};
   margin: auto;
-  text-align: ${(p: PageContentProps) => (p.align ? p.align : 'initial')};
+  text-align: ${p => (p.align ? p.align : 'initial')};
 
   @media (min-width: 46rem) {
-    width: 60%;
+    width: 70%;
   }
 `;

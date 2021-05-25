@@ -7,7 +7,7 @@ import SelectiveProcess from './SelectiveProcess';
 
 const Home: React.FC = () => {
   return (
-    <Page>
+    <Page isFull>
       <Banner />
 
       <SelectiveProcess />
