@@ -32,7 +32,7 @@ const News = () => {
               data-testid="fb:page Facebook Social Plugin"
               title="fb:page Facebook Social Plugin"
               frameBorder="0"
-              allowtransparency="true"
+              // allowtransparency="true"
               allowFullScreen
               scrolling="no"
               allow="encrypted-media"
