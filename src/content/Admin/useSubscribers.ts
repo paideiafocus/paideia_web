@@ -2,6 +2,7 @@ import api from '@/utils/api';
 import { useCallback, useState } from 'react';
 
 interface ISubscriber {
+  user_id: string;
   code: number;
   enrollment: number;
   name: string;
@@ -59,10 +60,12 @@ const useSubscribers = (): ISubscribersHook => {
   const [feedbackError, setFeedbackError] = useState('');
   const [subscribersData, setSubscribersData] = useState();
 
-  const getSubscribers = useCallback(() => {
+  const getSubscribers = useCallback((userId = null) => {
     setLoading(true);
 
-    api({ url: '/subscribers' })
+    const additionalPath = userId ? `/${userId}` : '';
+
+    api({ url: `/subscribers${additionalPath}` })
       .then(({ data }) => {
         setSubscribersData(data);
       })

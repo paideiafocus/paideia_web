@@ -11,16 +11,17 @@ import Paper from '@material-ui/core/Paper';
 import { Button, CircularProgress } from '@material-ui/core';
 import WarningMessage from '@/components/WarningMessage';
 import { useRouter } from 'next/router';
-import useSubscribers from './useSubscribers';
+import useSubscribers from '../useSubscribers';
 import * as S from './styles';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    fontSize: 14,
   },
   body: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }))(TableCell);
 
@@ -52,12 +53,15 @@ const Subscribers = () => {
     getSubscribers();
   }, [getSubscribers]);
 
-  const handleShowDetails = useCallback(() => {
-    router.push('/adm/detalhes'); // query params
-  }, [router]);
+  const handleShowDetails = useCallback(
+    userId => {
+      router.push(`/adm/detalhes/${userId}`); // query params
+    },
+    [router]
+  );
 
   return (
-    <Page>
+    <Page align="center">
       <h1>Bem vindo Administrador</h1>
 
       <S.SubscribersSection>
@@ -104,8 +108,11 @@ const Subscribers = () => {
                     <StyledTableCell>{subscriber.citizen}</StyledTableCell>
                     <StyledTableCell>{subscriber.status}</StyledTableCell>
                     <StyledTableCell>
-                      <Button variant="contained" onClick={handleShowDetails}>
-                        Ver mais
+                      <Button
+                        variant="contained"
+                        onClick={() => handleShowDetails(subscriber.user_id)}
+                      >
+                        detalhes
                       </Button>
                     </StyledTableCell>
                   </StyledTableRow>
