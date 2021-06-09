@@ -53,6 +53,7 @@ const Login = () => {
       const formError = Object.keys(newUser).some(
         key => key !== 'email_recover' && !newUser[key].value
       );
+
       setIsFormError(() => formError);
     },
     [user]
@@ -76,7 +77,7 @@ const Login = () => {
       <h1>ACESSE SUA CONTA</h1>
 
       <S.LoginSection>
-        <S.Form>
+        <S.Form onSubmit={event => event.preventDefault()}>
           <S.GroupField>
             <TextField
               id="email"
@@ -120,6 +121,7 @@ const Login = () => {
               disabled={isFormError}
               onClick={handleAuthUser}
               loading={loadingLogin}
+              type="submit"
             >
               Entrar
             </ButtonForm>
