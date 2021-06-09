@@ -15,7 +15,7 @@ export const allNavLinks: INavLinks[] = [
 export const NotLoggedLinks: INavLinks[] = [
   ...allNavLinks,
   { id: 5, path: '/acesso', label: 'Acesse sua conta' },
-  { id: 6, path: '/cadastro', label: 'Cadastre-se' },
+  // { id: 6, path: '/cadastro', label: 'Cadastre-se' },
 ];
 
 export const linksToActiveUsers: INavLinks[] = [
