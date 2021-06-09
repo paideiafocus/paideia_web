@@ -11,11 +11,11 @@ const SelectiveProcess: React.FC = () => {
         Processo Seletivo
       </Text>
       <S.Options>
-        <OptionCard
+        {/* <OptionCard
           pdfLink="informacoes.pdf"
           imageSrc="info_basica.png"
           title="Informações básicas"
-        />
+        /> */}
         <OptionCard
           pdfLink="edital.pdf"
           imageSrc="edital.png"
