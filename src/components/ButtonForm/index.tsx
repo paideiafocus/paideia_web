@@ -7,6 +7,7 @@ interface IButtonFormProps {
   disabled?: boolean;
   onClick(e: MouseEvent<HTMLElement>): void;
   loading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
   children: ReactNode;
 }
 
@@ -14,6 +15,7 @@ const ButtonForm: React.FC<IButtonFormProps> = ({
   disabled,
   onClick,
   loading,
+  type,
   children,
 }) => {
   return (
@@ -22,6 +24,7 @@ const ButtonForm: React.FC<IButtonFormProps> = ({
       color="primary"
       disabled={disabled || false}
       onClick={onClick}
+      type={type || 'button'}
     >
       <S.Content>
         {!loading && children}
