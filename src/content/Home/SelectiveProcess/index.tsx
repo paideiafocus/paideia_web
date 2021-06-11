@@ -16,11 +16,16 @@ const SelectiveProcess: React.FC = () => {
           imageSrc="info_basica.png"
           title="Informações básicas"
         /> */}
-        {/* <OptionCard
+        <OptionCard
           pdfLink="edital.pdf"
           imageSrc="edital.png"
           title="Manual do candidato"
-        /> */}
+        />
+        <OptionCard
+          pdfLink="secretaria_projetos.pdf"
+          imageSrc="edital.png"
+          title="Carta de serviços ao usuário da secretaria de projetos"
+        />
         <OptionCard
           pdfLink="REQUERIMENTO - 2018.pdf"
           imageSrc="requerimento.png"

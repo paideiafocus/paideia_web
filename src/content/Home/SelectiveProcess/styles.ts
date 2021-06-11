@@ -21,10 +21,12 @@ export const Options = styled.div`
 
 export const OptionCard = styled.div`
   margin-bottom: 1rem;
-  text-transform: uppercase;
+  width: 100%;
+  text-align: justify;
 
   @media (min-width: 46rem) {
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
+    width: 50%;
   }
 `;
 
