@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import { Button, CircularProgress } from '@material-ui/core';
 import WarningMessage from '@/components/WarningMessage';
 import { useRouter } from 'next/router';
+import statusFormat from '@/utils/statusFormat';
 import useSubscribers from '../useSubscribers';
 import * as S from './styles';
 
@@ -106,7 +107,9 @@ const Subscribers = () => {
                     <StyledTableCell>{subscriber.email}</StyledTableCell>
                     <StyledTableCell>{subscriber.cpf}</StyledTableCell>
                     <StyledTableCell>{subscriber.citizen}</StyledTableCell>
-                    <StyledTableCell>{subscriber.status}</StyledTableCell>
+                    <StyledTableCell>
+                      {statusFormat[subscriber.status]}
+                    </StyledTableCell>
                     <StyledTableCell>
                       <Button
                         variant="contained"

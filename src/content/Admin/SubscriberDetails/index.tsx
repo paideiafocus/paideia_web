@@ -1,4 +1,5 @@
-import { memo, useEffect, useState } from 'react';
+/* eslint-disable react/jsx-one-expression-per-line */
+import { memo, useEffect, useMemo, useState } from 'react';
 import Page from '@/components/Page';
 import WarningMessage from '@/components/WarningMessage';
 import { CircularProgress } from '@material-ui/core';
@@ -9,8 +10,15 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import statusFormat from '@/utils/statusFormat';
+import filesNames from '@/utils/filesNames';
 import useFiles from './useFiles';
 import useSubscribers from '../useSubscribers';
+import * as S from './styles';
+
+import questionsOneAnswer1 from '../../Subscription/Socioeconomic/questionsOneAnswer1.json';
+import questionsOneAnswer2 from '../../Subscription/Socioeconomic/questionsOneAnswer2.json';
+import questionsMultipleAnswer from '../../Subscription/Socioeconomic/questionsMultipleAnswer.json';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -21,6 +29,7 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      style={{ backgroundColor: '#E0E0E0' }}
       {...other}
     >
       {value === index && (
@@ -43,6 +52,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    marginBottom: '3em',
   },
 }));
 
@@ -61,16 +71,20 @@ const SubscriberDetails = () => {
     feedbackError: feedbackErrorSubscriber,
   } = useSubscribers();
 
-  console.log('query');
-  console.log(query.userId);
+  useEffect(() => {
+    if (query.userId) {
+      getSubscribers(query.userId);
+    }
+  }, [getSubscribers, query.userId]);
 
   useEffect(() => {
-    getSubscribers(query.userId);
-    getFiles(query.userId);
-  }, [getFiles, getSubscribers, query.userId]);
+    if (query.userId) {
+      getFiles(query.userId);
+    }
+  }, [getFiles, query.userId]);
 
-  console.log('filesData');
-  console.log(filesData);
+  // console.log('filesData');
+  // console.log(filesData);
   console.log('subscribersData');
   console.log(subscribersData);
 
@@ -80,6 +94,11 @@ const SubscriberDetails = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const photo = useMemo(
+    () => (filesData ? filesData.find(file => file.type === 'PHOTO') : ''),
+    [filesData]
+  );
 
   return (
     <Page>
@@ -110,13 +129,124 @@ const SubscriberDetails = () => {
               </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-              personal
+              <div style={{ width: '100%', display: 'flex' }}>
+                <div style={{ width: '50%' }}>
+                  <p>
+                    <b>E-mail: </b>
+                    {subscribersData[0].email}
+                  </p>
+                  <p>
+                    <b>Status: </b>
+                    {statusFormat[subscribersData[0].status]}
+                  </p>
+                  <p>
+                    <b>Cartão Cidadão: </b>
+                    {subscribersData[0].citizen}
+                  </p>
+                  <p>
+                    <b>CPF: </b>
+                    {subscribersData[0].cpf}
+                  </p>
+                  <p>
+                    <b>Curso desejado: </b>
+                    {subscribersData[0].course}
+                  </p>
+                  <p>
+                    <b>Data nascimento: </b>
+                    {subscribersData[0].birth_date}
+                  </p>
+                  <p>
+                    <b>RG: </b>
+                    {subscribersData[0].rg}
+                  </p>
+                  <p>
+                    <b>Telefone: </b>
+                    {subscribersData[0].phone1}
+                  </p>
+                </div>
+                {console.log('photo')}
+
+                {console.log(photo)}
+                <div style={{ width: '50%' }}>
+                  {photo && (
+                    <img
+                      src={photo.file}
+                      alt={photo.type}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  )}
+                </div>
+              </div>
             </TabPanel>
             <TabPanel value={value} index={1}>
-              socioeconomic
+              {questionsOneAnswer1.map((question, index) => (
+                <S.CardAnswer key={question.fieldName}>
+                  <p>
+                    <b>{`${index + 1}) ${question.text}`}</b>
+                  </p>
+                  <p>
+                    <b>R: </b>
+                    {subscribersData[0][question.fieldName]}
+                  </p>
+                </S.CardAnswer>
+              ))}
+
+              {questionsOneAnswer2.map((question, index) => (
+                <S.CardAnswer key={question.fieldName}>
+                  <p>
+                    <b>
+                      {`${index + questionsOneAnswer1.length + 1}) ${
+                        question.text
+                      }`}
+                    </b>
+                  </p>
+                  <p>
+                    <b>R: </b>
+                    {subscribersData[0][question.fieldName]}
+                  </p>
+                </S.CardAnswer>
+              ))}
+
+              {questionsMultipleAnswer.map((question, index) => (
+                <S.CardAnswer key={question.text}>
+                  <p>
+                    <b>
+                      {`${
+                        index +
+                        questionsOneAnswer2.length +
+                        questionsOneAnswer1.length +
+                        1
+                      }) ${question.text}`}
+                    </b>
+                  </p>
+                  {question.answers.map(answer => (
+                    <>
+                      {subscribersData[0][answer.fieldName] ? (
+                        <p>{answer.label}</p>
+                      ) : (
+                        <div />
+                      )}
+                    </>
+                  ))}
+                </S.CardAnswer>
+              ))}
             </TabPanel>
             <TabPanel value={value} index={2}>
-              files
+              {filesData &&
+                filesData.map(file => (
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <strong>{filesNames[file.type]}:</strong>
+                    {file.file ? (
+                      <img
+                        src={file.file}
+                        alt={file.type}
+                        style={{ width: '100%', marginTop: '0.5rem' }}
+                      />
+                    ) : (
+                      <p>Não informado</p>
+                    )}
+                  </div>
+                ))}
             </TabPanel>
           </div>
         </>
