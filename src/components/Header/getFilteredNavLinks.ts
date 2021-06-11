@@ -1,5 +1,10 @@
 import decode from 'jwt-decode';
-import { INavLinks, NotLoggedLinks, linksToActiveUsers } from './listLinks';
+import {
+  INavLinks,
+  NotLoggedLinks,
+  linksToActiveUsers,
+  linksToAdminUsers,
+} from './listLinks';
 
 interface IDecodeToken {
   status: string;
@@ -14,6 +19,10 @@ const getFilteredNavLinks = (token = ''): INavLinks[] => {
 
   if (status === 'common') {
     return NotLoggedLinks;
+  }
+
+  if (status === 'admin') {
+    return linksToAdminUsers;
   }
 
   return linksToActiveUsers;

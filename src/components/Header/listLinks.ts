@@ -24,4 +24,10 @@ export const linksToActiveUsers: INavLinks[] = [
   { id: 6, path: '/sair', label: 'Sair' },
 ];
 
+export const linksToAdminUsers: INavLinks[] = [
+  ...allNavLinks,
+  { id: 5, path: '/adm/inscritos', label: 'Administrador' },
+  { id: 6, path: '/sair', label: 'Sair' },
+];
+
 // links for others status: admin, subscriber, waiting, canceled
