@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { memo, useCallback, useEffect, useState } from 'react';
 import Page from '@/components/Page';
 
@@ -96,45 +97,57 @@ const Files = () => {
     <Page align="center">
       <h2>ARQUIVOS (DOCUMENTOS)</h2>
 
-      <Alert kind="warning">
-        IMPORTANTE! Verifique a qualidade da imagem que você está enviando e
-        garanta que estarão claras para visualização, para que não haja
-        problemas na verificação de sua documentação.
-        <br />
-        Os arquivos deverão estar nos seguintes formatos: .jpg e/ou .png.
-      </Alert>
-
-      <Alert kind="warning">
-        SOBRE O TERMO DE RESPONSABILIDADE: baixe o termo clicando
-        <a href="/assets/pdf/termo_responsabilidade.pdf" target="_blank">
-          {' '}
-          AQUI
-        </a>
-        , realize a assinatura manual e depois a digitalização do documento, ou
-        então realize a assinatura eletrônica do documento, e envie o arquivo
-        nessa etapa de inscrição.
-        <b>
-          É de extrema importância que as assinaturas e o documento estejam
-          legíveis!
-        </b>
-      </Alert>
-
       <Alert kind="danger">
-        ATENÇÃO! Caso não conseguir enviar os arquivos tente comprimi-los
-        através do site
-        <a
-          href="https://www.websiteplanet.com/pt-br/webtools/imagecompressor/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {' '}
-          https://www.websiteplanet.com/pt-br/webtools/imagecompressor/
-        </a>
-        <br />
-        CASO O ERRO CONTINUE ENTRE EM CONTATO URGENTE
-        contato@associacaopaideia.org.br
-        <br />
-        <b>TAMANHO MÁXIMO POR ARQUIVO: 1024kb.</b>
+        <S.InfosList>
+          <li>
+            Para que a documentação seja transferida para o nosso banco de dados
+            deverá, <b>obrigatoriamente</b>, estar nos seguintes{' '}
+            <b>formatos de arquivo</b>:<b> jpg</b> ou<b> png</b>.
+          </li>
+
+          <li>
+            <b>
+              <u>ATENÇÃO</u>
+            </b>
+            : Para que a <b>documentação</b> possa ser <b>validada</b> as{' '}
+            <b>imagens enviadas deverão ser claras</b> e{' '}
+            <b>nítidas para a perfeita visualização</b>.
+          </li>
+
+          <li>
+            <b>
+              <u>TERMO DE RESPONSABILIDADE</u>
+            </b>
+            : baixe o termo clicando
+            <a href="/assets/pdf/termo_responsabilidade.pdf" target="_blank">
+              {' '}
+              AQUI
+            </a>
+            . Leia atentamente, assine, digitalize o documento e reenvie.
+          </li>
+
+          <li>
+            No caso do candidato não conseguir enviar os arquivos por conta de
+            seu tamanho, sugerimos que sejam comprimidos através do site
+            <a
+              href="https://www.websiteplanet.com/pt-br/webtools/imagecompressor/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {' '}
+              https://www.websiteplanet.com/pt-br/webtools/imagecompressor/
+            </a>
+          </li>
+
+          <li>
+            Caso persista o erro entre em contato conosco:
+            contato@associacaopaideia.org.br
+          </li>
+
+          <li>
+            <b>TAMANHO MÁXIMO POR ARQUIVO: 1024kb.</b>
+          </li>
+        </S.InfosList>
       </Alert>
 
       <S.Form>

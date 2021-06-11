@@ -91,7 +91,7 @@ const Register = () => {
             </Alert>
           </div>
 
-          <S.Form>
+          <S.Form onSubmit={event => event.preventDefault()}>
             <Grid container spacing={2}>
               <Grid item xs={12} lg={6}>
                 <S.TextFieldCustom
@@ -194,6 +194,7 @@ const Register = () => {
                   disabled={isFormError}
                   onClick={handleCreateUser}
                   loading={loading}
+                  type="submit"
                 >
                   Cadastrar
                 </ButtonForm>

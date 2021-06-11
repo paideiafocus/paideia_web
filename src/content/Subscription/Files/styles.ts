@@ -3,6 +3,16 @@ import theme from '@/config/theme';
 
 const { color } = theme;
 
+export const InfosList = styled.ol`
+  padding: 1rem 0.75rem 0.5rem 0.75rem;
+  text-align: justify;
+  line-height: 1.5;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+`;
+
 export const Form = styled.form`
   margin: 2rem 0;
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { FC, memo, useCallback, useState } from 'react';
 import Page from '@/components/Page';
 
@@ -17,15 +18,14 @@ const Term: FC = () => {
 
   return (
     <Page>
-      <h1>INSCRIÇÃO 1º SEMESTRE 2021</h1>
+      <h1>INSCRIÇÃO 2º SEMESTRE 2021</h1>
 
       <div style={{ textAlign: 'center' }}>
-        <h3>TERMO DE RESPONSABILIDADE - REGRAS DE FREQUÊNCIA E CONDUTA</h3>
+        <h3>TERMO DE RESPONSABILIDADE</h3>
         <br />
         <b>
-          Ao se inscrever no CURSINHO FOCUS da ASSOCIAÇÃO PAIDEIA, o (a) aluno
-          (a) assume a responsabilidade de cumprir e respeitar as seguintes
-          normas:
+          Ao se inscrever no <b>Focus Pré-Vestibular</b>, o (a) aluno (a) assume
+          a responsabilidade de respeitar e cumprir as seguintes normas:
         </b>
 
         <S.TermList>

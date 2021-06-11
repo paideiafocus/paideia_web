@@ -52,7 +52,7 @@ const ValidateCode = () => {
     <Page>
       <h1>VALIDAR E-MAIL</h1>
 
-      <S.Form>
+      <S.Form onSubmit={event => event.preventDefault()}>
         <legend>
           Informe o código de autenticação enviado ao seu e-mail no momento em
           que realizou o cadastro.
@@ -81,6 +81,7 @@ const ValidateCode = () => {
             disabled={isFormError}
             loading={loading}
             onClick={handleValidate}
+            type="submit"
           >
             Validar
           </ButtonForm>

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Grid, TextField } from '@material-ui/core';
@@ -67,13 +68,24 @@ const Personal = () => {
       <h2>DADOS PESSOAIS</h2>
 
       <Alert kind="danger">
-        <b>ATENÇÃO! </b>
-        O CARTÃO CIDADÃO DEVE ESTAR EM DIA, DO CONTRÁRIO A INSCRIÇÃO SERÁ
-        CANCELADA!
-        <br />
-        Caso o cartão esteja inválido por quaisquer motivos, você deverá entrar
-        em contato direto com o Cartão Cidadão ou seguir até um posto mais
-        próximo.
+        <p>
+          <b>ATENÇÃO CANDIDATOS!</b>
+        </p>
+        <p>
+          É <b>obrigatório </b>a apresentação do <b>CARTÃO CIDADÃO</b> para o
+          cadastramento da inscrição. Caso o seu <b>CARTÃO CIDADÃO</b> esteja
+          inativo ou você não o possua entre em contato com a
+          <b> Secretaria Municipal de Projetos e Programas</b>, através do site
+          da Prefeitura Municipal de Louveira, e faça ou o seu cadastro para a
+          obtenção do
+          <b> CARTÃO CIDADÃO </b>
+          ou a atualização do seu <b>CARTÃO CIDADÃO</b>. Para maiores
+          informações entre em contato pelo whatsapp do
+          <b> CARTÃO CIDADÃO</b> pelo número <b>(19) 98363 0501</b>. Está
+          disponível em nosso site um manual{' '}
+          <b>“CARTA DE SERVIÇOS AO USUÁRIO DA SECRETARIA DE PROJETOS”</b> onde
+          são encontradas mais informações de forma detalhada.
+        </p>
       </Alert>
 
       <S.Form>
