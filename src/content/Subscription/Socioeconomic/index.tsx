@@ -99,7 +99,7 @@ const fieldsLive = [
   'live_with_alone',
 ];
 
-const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
 const fieldsBoolean = [...fieldsActivity, ...fieldsLive];
 

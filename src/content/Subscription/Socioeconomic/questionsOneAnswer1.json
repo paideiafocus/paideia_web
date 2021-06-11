@@ -22,9 +22,10 @@
     "fieldName": "place",
     "text": "Em que localidade da cidade a sua residência se encontra?",
     "answers": [
-      "Bairro na região periférica da cidade",
-      "Bairro na região central",
-      "Região central da cidade ou centro expandido",
+      "Bairro Sto. Antônio na região mais periférica",
+      "Bairro Sto. Antônio na região central",
+      "Na região central de Louveira",
+      "Nos bairros próximos a região central de Louveira",
       "Condomínio",
       "Zona Rural (Fazenda, Sítio, Chácara)"
     ]
@@ -49,7 +50,7 @@
     "answers": [
       "Própria",
       "Alugada",
-      "Cedida"
+      "Cedida ou emprestada"
     ]
   },
   {
@@ -58,7 +59,7 @@
     "text": "Você exerce alguma atividade remunerada?",
     "answers": [
       "Sim, em tempo parcial (até 20 horas semanais)",
-      "Sim, em tempo integral (até 30 horas semanais)",
+      "Sim, em tempo integral (até 40 horas semanais)",
       "Sim, mas se trata de trabalho eventual",
       "Estou desempregado (a)"
     ]
@@ -68,17 +69,17 @@
     "fieldName": "work_father",
     "text": "Quais das alternativas expressa melhor a condição de trabalho de seus pais?",
     "answers": [
-      "Trabalham regularmente",
+      "Estão empregados regularmente",
+      "São autônomos",
+      "Estão trabalhando como temporários",
       "Estão desempregados",
-      "Vivem de renda",
-      "São falecidos e deixaram pensão",
-      "Outra situação"
+      "Atualmente estão recebendo auxílio do governo"
     ]
   },
   {
     "id": 9,
     "fieldName": "elementary_school",
-    "text": "Como você realizou os seus estudos de Ensino Fundamental ou equivalente (EJA)?",
+    "text": "Como você realizou os seus estudos de Ensino Fundamental II ou equivalente (EJA)?",
     "answers": [
       "Escola pública municipal ou estadual",
       "Escola da rede privada de ensino (escola particular)",
@@ -91,8 +92,9 @@
     "fieldName": "high_school",
     "text": "Como você realizou os seus estudos de Ensino Médio ou equivalente (EJA)?",
     "answers": [
-      "Escola pública municipal ou estadual",
-      "Escola da rede privada de ensino (escola particular)",
+      "Escola Pública Municipal ou Estadual",
+      "Escola Técnica Estadual ou Federal",
+      "Escola da Rede Privada de Ensino (escola particular)",
       "Escola do Serviço Social da Industria (SESI)",
       "Outros"
     ]
@@ -125,7 +127,10 @@
     "answers": [
       "Jornal impresso",
       "Televisão",
-      "Internet",
+      "Facebook",
+      "Whatsapp",
+      "Instagram",
+      "Youtube",
       "Rádio",
       "Nenhum dos meios citados"
     ]
@@ -146,8 +151,10 @@
     "fieldName": "exam_entrance",
     "text": "Você já prestou vestibular ou Enem?",
     "answers": [
-      "Sim",
-      "Não"
+      "Sim, uma única vez",
+      "Sim, mais de uma vez",
+      "Não, nunca prestei nenhum dos exames",
+      "Prestei apenas o ENEM"
     ]
   },
   {
@@ -157,7 +164,7 @@
     "answers": [
       "Atrapalhou os meus estudos",
       "Possibilitou os meus estudos",
-      "Possibilitou o meu crescimento pessoal",
+      "Não tive escolha. O trabalho garante a minha manutenção",
       "Não atrapalhou os meus estudos",
       "Não trabalho"
     ]
@@ -181,9 +188,10 @@
     "text": "Como você faz para se deslocar pela cidade?",
     "answers": [
       "Uso o transporte público (ônibus)",
+      "Uso o transporte por aplicativo (uber)",
       "Uso veículo próprio (motocicleta, automóvel, bicicleta)",
       "Desloco-me a pé",
-      "Faço uso combinado de dois ou mais meios de transportess"
+      "Faço uso combinado de dois ou mais meios de transportes"
     ]
   }
 ]
