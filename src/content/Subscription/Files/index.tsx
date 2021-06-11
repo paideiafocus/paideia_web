@@ -33,6 +33,7 @@ const errorFieldMessages = {
 
 interface IFile extends HTMLElement {
   files?: Blob[];
+  value?: string;
 }
 
 const Files = () => {
@@ -51,7 +52,27 @@ const Files = () => {
     const { name } = event.target;
     const filesSelected: IFile = document.getElementById(name);
 
-    if (filesSelected.files.length > 0) {
+    const validFilesExtensions = ['png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG'];
+    const isValidFile = validFilesExtensions.every(
+      extension => !filesSelected.files[0].type.includes(extension)
+    );
+
+    if (isValidFile) {
+      filesSelected.value = '';
+      // eslint-disable-next-line no-alert
+      alert('Arquivo inválido! Utilize apenas imagens (jpg e png)');
+    }
+
+    // tamMaximo old: number = 1759374 byte = 1759kb
+    // max = 1024 kb (kilobyte) = 1024000 byte
+
+    if (filesSelected.files[0].size > 1024000) {
+      filesSelected.value = '';
+      // eslint-disable-next-line no-alert
+      alert('Arquivo inválido! Utilize imagens menores que 1024kb');
+    }
+
+    if (filesSelected.files.length > 0 && !isValidFile) {
       const fileToLoad = filesSelected.files[0];
       const fileReader = new FileReader();
 
@@ -262,10 +283,10 @@ const Files = () => {
 
         {fieldErrors.length > 0 &&
           fieldErrors.map(erro => (
-            <>
+            <div key={erro}>
               <WarningMessage key={erro}>{erro}</WarningMessage>
               <br />
-            </>
+            </div>
           ))}
 
         {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}

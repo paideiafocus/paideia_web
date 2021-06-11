@@ -83,11 +83,6 @@ const SubscriberDetails = () => {
     }
   }, [getFiles, query.userId]);
 
-  // console.log('filesData');
-  // console.log(filesData);
-  console.log('subscribersData');
-  console.log(subscribersData);
-
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -164,9 +159,7 @@ const SubscriberDetails = () => {
                     {subscribersData[0].phone1}
                   </p>
                 </div>
-                {console.log('photo')}
 
-                {console.log(photo)}
                 <div style={{ width: '50%' }}>
                   {photo && (
                     <img
