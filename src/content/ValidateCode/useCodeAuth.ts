@@ -28,7 +28,10 @@ const useCodeAuth = (): ICodeAuth => {
     setLoading(true);
 
     api({ url: '/auth/validate', method: 'PUT', data: { code: code.value } })
-      .then(() => {
+      .then(({ data }) => {
+        if (localStorage) {
+          localStorage.setItem('token', data.token);
+        }
         openModal();
         setFeedback({
           type: 'success',
