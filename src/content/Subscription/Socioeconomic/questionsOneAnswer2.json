@@ -1,0 +1,131 @@
+[
+  {
+    "id": 21,
+    "fieldName": "participate_ead",
+    "text": "Você já havia participado, em algum momento da sua vida escolar ou profissional, por uma capacitação ou formação EAD?",
+    "answers": [
+      "Sim", "Não"
+    ]
+  },
+  {
+    "id": 22,
+    "fieldName": "understand_ead",
+    "text": "Como você percebe a formação EAD?",
+    "answers": [
+      "os cursos são mais fáceis e exigem menos comprometimento e disciplina do aluno porque para participar basta acompanhar a aula e fazer postagens",
+      "os cursos são mais difíceis porque o ensino a distância exige mais comprometimento do aluno pois ele próprio deve saber gerenciar bem o seu tempo, ter disciplina e convicção de que quer e precisa aprender o conteúdo apresentado"
+    ]
+  },
+  {
+    "id": 23,
+    "fieldName": "local_quarantine",
+    "text": "Onde você está ficando durante a suspensão das aulas presenciais?",
+    "answers": [
+      "Na minha própria casa",
+      "Na casa do meu pai",
+      "Na casa da minha mãe",
+      "Na casa dos meus avós",
+      "Outros"
+    ]
+  },
+  {
+    "id": 24,
+    "fieldName": "unprotected_people",
+    "text": "Das pessoas que residem em seu domicílio, quantas ainda desempenham atividades fora e (ao menos ainda) não estão em isolamento?",
+    "answers": [
+      "1 pessoa",
+      "2 pessoas",
+      "3 pessoas",
+      "4 pessoas",
+      "no momento apenas eu estou em isolamento por conta da suspensão das aulas",
+      "outros"
+    ]
+  },
+  {
+    "id": 25,
+    "fieldName": "responsibilities",
+    "text": "Em seu domicílio você é responsável ou corresponsável pelas seguintes atividades:",
+    "answers": [
+      "cuidado de crianças",
+      "cuidado de idosos",
+      "limpeza do domicílio",
+      "auxílio a pessoas com deficiência",
+      "auxílio em atividades profissionais da família",
+      "compra e preparo dos alimentos",
+      "outros"
+    ]
+  },
+  {
+    "id": 26,
+    "fieldName": "smartphone",
+    "text": "Você possui smartphone?",
+    "answers": [
+      "Sim",
+      "Não"
+    ]
+  },
+  {
+    "id": 27,
+    "fieldName": "internet_smartphone",
+    "text": "Possui plano de internet para smartphone?",
+    "answers": [
+      "Sim",
+      "Não"
+    ]
+  },
+  {
+    "id": 28,
+    "fieldName": "internet_smartphone_limit",
+    "text": "Se possui franquia de internet no smartphone, qual o limite mensal?",
+    "answers": [
+      "1 GB",
+      "3 GB",
+      "4 GB",
+      "Carrego R$10,00 por semana",
+      "Meu plano é ilimitado"
+    ]
+  },
+  {
+    "id": 29,
+    "fieldName": "equips",
+    "text": "Identifique características ou equipamentos de seu domicílio que você tem acesso:",
+    "answers": [
+      "Notebook/Desktop",
+      "Tablet",
+      "Não há equipamento de informática no meu domicílio"
+    ]
+  },
+  {
+    "id": 30,
+    "fieldName": "pc_shared",
+    "text": "Se há computador que você possa usar em seu domicílio quantas pessoas compartilham o uso com você?",
+    "answers": [
+      "1 pessoa",
+      "2 pessoas",
+      "3 pessoas",
+      "4 ou mais pessoas",
+      "o uso é exclusivamente meu",
+      "não possuo computador"
+    ]
+  },
+  {
+    "id": 31,
+    "fieldName": "study_local",
+    "text": "Sobre o seu espaço de estudo no domicílio, responda:",
+    "answers": [
+      "existe e faço uso",
+      "não existe um espaço específico, porém, utilizo o meu quarto",
+      "não existe um espaço específico, porém, utilizo a cozinha",
+      "não existe espaço específico, porém, uso a sala",
+      "não há condições de um espaço de estudo no meu domicílio (restrições de espaço físico e quantidade elevada de pessoas num mesmo ambiente)"
+    ]
+  },
+  {
+    "id": 32,
+    "fieldName": "internet_quality",
+    "text": "Sua internet possui sinal de boa qualidade?",
+    "answers": [
+      "sim", "não", "não possuo internet"
+    ]
+  }
+]

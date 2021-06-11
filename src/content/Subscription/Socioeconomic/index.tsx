@@ -11,7 +11,8 @@ import { useRouter } from 'next/router';
 import ButtonForm from '@/components/ButtonForm';
 import WarningMessage from '@/components/WarningMessage';
 import * as S from './styles';
-import questionsOneAnswer from './questionsOneAnswer.json';
+import questionsOneAnswer1 from './questionsOneAnswer1.json';
+import questionsOneAnswer2 from './questionsOneAnswer2.json';
 import questionsMultipleAnswer from './questionsMultipleAnswer.json';
 import useSocioeconomic from './useSocioeconomic';
 
@@ -65,6 +66,18 @@ const FORM = {
   work_study: { value: '', error: '' },
   work_father: { value: '', error: '' },
   transport: { value: '', error: '' },
+  participate_ead: { value: '', error: '' },
+  understand_ead: { value: '', error: '' },
+  local_quarantine: { value: '', error: '' },
+  unprotected_people: { value: '', error: '' },
+  responsibilities: { value: '', error: '' },
+  smartphone: { value: '', error: '' },
+  internet_smartphone: { value: '', error: '' },
+  internet_smartphone_limit: { value: '', error: '' },
+  equips: { value: '', error: '' },
+  pc_shared: { value: '', error: '' },
+  study_local: { value: '', error: '' },
+  internet_quality: { value: '', error: '' },
 };
 
 const fieldsActivity = [
@@ -154,7 +167,7 @@ const Socioeconomic = () => {
 
       <S.Form>
         <Grid container spacing={3}>
-          {questionsOneAnswer.map((question: IQuestionOneAnswer) => (
+          {questionsOneAnswer1.map((question: IQuestionOneAnswer) => (
             <Grid
               item
               xs={12}
@@ -222,6 +235,44 @@ const Socioeconomic = () => {
                     style={{ textAlign: 'initial' }}
                   />
                 ))}
+              </FormControl>
+            </Grid>
+          ))}
+
+          {questionsOneAnswer2.map((question: IQuestionOneAnswer) => (
+            <Grid
+              item
+              xs={12}
+              lg={4}
+              key={question.id}
+              style={{ margin: '1.5rem 0' }}
+            >
+              <FormControl component="fieldset">
+                <FormLabel
+                  component="legend"
+                  style={{
+                    textAlign: 'initial',
+                    fontWeight: 'bold',
+                    color: '#000',
+                  }}
+                >
+                  {`${question.id}) ${question.text}`}
+                </FormLabel>
+                <RadioGroup
+                  aria-label={question.fieldName}
+                  name={question.fieldName}
+                  onChange={handleChangeField}
+                >
+                  {question.answers.map((answer, index) => (
+                    <FormControlLabel
+                      value={answer}
+                      control={<Radio color="primary" />}
+                      label={`${letters[index]}) ${answer}`}
+                      key={answer}
+                      style={{ textAlign: 'initial' }}
+                    />
+                  ))}
+                </RadioGroup>
               </FormControl>
             </Grid>
           ))}

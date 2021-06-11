@@ -37,6 +37,18 @@ interface ISocioeconomicPayload {
   work_study: IField;
   work_father: IField;
   transport: IField;
+  participate_ead: IField;
+  understand_ead: IField;
+  local_quarantine: IField;
+  unprotected_people: IField;
+  responsibilities: IField;
+  smartphone: IField;
+  internet_smartphone: IField;
+  internet_smartphone_limit: IField;
+  equips: IField;
+  pc_shared: IField;
+  study_local: IField;
+  internet_quality: IField;
 }
 
 interface ISocioeconomicHook {
@@ -83,6 +95,18 @@ const useSocioeconomic = (): ISocioeconomicHook => {
         work_study,
         work_father,
         transport,
+        participate_ead,
+        understand_ead,
+        local_quarantine,
+        unprotected_people,
+        responsibilities,
+        smartphone,
+        internet_smartphone,
+        internet_smartphone_limit,
+        equips,
+        pc_shared,
+        study_local,
+        internet_quality,
       }: ISocioeconomicPayload,
       navigation
     ) => {
@@ -121,6 +145,18 @@ const useSocioeconomic = (): ISocioeconomicHook => {
         work_study: work_study.value,
         work_father: work_father.value,
         transport: transport.value,
+        participate_ead: participate_ead.value,
+        understand_ead: understand_ead.value,
+        local_quarantine: local_quarantine.value,
+        unprotected_people: unprotected_people.value,
+        responsibilities: responsibilities.value,
+        smartphone: smartphone.value,
+        internet_smartphone: internet_smartphone.value,
+        internet_smartphone_limit: internet_smartphone_limit.value,
+        equips: equips.value,
+        pc_shared: pc_shared.value,
+        study_local: study_local.value,
+        internet_quality: internet_quality.value,
       };
 
       api({ url: '/socioeconomic', method: 'POST', data: socioeconomicData })
