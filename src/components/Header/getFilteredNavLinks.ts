@@ -1,16 +1,20 @@
-// import decode from 'jwt-decode';
+import decode from 'jwt-decode';
 import { INavLinks, NotLoggedLinks, linksToActiveUsers } from './listLinks';
 
-// interface IDecodeToken {
-//   status: string;
-// }
+interface IDecodeToken {
+  status: string;
+}
 
 const getFilteredNavLinks = (token = ''): INavLinks[] => {
   if (!token) {
     return NotLoggedLinks;
   }
 
-  // const { status } = decode(token) as IDecodeToken;
+  const { status } = decode(token) as IDecodeToken;
+
+  if (status === 'common') {
+    return NotLoggedLinks;
+  }
 
   return linksToActiveUsers;
 };
