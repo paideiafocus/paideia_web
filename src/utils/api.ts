@@ -27,8 +27,8 @@ const config: IConfig = {
   headers: {
     'Content-Type': 'application/json',
   },
-  // baseURL: `${process.env.URL_API}`,
-  baseURL: `http://localhost:3333`,
+  baseURL: `https://paideia-backend.herokuapp.com`,
+  // baseURL: `http://localhost:3333`,
 };
 
 const api = ({ url, method, data }: IApi): AxiosPromise => {
