@@ -12,7 +12,7 @@ interface PageProps {
 const Page: React.FC<PageProps> = ({ align, isFull, children }) => {
   return (
     <S.PageContainer>
-      <Head>
+      {/* <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <title>Associação Paideia</title>
         <meta
@@ -36,7 +36,7 @@ const Page: React.FC<PageProps> = ({ align, isFull, children }) => {
           type="image/x-icon"
           href="/assets/logo/square-logo.png"
         />
-      </Head>
+      </Head> */}
 
       <Header />
       <S.PageContent align={align} isFull={isFull}>

@@ -173,7 +173,7 @@ const Socioeconomic = () => {
               xs={12}
               lg={4}
               key={question.id}
-              style={{ margin: '1.5rem 0' }}
+              style={{ margin: '1.5rem 0', textAlign: 'left' }}
             >
               <FormControl component="fieldset">
                 <FormLabel
@@ -182,6 +182,8 @@ const Socioeconomic = () => {
                     textAlign: 'initial',
                     fontWeight: 'bold',
                     color: '#000',
+                    marginBottom: '0.5rem',
+                    lineHeight: 1.2,
                   }}
                 >
                   {`${question.id}) ${question.text}`}
@@ -197,7 +199,7 @@ const Socioeconomic = () => {
                       control={<Radio color="primary" />}
                       label={`${letters[index]}) ${answer}`}
                       key={answer}
-                      style={{ textAlign: 'initial' }}
+                      style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
                     />
                   ))}
                 </RadioGroup>
@@ -214,6 +216,8 @@ const Socioeconomic = () => {
                     textAlign: 'initial',
                     fontWeight: 'bold',
                     color: '#000',
+                    marginBottom: '0.5rem',
+                    lineHeight: 1.2,
                   }}
                 >
                   {`${question.id}) ${question.text}`}
@@ -232,7 +236,7 @@ const Socioeconomic = () => {
                     }
                     label={`${letters[index]}) ${answer.label}`}
                     key={answer.fieldName}
-                    style={{ textAlign: 'initial' }}
+                    style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
                   />
                 ))}
               </FormControl>
@@ -254,6 +258,8 @@ const Socioeconomic = () => {
                     textAlign: 'initial',
                     fontWeight: 'bold',
                     color: '#000',
+                    marginBottom: '0.5rem',
+                    lineHeight: 1.2,
                   }}
                 >
                   {`${question.id}) ${question.text}`}
@@ -269,7 +275,7 @@ const Socioeconomic = () => {
                       control={<Radio color="primary" />}
                       label={`${letters[index]}) ${answer}`}
                       key={answer}
-                      style={{ textAlign: 'initial' }}
+                      style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
                     />
                   ))}
                 </RadioGroup>
