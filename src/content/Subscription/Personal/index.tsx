@@ -7,8 +7,12 @@ import Page from '@/components/Page';
 import Alert from '@/components/Alert';
 import ButtonForm from '@/components/ButtonForm';
 import WarningMessage from '@/components/WarningMessage';
-import * as S from './styles';
+import phoneFormat from '@/utils/phoneFormat';
+import dateFormat from '@/utils/dateFormat';
+import cpfFormat from '@/utils/cpfFormat';
+import rgFormat from '@/utils/rgFormat';
 import useCandidate from './useCandidate';
+import * as S from './styles';
 
 const FORM = {
   fullname: { value: '', error: '' },
@@ -36,11 +40,28 @@ const Personal = () => {
     event => {
       const { value, name } = event.currentTarget;
       const error = !value ? 'campo é obrigatório' : '';
+      let newValue = value;
+
+      if (name === 'birth_date') {
+        newValue = dateFormat(value);
+      }
+
+      if (name === 'phone1') {
+        newValue = phoneFormat(value);
+      }
+
+      if (name === 'cpf') {
+        newValue = cpfFormat(value);
+      }
+
+      if (name === 'rg') {
+        newValue = rgFormat(value);
+      }
 
       const newPersonal = {
         ...personal,
         [name]: {
-          value,
+          value: newValue,
           error,
         },
       };
@@ -67,11 +88,12 @@ const Personal = () => {
     <Page align="center">
       <h2>DADOS PESSOAIS</h2>
 
-      <Alert kind="danger">
+      <Alert kind="paideia">
         <p>
           <b>ATENÇÃO CANDIDATOS!</b>
         </p>
-        <p>
+        <br />
+        <p style={{ textAlign: 'justify' }}>
           É <b>obrigatório </b>a apresentação do <b>CARTÃO CIDADÃO</b> para o
           cadastramento da inscrição. Caso o seu <b>CARTÃO CIDADÃO</b> esteja
           inativo ou você não o possua entre em contato com a
@@ -84,7 +106,12 @@ const Personal = () => {
           <b> CARTÃO CIDADÃO</b> pelo número <b>(19) 98363 0501</b>. Está
           disponível em nosso site um manual{' '}
           <b>“CARTA DE SERVIÇOS AO USUÁRIO DA SECRETARIA DE PROJETOS”</b> onde
-          são encontradas mais informações de forma detalhada.
+          são encontradas mais informações de forma detalhada (acesse{' '}
+          <a href="/secretaria_projetos.pdf" target="_blank">
+            {' '}
+            AQUI
+          </a>
+          ).
         </p>
       </Alert>
 

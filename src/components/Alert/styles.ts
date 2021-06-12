@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import theme from '@/config/theme';
 
 interface AlertProps {
-  kind: 'danger' | 'warning';
+  kind: 'danger' | 'warning' | 'paideia';
 }
 
 const {
@@ -19,6 +19,11 @@ const alertColors = {
     background: yellow.light,
     text: yellow.dark,
     border: yellow.lighter,
+  },
+  paideia: {
+    background: '#dd9bc7',
+    text: '#000',
+    border: red.lighter,
   },
 };
 

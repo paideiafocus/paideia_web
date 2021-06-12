@@ -2,7 +2,7 @@ import { memo, FC, ReactNode } from 'react';
 import * as S from './styles';
 
 interface AlertProps {
-  kind: 'danger' | 'warning';
+  kind: 'danger' | 'warning' | 'paideia';
   children: ReactNode;
 }
 
