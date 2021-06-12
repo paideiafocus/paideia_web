@@ -161,7 +161,9 @@ const SubscriberDetails = () => {
                 </div>
 
                 <div style={{ width: '50%' }}>
-                  {photo && (
+                  {loadingFiles && <CircularProgress color="secondary" />}
+
+                  {!loadingFiles && !feedbackErrorFiles && photo && (
                     <img
                       src={photo.file}
                       alt={photo.type}
@@ -225,7 +227,15 @@ const SubscriberDetails = () => {
               ))}
             </TabPanel>
             <TabPanel value={value} index={2}>
-              {filesData &&
+              {loadingFiles && (
+                <div style={{ textAlign: 'center' }}>
+                  <CircularProgress color="secondary" />
+                </div>
+              )}
+
+              {!loadingFiles &&
+                !feedbackErrorFiles &&
+                filesData &&
                 filesData.map(file => (
                   <div style={{ marginBottom: '1.5rem' }}>
                     <strong>{filesNames[file.type]}:</strong>
