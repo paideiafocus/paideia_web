@@ -1,4 +1,4 @@
-import { memo, useState, useCallback, useEffect } from 'react';
+import { memo, useState, useCallback, useEffect, useMemo } from 'react';
 import { BottomNavigationAction } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import decode from 'jwt-decode';
 
 import { useRouter } from 'next/router';
 import * as S from './styles';
@@ -19,6 +20,10 @@ interface INavLinks {
   label: string;
 }
 
+interface IDecodeToken {
+  name: string;
+}
+
 const Header = () => {
   const router = useRouter();
   const [navLinks, setNavLinks] = useState(getFilteredNavLinks());
@@ -26,11 +31,14 @@ const Header = () => {
     getNavId(navLinks, router.pathname)
   );
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+  const [token, setToken] = useState<string>();
 
   useEffect(() => {
     if (localStorage) {
-      const token = localStorage.getItem('token');
-      const filteredNavLinks = getFilteredNavLinks(token);
+      setToken(localStorage.getItem('token'));
+      const filteredNavLinks = getFilteredNavLinks(
+        localStorage.getItem('token')
+      );
       setNavLinks(filteredNavLinks);
       setNavId(getNavId(filteredNavLinks, router.pathname));
     }
@@ -45,6 +53,11 @@ const Header = () => {
 
     setMobileMenuIsOpen(() => open);
   };
+
+  const parse = useMemo(
+    () => (token ? (decode(token) as IDecodeToken) : null),
+    [token]
+  );
 
   const list = () => (
     <div
@@ -61,6 +74,15 @@ const Header = () => {
             <Divider />
           </div>
         ))}
+
+        {parse && (
+          <div>
+            <ListItem button>
+              <ListItemText primary={parse.name} />
+            </ListItem>
+            <Divider />
+          </div>
+        )}
       </List>
     </div>
   );
@@ -68,7 +90,9 @@ const Header = () => {
   const handleNavigation = useCallback(
     (event, newNavId) => {
       const slug = navLinks.find(link => link.id === newNavId);
-      router.push(slug.path);
+      if (slug.path) {
+        router.push(slug.path);
+      }
     },
     [navLinks, router]
   );
@@ -88,6 +112,8 @@ const Header = () => {
           {navLinks.map(link => (
             <BottomNavigationAction key={link.id} label={link.label} />
           ))}
+
+          {parse && <S.UserName>{`Olá, ${parse.name}!`}</S.UserName>}
         </S.NavigationContainer>
       </S.DesktopMenu>
 

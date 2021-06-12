@@ -51,3 +51,13 @@ export const MobileMenu = styled.div`
     display: none;
   }
 `;
+
+export const UserName = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding-right: 1rem;
+  color: #e0e0e0;
+`;
