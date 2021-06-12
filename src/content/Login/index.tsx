@@ -32,6 +32,12 @@ const Login = () => {
     loading: loadingRecover,
   } = useRecoverPassword();
 
+  useEffect(() => {
+    if (window) {
+      window.scroll(0, 0);
+    }
+  }, []);
+
   const handleOpenModal = useCallback(() => setModalIsOpen(true), []);
   const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
 
@@ -138,7 +144,7 @@ const Login = () => {
         <DialogTitle id="alert-dialog-title">Recuperação de senha</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <div style={{ minWidth: '28rem' }}>
+            <div style={{ minWidth: '100%' }}>
               {feedback.type !== 'success' && (
                 <TextField
                   id="email_recover"

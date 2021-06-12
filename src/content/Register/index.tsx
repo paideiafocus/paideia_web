@@ -217,7 +217,7 @@ const Register = () => {
 
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              <div style={{ minWidth: '28rem' }}>{feedback.message}</div>
+              <div style={{ minWidth: '100%' }}>{feedback.message}</div>
             </DialogContentText>
           </DialogContent>
 

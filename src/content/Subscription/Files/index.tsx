@@ -118,7 +118,7 @@ const Files = () => {
     <Page align="center">
       <h2>ARQUIVOS (DOCUMENTOS)</h2>
 
-      <Alert kind="danger">
+      <Alert kind="paideia">
         <S.InfosList>
           <li>
             Para que a documentação seja transferida para o nosso banco de dados
@@ -142,7 +142,7 @@ const Files = () => {
             : baixe o termo clicando
             <a href="/assets/pdf/termo_responsabilidade.pdf" target="_blank">
               {' '}
-              AQUI
+              <b>AQUI</b>
             </a>
             . Leia atentamente, assine, digitalize o documento e reenvie.
           </li>
@@ -156,7 +156,9 @@ const Files = () => {
               rel="noopener noreferrer"
             >
               {' '}
-              https://www.websiteplanet.com/pt-br/webtools/imagecompressor/
+              <b>
+                https://www.websiteplanet.com/pt-br/webtools/imagecompressor/
+              </b>
             </a>
           </li>
 

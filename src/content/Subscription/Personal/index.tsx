@@ -109,7 +109,7 @@ const Personal = () => {
           são encontradas mais informações de forma detalhada (acesse{' '}
           <a href="/secretaria_projetos.pdf" target="_blank">
             {' '}
-            AQUI
+            <b>AQUI</b>
           </a>
           ).
         </p>

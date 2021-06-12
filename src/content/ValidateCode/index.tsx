@@ -97,9 +97,7 @@ const ValidateCode = () => {
         <DialogTitle id="alert-dialog-title">Sucesso!</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <div style={{ minWidth: '28rem' }}>
-              Código validado com sucesso!
-            </div>
+            <div style={{ minWidth: '100%' }}>Código validado com sucesso!</div>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
