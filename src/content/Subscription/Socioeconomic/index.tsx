@@ -208,7 +208,13 @@ const Socioeconomic = () => {
           ))}
 
           {questionsMultipleAnswer.map((question: IQuestionMultipleAnswer) => (
-            <Grid item xs={12} lg={4} key={question.id}>
+            <Grid
+              item
+              xs={12}
+              lg={4}
+              key={question.id}
+              style={{ textAlign: 'left' }}
+            >
               <FormControl component="fieldset">
                 <FormLabel
                   component="legend"
@@ -249,7 +255,7 @@ const Socioeconomic = () => {
               xs={12}
               lg={4}
               key={question.id}
-              style={{ margin: '1.5rem 0' }}
+              style={{ margin: '0 0 1.5rem 0', textAlign: 'left' }}
             >
               <FormControl component="fieldset">
                 <FormLabel
