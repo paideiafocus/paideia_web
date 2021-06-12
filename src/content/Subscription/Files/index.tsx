@@ -161,8 +161,8 @@ const Files = () => {
           </li>
 
           <li>
-            Caso persista o erro entre em contato conosco:
-            contato@associacaopaideia.org.br
+            Caso persista o erro entre em contato conosco:{' '}
+            <b>contato@associacaopaideia.org.br</b>
           </li>
 
           <li>

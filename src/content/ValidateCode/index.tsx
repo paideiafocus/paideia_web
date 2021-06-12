@@ -98,14 +98,11 @@ const ValidateCode = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <div style={{ minWidth: '28rem' }}>
-              Código validado com sucesso! O que deseja fazer?
+              Código validado com sucesso!
             </div>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleNavigation('/')} color="primary">
-            Ir a Home
-          </Button>
           <Button
             onClick={() => handleNavigation('/inscricao/termo')}
             color="primary"

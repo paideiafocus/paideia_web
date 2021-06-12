@@ -70,7 +70,7 @@ const useCreateUser = (): ICreateUser => {
       setFeedback({
         type: 'danger',
         message:
-          'Senha e confirme sua senha estão diferentes. Tente novamente.',
+          'Sua senha e confirmação de senha estão diferentes. Tente novamente.',
       });
       setOpenModal(true);
       setLoading(false);

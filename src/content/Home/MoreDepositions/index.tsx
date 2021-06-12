@@ -1,9 +1,15 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import Page from '@/components/Page';
 
 import * as S from './styles';
 
 const MoreDepositions = () => {
+  useEffect(() => {
+    if (window) {
+      window.scroll(0, 0);
+    }
+  }, []);
+
   return (
     <Page>
       <div>
