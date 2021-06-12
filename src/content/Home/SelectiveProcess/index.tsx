@@ -27,6 +27,11 @@ const SelectiveProcess: React.FC = () => {
           title="Carta de serviços ao usuário da secretaria de projetos"
         />
         <OptionCard
+          pdfLink="manual_inscricao.pdf"
+          imageSrc="info_basica.png"
+          title="Manual inscrição"
+        />
+        <OptionCard
           pdfLink="REQUERIMENTO - 2018.pdf"
           imageSrc="requerimento.png"
           title="Requerimento"
