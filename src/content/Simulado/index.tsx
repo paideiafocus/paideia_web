@@ -6,6 +6,7 @@ import Page from '@/components/Page';
 import Alert from '@/components/Alert';
 import api from '@/utils/api';
 import ButtonForm from '@/components/ButtonForm';
+import { useRouter } from 'next/router';
 import InitialTerm from './InitialTerm';
 import * as S from './styles';
 
@@ -13,9 +14,12 @@ interface IRadio extends HTMLElement {
   checked?: boolean;
 }
 
+const lastQuestion = 30; // ultima pergunta simulado
+
 const Simulado = () => {
   // EVITA COPIAR CONTEUDO:
   // oncontextmenu="return false" ondragstart="return false" onselectstart="return false"
+  const router = useRouter();
   const [retorno, setRetorno] = useState<any>();
   const [modelo, setModelo] = useState();
   const [iniTempo, setIniTempo] = useState<string>();
@@ -29,13 +33,22 @@ const Simulado = () => {
 
     const modeloResponse = await api({ url: '/modelo' })
       .then(({ data }) => data.numeroModelo)
-      .catch(() => 'ERRO 1');
+      .catch(() => null);
     setModelo(modeloResponse);
 
     const retornoResponse = await api({ url: '/simulado' })
       .then(({ data }) => data[0])
-      .catch(() => 'ERRO 2');
+      .catch(() => null);
     setRetorno(retornoResponse);
+
+    if (retornoResponse && retornoResponse.pergunta === lastQuestion) {
+      await api({ url: '/gabaritosimples' }).then(({ data }) => {
+        const questionFound = data.find(item => item.pergunta === lastQuestion);
+        if (questionFound) {
+          router.push('/gabarito-simples');
+        }
+      });
+    }
 
     setInicio(() => !retornoResponse);
 
@@ -58,9 +71,9 @@ const Simulado = () => {
 
   const verificaHoraFim = useCallback(horaFim => {
     let horaFimFinal = '00';
-    // ADICIONANDO 2 HORAS, LOGO TOTAL DE 2 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
-    if (Number(horaFim) + 2 < 24) {
-      horaFimFinal = horaFim + 2;
+    // ADICIONANDO 3 HORAS, LOGO TOTAL DE 3 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
+    if (Number(horaFim) + 3 < 24) {
+      horaFimFinal = horaFim + 3;
     }
     return horaFimFinal;
   }, []);
@@ -134,16 +147,16 @@ const Simulado = () => {
       radioD.checked = false;
 
       // quando for respondida a ultima pergunta, COLOCAR Nº DA ULTIMA PERGUNTA
-      if (retorno.pergunta === 24) {
+      if (retorno.pergunta === lastQuestion) {
         // FINALIZAR SIMULADO E IR AO GABARITO
-        //  this.router.navigate(["/gabarito-simples"]);
+        router.push('/gabarito-simples');
       } else {
         // PASSAR PARA PROXIMA ALTERNATIVA
         loadInfoSimulado();
         window.scrollTo(0, 0);
       }
     },
-    [loadInfoSimulado, retorno, selecionado]
+    [loadInfoSimulado, retorno, router, selecionado]
   );
 
   const answers = useMemo(() => ['resp_a', 'resp_b', 'resp_c', 'resp_d'], []);
@@ -201,8 +214,8 @@ const Simulado = () => {
           <S.Form>
             <table>
               <thead>
-                <tr>
-                  <th className="col-2 bordas text-center questao flex-center">
+                <tr style={{ border: '1rem solid black' }}>
+                  <th style={{ textAlign: 'center' }}>
                     <u>
                       <div className="ques">Questão</div>
                       {retorno.pergunta}
@@ -217,11 +230,14 @@ const Simulado = () => {
                             __html: retorno.enunciado,
                           }}
                         />
-                        <img
-                          src={retorno.img}
-                          alt={`${retorno.pergunta} ${retorno.materia}`}
-                          className="img-fluid"
-                        />
+
+                        {retorno.img && (
+                          <img
+                            src={retorno.img}
+                            alt={`${retorno.pergunta} ${retorno.materia}`}
+                            style={{ width: '100%', marginTop: '1rem' }}
+                          />
+                        )}
                       </div>
                     </div>
                   </td>
@@ -231,17 +247,25 @@ const Simulado = () => {
               <tbody>
                 {answers.map(answer => (
                   <tr key={answer}>
-                    <td>
+                    <td
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        fontWeight: 'bolder',
+                        minHeight: '6rem',
+                      }}
+                    >
                       {`${answer.slice(5)})`}
 
-                      <div className="form-check ">
+                      <div>
                         <input
-                          className="form-check-input"
                           type="radio"
                           name="selecionado"
                           id={`opcao-${answer.slice(5)}`}
                           value={answer.slice(5)}
                           onChange={handleSelectAnswer}
+                          style={{ cursor: 'pointer' }}
                         />
                       </div>
                     </td>
@@ -257,13 +281,15 @@ const Simulado = () => {
               </tbody>
             </table>
 
-            <ButtonForm
-              type="submit"
-              onClick={onSubmit}
-              disabled={!selecionado}
-            >
-              Confirmar
-            </ButtonForm>
+            <div style={{ margin: '2rem 0' }}>
+              <ButtonForm
+                type="submit"
+                onClick={onSubmit}
+                disabled={!selecionado}
+              >
+                Confirmar
+              </ButtonForm>
+            </div>
           </S.Form>
         </div>
       )}

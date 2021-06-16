@@ -10,7 +10,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #fff;
+    background-color: #fff !important;
     color: #121214;
     font-family: Menco light, Arthura Thin, Arial, Helvetica, sans-serif;
   }
