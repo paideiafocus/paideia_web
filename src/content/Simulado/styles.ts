@@ -32,7 +32,18 @@ export const Term = styled.div`
   }
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  table {
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #000;
+    padding: 0.5rem;
+    text-align: justify;
+  }
+`;
 
 export const LoadingContainer = styled.div`
   display: flex;
