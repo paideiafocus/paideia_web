@@ -59,7 +59,11 @@ const SimuladoCadastro = () => {
   const handleChangeField = useCallback(
     event => {
       const { value, name } = event.target;
-      const error = !value ? 'campo é obrigatório' : '';
+      let error = !value ? 'campo é obrigatório' : '';
+
+      if (name === 'img') {
+        error = '';
+      }
 
       const newQuestion = {
         ...question,
@@ -72,7 +76,7 @@ const SimuladoCadastro = () => {
       setQuestion(() => newQuestion);
 
       const formError = Object.keys(newQuestion).some(
-        key => !newQuestion[key].value
+        key => key !== 'img' && !newQuestion[key].value
       );
 
       setIsFormError(() => formError);
