@@ -4,6 +4,7 @@ import {
   NotLoggedLinks,
   linksToActiveUsers,
   linksToAdminUsers,
+  linksToSubscriberUsers,
 } from './listLinks';
 
 interface IDecodeToken {
@@ -23,6 +24,10 @@ const getFilteredNavLinks = (token = ''): INavLinks[] => {
 
   if (status === 'admin') {
     return linksToAdminUsers;
+  }
+
+  if (status === 'subscriber') {
+    return linksToSubscriberUsers;
   }
 
   return linksToActiveUsers;

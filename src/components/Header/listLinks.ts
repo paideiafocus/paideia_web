@@ -24,6 +24,13 @@ export const linksToActiveUsers: INavLinks[] = [
   { id: 6, path: '/sair', label: 'Sair' },
 ];
 
+export const linksToSubscriberUsers: INavLinks[] = [
+  ...allNavLinks,
+  { id: 5, path: '/inscricao/termo', label: 'Quero me inscrever' },
+  { id: 6, path: '/simulado', label: 'Simulado' },
+  { id: 7, path: '/sair', label: 'Sair' },
+];
+
 export const linksToAdminUsers: INavLinks[] = [
   ...allNavLinks,
   { id: 5, path: '/adm/inscritos', label: 'Administrador' },
