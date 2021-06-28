@@ -7,9 +7,10 @@ import * as S from './styles';
 interface PageProps {
   align?: string;
   isFull?: boolean;
+  isMain?: boolean;
 }
 
-const Page: React.FC<PageProps> = ({ align, isFull, children }) => {
+const Page: React.FC<PageProps> = ({ align, isFull, isMain, children }) => {
   return (
     <S.PageContainer>
       {/* <Head>
@@ -39,7 +40,7 @@ const Page: React.FC<PageProps> = ({ align, isFull, children }) => {
       </Head> */}
 
       <Header />
-      <S.PageContent align={align} isFull={isFull}>
+      <S.PageContent align={align} isFull={isFull} isMain={isMain}>
         {children}
       </S.PageContent>
       <Footer />
