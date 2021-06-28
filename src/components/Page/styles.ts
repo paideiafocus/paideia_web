@@ -11,11 +11,11 @@ export const PageContainer = styled.section`
 `;
 
 export const PageContent = styled.div<PageContentProps>`
-  width: ${p => (p.isFull ? '96%' : ' 86%')};
+  width: ${p => (p.isFull ? '96%' : '86%')};
   margin: auto;
   text-align: ${p => (p.align ? p.align : 'initial')};
 
   @media (min-width: 46rem) {
-    width: 70%;
+    width: ${p => (p.isFull ? '96%' : '70%')};
   }
 `;
