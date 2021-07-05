@@ -6,7 +6,6 @@ const SimuladoPage: FC = () => (
   <PrivatePage>
     </>
   </PrivatePage>
-  //Simulado 
 );
 
 export default memo(SimuladoPage);
