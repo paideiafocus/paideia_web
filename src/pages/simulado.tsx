@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
 import PrivatePage from '@/components/PrivatePage';
-import Simuladoescondido from '../content/Simulado';
+import Simulado from '../content/NotFound';
 
 const SimuladoPage: FC = () => (
   <PrivatePage>
-    <Simuladoescondido />
+    <Simulado />
   </PrivatePage>
 );
 
