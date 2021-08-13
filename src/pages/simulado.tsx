@@ -5,6 +5,7 @@ import Simulado from '../content/Simulado';
 const SimuladoPage: FC = () => (
   <PrivatePage>
     <Simulado />
+    </>
   </PrivatePage>
 );
 
