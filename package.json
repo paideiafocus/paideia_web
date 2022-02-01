@@ -22,7 +22,7 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@types/node": "^16.x",
+    "@types/node": "^14.14.10",
     "@types/react": "^17.0.0",
     "@types/react-slick": "^0.23.4",
     "@types/styled-components": "^5.1.4",
