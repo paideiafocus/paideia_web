@@ -38,7 +38,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
                 seguem abaixo:
                 <br />
                 <a href="/assets/pdf/redacao_tema.pdf" target="_blank">
-                  Tema prosto
+                  Tema proposto
                 </a>
                 <br />
                 <a href="/assets/pdf/redacao_folha.pdf" target="_blank">
