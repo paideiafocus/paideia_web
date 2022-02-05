@@ -200,7 +200,7 @@ const Personal = () => {
             <TextField
               id="course"
               name="course"
-              label="Curso desejado"
+              label="Curso desejado(para o vestibular)"
               value={personal.course.value}
               helperText={personal.course.error}
               error={Boolean(personal.course.error)}
