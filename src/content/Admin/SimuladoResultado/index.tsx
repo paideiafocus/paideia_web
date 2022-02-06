@@ -84,7 +84,7 @@ const SimuladoResultado = () => {
                       key={`${materia.user_id}_${materias[index]}`}
                     >
                       {materia.correct}
-                      /3
+                      /50
                     </StyledTableCell>
                   ))}
                   <StyledTableCell>
