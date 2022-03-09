@@ -37,7 +37,7 @@ export const linksToSubscriberUsers: INavLinks[] = [
 export const linksToAdminUsers: INavLinks[] = [
   ...allNavLinks,
   { id: 5, path: '/adm/inscritos', label: 'Administrador' },
-  { id: 6, path: '/adm/simulado-resultado-completo', label: 'Administrador' },
+  { id: 6, path: '/adm/simulado-resultado-completo', label: 'Resultado Simulado' },
   { id: 7, path: '/adm/simulado-cadastro', label: 'Cadastro Simulado' },
   { id: 8, path: '/sair', label: 'Sair' },
 ];
