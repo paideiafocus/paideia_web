@@ -18,7 +18,7 @@ const Term: FC = () => {
 
   return (
     <Page>
-      <h1>INSCRIÇÃO 2º SEMESTRE 2021</h1>
+      <h1>INSCRIÇÃO FOCUS CURSINHO 2022</h1>
 
       <div style={{ textAlign: 'center' }}>
         <h3>TERMO DE RESPONSABILIDADE</h3>
