@@ -59,6 +59,7 @@ const SimuladoResultado = () => {
   );
 
   return (
+    <div>
     <Page isFull>
       <h1>Resultados Completo</h1>
 
@@ -96,6 +97,7 @@ const SimuladoResultado = () => {
         </Table>
       </TableContainer>
     </Page>
+    </div>
   );
 };
 
