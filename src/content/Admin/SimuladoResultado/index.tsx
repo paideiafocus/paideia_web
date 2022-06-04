@@ -22,17 +22,17 @@ const StyledTableCell = withStyles(theme => ({
     fontSize: 14,
     textAlign: 'center',
   },
-}))(TableCell);
+  //}))(TableCell);
 
-const StyledTableRow = withStyles(theme => ({
+  //const StyledTableRow = withStyles(theme => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
   },
-}))(TableRow);
+  //}))(TableRow);
 
-const useStyles = makeStyles({
+  //const useStyles = makeStyles({
   table: {
     minWidth: 700,
     marginBottom: '3rem',
