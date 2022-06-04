@@ -1,6 +1,6 @@
-  //import { memo, useEffect, useMemo } from 'react';
-  //import { withStyles, makeStyles } from '@material-ui/core/styles';
-  //import Page from '@/components/Page';
+  import { memo, useEffect, useMemo } from 'react';
+  import { withStyles, makeStyles } from '@material-ui/core/styles';
+  import Page from '@/components/Page';
   //import Table from '@material-ui/core/Table';
 //import TableBody from '@material-ui/core/TableBody';
 //import TableCell from '@material-ui/core/TableCell';
@@ -99,4 +99,4 @@
   //  );
   //};
 
-  //export default memo(SimuladoResultado);
+  export default memo(SimuladoResultado);
