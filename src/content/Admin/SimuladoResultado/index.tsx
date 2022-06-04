@@ -67,7 +67,7 @@ const SimuladoResultado = () => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Aluno</StyledTableCell>
+              //<StyledTableCell>Aluno</StyledTableCell>
               {materias &&
                 materias.map(materia => (
                   <StyledTableCell key={materia}>{materia}</StyledTableCell>
