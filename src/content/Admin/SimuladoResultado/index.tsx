@@ -59,7 +59,6 @@ const SimuladoResultado = () => {
   );
 
   return (
-    <div>
     <Page isFull>
       <h1>Resultados Completo</h1>
 
@@ -67,37 +66,36 @@ const SimuladoResultado = () => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              //<StyledTableCell>Aluno</StyledTableCell>
+              <StyledTableCell>Aluno</StyledTableCell>
               {materias &&
                 materias.map(materia => (
-                  //<StyledTableCell key={materia}>{materia}</StyledTableCell>
+                  <StyledTableCell key={materia}>{materia}</StyledTableCell>
                 ))}
-              //<StyledTableCell>Total</StyledTableCell>
+              <StyledTableCell>Total</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {resultsDataFormatted &&
               resultsDataFormatted.map(result => (
                 <StyledTableRow key={result.fullname}>
-                  //<StyledTableCell>{result.fullname}</StyledTableCell>
+                  <StyledTableCell>{result.fullname}</StyledTableCell>
                   {result.materias.map((materia, index) => (
-                    //<StyledTableCell
+                    <StyledTableCell
                       key={`${materia.user_id}_${materias[index]}`}
                     >
                       {materia.correct}
                       /50
-                      //</StyledTableCell>
+                    </StyledTableCell>
                   ))}
-                  //<StyledTableCell>
+                  <StyledTableCell>
                     <b>{getTotal(result.materias)}</b>
-                  //</StyledTableCell>
-                //</StyledTableRow>
+                  </StyledTableCell>
+                </StyledTableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
     </Page>
-    </div>
   );
 };
 
