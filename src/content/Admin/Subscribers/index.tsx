@@ -31,7 +31,7 @@ const StyledTableCellCustom = styled.table`
 
 const StyledTableRowCustom = styled.table`
   &:nth-of-type(odd) {
-    background-color: #f4f4f4;
+    background-color: hover;
   }
 `;
 //const StyledTableCell = withStyles(theme => ({
