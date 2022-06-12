@@ -1,14 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { memo, useCallback, useEffect, useState } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+//import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
+//import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Page from '@/components/Page';
+import styled from 'styled-components';
 import api from '@/utils/api';
 
 interface IGabaritoSimples {
@@ -16,25 +18,41 @@ interface IGabaritoSimples {
   materia: string;
   acertou: 's' | 'n';
 }
+const StyledTableCellCustom = styled.table`
+  head {
+    background-color: #000;
+    color: #fff;
+    font-size: 16;
+  }
 
-const StyledTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 16,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
+  body {
+    font-size: 14;
+  }
+`;
 
-const StyledTableRow = withStyles(theme => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+const StyledTableRowCustom = styled.table`
+  &:nth-of-type(odd) {
+    background-color: hover;
+  }
+`;
+
+//const StyledTableCellCustom = withStyles(theme => ({
+//  head: {
+//    color: theme.palette.common.white,
+//    fontSize: 16,
+//  },
+//  body: {
+//    fontSize: 14,
+//  },
+//}))(TableCell);
+
+//const StyledTableRow = withStyles(theme => ({
+//  root: {
+//    '&:nth-of-type(odd)': {
+//      backgroundColor: theme.palette.action.hover,
+//    },
+//  },
+//}))(TableRow);
 
 const useStyles = makeStyles({
   table: {
@@ -103,19 +121,19 @@ const GabaritoSimples = () => {
           <Table className={classes.table} aria-label="customized table">
             <TableHead>
               <TableRow>
-                {/* <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell> */}
-                <StyledTableCell>Pergunta</StyledTableCell>
-                <StyledTableCell>Materia</StyledTableCell>
-                <StyledTableCell>Acertou?</StyledTableCell>
+                {/* <StyledTableCellCustom align="right">Carbs&nbsp;(g)</StyledTableCellCustom> */}
+                <StyledTableCellCustom>Pergunta</StyledTableCellCustom>
+                <StyledTableCellCustom>Materia</StyledTableCellCustom>
+                <StyledTableCellCustom>Acertou?</StyledTableCellCustom>
               </TableRow>
             </TableHead>
             <TableBody>
               {results &&
                 results.map(result => (
-                  <StyledTableRow key={result.pergunta}>
-                    <StyledTableCell>{result.pergunta}</StyledTableCell>
-                    <StyledTableCell>{result.materia}</StyledTableCell>
-                    <StyledTableCell>
+                  <StyledTableRowCustom key={result.pergunta}>
+                    <StyledTableCellCustom>{result.pergunta}</StyledTableCellCustom>
+                    <StyledTableCellCustom>{result.materia}</StyledTableCellCustom>
+                    <StyledTableCellCustom>
                       <div
                         style={{
                           fontWeight: 'bold',
@@ -124,8 +142,8 @@ const GabaritoSimples = () => {
                       >
                         {result.acertou === 's' ? 'Sim' : 'Não'}
                       </div>
-                    </StyledTableCell>
-                  </StyledTableRow>
+                    </StyledTableCellCustom>
+                  </StyledTableRowCustom>
                 ))}
             </TableBody>
           </Table>
