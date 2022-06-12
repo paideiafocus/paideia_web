@@ -9,7 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import statusFormat from '@/utils/statusFormat';
 import filesNames from '@/utils/filesNames';
 import useFiles from './useFiles';
@@ -33,9 +33,9 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <div>
           <Typography>{children}</Typography>
-        </Box>
+        </div>
       )}
     </div>
   );
@@ -190,9 +190,8 @@ const SubscriberDetails = () => {
                 <S.CardAnswer key={question.fieldName}>
                   <p>
                     <b>
-                      {`${index + questionsOneAnswer1.length + 1}) ${
-                        question.text
-                      }`}
+                      {`${index + questionsOneAnswer1.length + 1}) ${question.text
+                        }`}
                     </b>
                   </p>
                   <p>
@@ -206,12 +205,11 @@ const SubscriberDetails = () => {
                 <S.CardAnswer key={question.text}>
                   <p>
                     <b>
-                      {`${
-                        index +
+                      {`${index +
                         questionsOneAnswer2.length +
                         questionsOneAnswer1.length +
                         1
-                      }) ${question.text}`}
+                        }) ${question.text}`}
                     </b>
                   </p>
                   {question.answers.map(answer => (
