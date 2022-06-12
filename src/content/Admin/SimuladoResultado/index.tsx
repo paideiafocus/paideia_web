@@ -17,7 +17,7 @@ import getTotal from './getTotal';
 const StyledTableCellCustom = styled.table`
   head {
     background-color: #000;
-    color: #fff;
+    color: #ffffff;
     font-size: 16;
   }
 
