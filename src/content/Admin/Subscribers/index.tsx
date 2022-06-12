@@ -1,38 +1,55 @@
 import { memo, useCallback, useEffect } from 'react';
 import Page from '@/components/Page';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+//import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
+//import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Button, CircularProgress } from '@material-ui/core';
 import WarningMessage from '@/components/WarningMessage';
+import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import statusFormat from '@/utils/statusFormat';
 import useSubscribers from '../useSubscribers';
 import * as S from './styles';
 
-const StyledTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 14,
-  },
-  body: {
-    fontSize: 12,
-  },
-}))(TableCell);
+const StyledTableCellCustom = styled.table`
+  head {
+    background-color: #000;
+    color: #fff;
+    font-size: 14;
+  }
 
-const StyledTableRow = withStyles(theme => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+  body {
+    font-size: 12;
+  }
+`;
+
+const StyledTableRowCustom = styled.table`
+  &:nth-of-type(odd) {
+    background-color: #f4f4f4;
+  }
+`;
+//const StyledTableCell = withStyles(theme => ({
+//    backgroundColor: theme.palette.common.black,
+//    color: theme.palette.common.white,
+//    fontSize: 14,
+//  },
+//  body: {
+//    fontSize: 12,
+//  },
+//}))(TableCell);
+//
+//const StyledTableRow = withStyles(theme => ({
+//  root: {
+//    '&:nth-of-type(odd)': {
+//      backgroundColor: theme.palette.action.hover,
+//    },
+//  },
+//}))(TableRow);
 
 const useStyles = makeStyles({
   table: {
@@ -81,15 +98,15 @@ const Subscribers = () => {
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  {/* <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell> */}
-                  <StyledTableCell>Nº</StyledTableCell>
-                  <StyledTableCell>Matrícula</StyledTableCell>
-                  <StyledTableCell>Nome</StyledTableCell>
-                  <StyledTableCell>E-mail</StyledTableCell>
-                  <StyledTableCell>CPF</StyledTableCell>
-                  <StyledTableCell>Cartão Cidadão</StyledTableCell>
-                  <StyledTableCell>Status</StyledTableCell>
-                  <StyledTableCell>Detalhes</StyledTableCell>
+                  {/* <StyledTableCellCustom align="right">Carbs&nbsp;(g)</StyledTableCellCustom> */}
+                  <StyledTableCellCustom>Nº</StyledTableCellCustom>
+                  <StyledTableCellCustom>Matrícula</StyledTableCellCustom>
+                  <StyledTableCellCustom>Nome</StyledTableCellCustom>
+                  <StyledTableCellCustom>E-mail</StyledTableCellCustom>
+                  <StyledTableCellCustom>CPF</StyledTableCellCustom>
+                  <StyledTableCellCustom>Cartão Cidadão</StyledTableCellCustom>
+                  <StyledTableCellCustom>Status</StyledTableCellCustom>
+                  <StyledTableCellCustom>Detalhes</StyledTableCellCustom>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -99,25 +116,25 @@ const Subscribers = () => {
                     {row.name}
                   </StyledTableCell> */}
                     {/* <StyledTableCell align="right">{row.fat}</StyledTableCell> */}
-                    <StyledTableCell>{index + 1}</StyledTableCell>
-                    <StyledTableCell>{subscriber.enrollment}</StyledTableCell>
-                    <StyledTableCell>
+                    <StyledTableCellCustom>{index + 1}</StyledTableCellCustom>
+                    <StyledTableCellCustom>{subscriber.enrollment}</StyledTableCellCustom>
+                    <StyledTableCellCustom>
                       {`${subscriber.name} ${subscriber.lastname}`}
-                    </StyledTableCell>
-                    <StyledTableCell>{subscriber.email}</StyledTableCell>
-                    <StyledTableCell>{subscriber.cpf}</StyledTableCell>
-                    <StyledTableCell>{subscriber.citizen}</StyledTableCell>
-                    <StyledTableCell>
+                    </StyledTableCellCustom>
+                    <StyledTableCellCustom>{subscriber.email}</StyledTableCellCustom>
+                    <StyledTableCellCustom>{subscriber.cpf}</StyledTableCellCustom>
+                    <StyledTableCellCustom>{subscriber.citizen}</StyledTableCellCustom>
+                    <StyledTableCellCustom>
                       {statusFormat[subscriber.status]}
-                    </StyledTableCell>
-                    <StyledTableCell>
+                    </StyledTableCellCustom>
+                    <StyledTableCellCustom>
                       <Button
                         variant="contained"
                         onClick={() => handleShowDetails(subscriber.user_id)}
                       >
                         detalhes
                       </Button>
-                    </StyledTableCell>
+                    </StyledTableCellCustom>
                   </StyledTableRow>
                 ))}
               </TableBody>
