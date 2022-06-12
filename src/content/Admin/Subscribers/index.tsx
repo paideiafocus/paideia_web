@@ -113,10 +113,10 @@ const Subscribers = () => {
               <TableBody>
                 {subscribersData.map((subscriber, index) => (
                   <StyledTableRow key={subscriber.candidate_id}>
-                    {/* <StyledTableCell component="th" scope="row">
+                    {/* <StyledTableCellCustom component="th" scope="row">
                     {row.name}
-                  </StyledTableCell> */}
-                    {/* <StyledTableCell align="right">{row.fat}</StyledTableCell> */}
+                  </StyledTableCellCustom> */}
+                    {/* <StyledTableCellCustom align="right">{row.fat}</StyledTableCellCustom> */}
                     <StyledTableCellCustom>{index + 1}</StyledTableCellCustom>
                     <StyledTableCellCustom>{subscriber.enrollment}</StyledTableCellCustom>
                     <StyledTableCellCustom>
