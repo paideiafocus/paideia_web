@@ -112,7 +112,7 @@ const Subscribers = () => {
               </TableHead>
               <TableBody>
                 {subscribersData.map((subscriber, index) => (
-                  <StyledTableRow key={subscriber.candidate_id}>
+                  <StyledTableRowCustom key={subscriber.candidate_id}>
                     {/* <StyledTableCellCustom component="th" scope="row">
                     {row.name}
                   </StyledTableCellCustom> */}
@@ -136,7 +136,7 @@ const Subscribers = () => {
                         detalhes
                       </Button>
                     </StyledTableCellCustom>
-                  </StyledTableRow>
+                  </StyledTableRowCustom>
                 ))}
               </TableBody>
             </Table>
