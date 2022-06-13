@@ -63,7 +63,7 @@ const Register = () => {
 
   return (
     <Page>
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <h1>CADASTRO AO SISTEMA</h1>
 
         <div>
