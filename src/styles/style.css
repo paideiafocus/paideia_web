@@ -9,7 +9,7 @@ div h1 {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 500;
-  color: ${color.pink.dark};
+  color: #E75480;
 }
 
 h2 {
