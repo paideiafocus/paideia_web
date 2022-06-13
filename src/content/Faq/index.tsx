@@ -11,7 +11,7 @@ const Faq = () => {
   return (
     <Page>
       <S.FaqSection>
-        <h1>FAQ – PERGUNTAS FREQUENTES</h1>
+        <h1 style={{ textAlign: 'center' }}>FAQ – PERGUNTAS FREQUENTES</h1>
         <h4>Quando começam as novas inscrições?</h4>
 
         <p>

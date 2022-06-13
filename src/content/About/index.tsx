@@ -10,7 +10,7 @@ const About = () => {
       <S.AboutContainer>
         <Grid container>
           <Grid item xs={12}>
-            <h1> SOBRE </h1>
+            <h1 style={{ textAlign: 'center' }}> SOBRE </h1>
             <h2> Um Projeto Social - Um pouco das nossas origens </h2>
 
             <S.TextBlock>
