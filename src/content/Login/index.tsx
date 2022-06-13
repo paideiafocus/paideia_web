@@ -80,7 +80,7 @@ const Login = () => {
 
   return (
     <Page>
-      <h1>ACESSE SUA CONTA</h1>
+      <h1 style={{ textAlign: 'center' }}>ACESSE SUA CONTA</h1>
 
       <S.LoginSection>
         <S.Form onSubmit={event => event.preventDefault()}>
