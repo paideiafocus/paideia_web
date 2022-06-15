@@ -87,7 +87,7 @@ const Register = () => {
 
           <div style={{ textAlign: 'center' }}>
             <Alert kind="danger">
-              //Cadastro válido somente durante o periodo de inscrição!
+
               ESTAMOS COM UM PROBLEMA NO CADASTRO, ESPERAMOS RESOLVER O MAIS BREVE POSSÍVEL!
             </Alert>
           </div>
