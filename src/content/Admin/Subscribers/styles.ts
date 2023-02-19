@@ -5,3 +5,7 @@ export const SubscribersSection = styled.section`
   min-height: 60vh;
   margin-bottom: 2rem;
 `;
+
+export const SubscribersTableTd = styled.td`
+  border-bottom: 1px solid #ddd;
+`;
