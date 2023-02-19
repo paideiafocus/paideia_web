@@ -116,7 +116,7 @@ const Personal = () => {
       </Alert>
 
       <S.Form>
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
           <Grid item xs={12} lg={4}>
             <TextField
               id="fullname"
@@ -196,11 +196,16 @@ const Personal = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={4}>
-            <TextField
+          <Grid
+            item
+            xs={12}
+            lg={12}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <S.InputLarge
               id="course"
               name="course"
-              label="Curso desejado(para o vestibular)"
+              label="Curso desejado (para o vestibular)"
               value={personal.course.value}
               helperText={personal.course.error}
               error={Boolean(personal.course.error)}
