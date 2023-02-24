@@ -11,7 +11,9 @@ const Banner: React.FC = () => {
 
       <img src="/image_02.png" alt="Curso pré-vestibular gratuito 2" />
 
-      <img src="/image_03.png" alt="Curso pré-vestibular gratuito 2" />
+      <img src="/image_03.png" alt="Curso pré-vestibular gratuito 3" />
+
+      <img src="/image_04.png" alt="Curso pré-vestibular gratuito 4" />
     </Carousel>
   );
 };
