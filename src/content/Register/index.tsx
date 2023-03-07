@@ -22,6 +22,7 @@ const FORM = {
   confirm_email: { value: '', error: '' },
   password: { value: '', error: '' },
   confirm_password: { value: '', error: '' },
+  phone: { value: '', error: '' },
 };
 
 const Register = () => {
@@ -87,7 +88,7 @@ const Register = () => {
 
           <div style={{ textAlign: 'center' }}>
             <Alert kind="danger">
-             Cadastro válido somente durante o periodo de inscrição!
+              Cadastro válido somente durante o periodo de inscrição!
             </Alert>
           </div>
 
@@ -182,6 +183,21 @@ const Register = () => {
                   onChange={handleChangeField}
                   onBlur={handleChangeField}
                   type="password"
+                />
+              </Grid>
+
+              <Grid item xs={12} lg={6}>
+                <S.TextFieldCustom
+                  id="phone"
+                  name="phone"
+                  label="Celular"
+                  variant="outlined"
+                  size="small"
+                  value={user.phone.value}
+                  helperText={user.phone.error}
+                  error={Boolean(user.phone.error)}
+                  onChange={handleChangeField}
+                  onBlur={handleChangeField}
                 />
               </Grid>
 

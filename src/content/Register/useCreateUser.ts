@@ -25,6 +25,7 @@ interface IUser {
   confirm_email: IField;
   password: IField;
   confirm_password: IField;
+  phone: IField;
 }
 
 interface ISuccessResponse {
@@ -53,6 +54,7 @@ const useCreateUser = (): ICreateUser => {
       confirm_email,
       password,
       confirm_password,
+      phone,
     } = user;
 
     if (email.value !== confirm_email.value) {
@@ -82,6 +84,7 @@ const useCreateUser = (): ICreateUser => {
       lastname: lastname.value,
       email: email.value,
       password: password.value,
+      phone: phone.value,
     };
 
     api({ url: '/users', method: 'POST', data: newUser })
