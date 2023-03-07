@@ -43,17 +43,17 @@ const Subscribers = () => {
         )}
 
         {!loading && !feedbackError && subscribersData && (
-          <table>
+          <S.SubscribersTable>
             <thead>
               <tr>
-                <th>Nº</th>
-                <th>Matrícula</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>CPF</th>
-                <th>Cartão Cidadão</th>
-                <th>Status</th>
-                <th>Detalhes</th>
+                <S.SubscribersTableTh>Nº</S.SubscribersTableTh>
+                <S.SubscribersTableTh>Matrícula</S.SubscribersTableTh>
+                <S.SubscribersTableTh>Nome</S.SubscribersTableTh>
+                <S.SubscribersTableTh>E-mail</S.SubscribersTableTh>
+                <S.SubscribersTableTh>CPF</S.SubscribersTableTh>
+                <S.SubscribersTableTh>Cartão Cidadão</S.SubscribersTableTh>
+                <S.SubscribersTableTh>Status</S.SubscribersTableTh>
+                <S.SubscribersTableTh>Detalhes</S.SubscribersTableTh>
               </tr>
             </thead>
 
@@ -88,7 +88,7 @@ const Subscribers = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </S.SubscribersTable>
         )}
       </S.SubscribersSection>
     </Page>
