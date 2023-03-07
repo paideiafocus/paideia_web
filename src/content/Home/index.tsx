@@ -12,7 +12,7 @@ import Depositions from './Depositions';
 import SelectiveProcess from './SelectiveProcess';
 
 const Home: React.FC = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
 
