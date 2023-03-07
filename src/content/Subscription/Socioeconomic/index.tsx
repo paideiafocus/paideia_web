@@ -1,6 +1,6 @@
 import { memo, useCallback, useState, useEffect } from 'react';
 import Page from '@/components/Page';
-import { Checkbox, Grid } from '@material-ui/core';
+import { Checkbox, Grid, Backdrop, CircularProgress } from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -107,13 +107,25 @@ const Socioeconomic = () => {
   const router = useRouter();
   const [socioeconomic, setSocioeconomic] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
-  const { createSocioeconomic, loading, feedbackError } = useSocioeconomic();
+  const {
+    createSocioeconomic,
+    createIsloading,
+    searchIsloading,
+    searchSocioeconomic,
+    feedbackError,
+    searchedData,
+    setSearchedData,
+  } = useSocioeconomic();
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
+
+  useEffect(() => {
+    searchSocioeconomic(setSocioeconomic, setIsFormError);
+  }, [searchSocioeconomic]);
 
   const handleChangeField = useCallback(
     event => {
@@ -133,6 +145,10 @@ const Socioeconomic = () => {
         },
       };
 
+      setSearchedData(oldSearchedData => ({
+        ...oldSearchedData,
+        [name]: newValue,
+      }));
       setSocioeconomic(() => newSocioeconomic);
 
       const validRadioButton = Object.keys(newSocioeconomic).some(
@@ -150,7 +166,7 @@ const Socioeconomic = () => {
 
       setIsFormError(() => formError);
     },
-    [socioeconomic]
+    [setSearchedData, socioeconomic]
   );
 
   const handleNavigation = useCallback(() => {
@@ -160,6 +176,14 @@ const Socioeconomic = () => {
   const handleCreateSocioeconomic = useCallback(() => {
     createSocioeconomic(socioeconomic, handleNavigation);
   }, [createSocioeconomic, handleNavigation, socioeconomic]);
+
+  if (searchIsloading) {
+    return (
+      <Backdrop open>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
 
   return (
     <Page align="center">
@@ -198,6 +222,7 @@ const Socioeconomic = () => {
                       value={answer}
                       control={<Radio color="primary" />}
                       label={`${letters[index]}) ${answer}`}
+                      checked={searchedData[question.fieldName] === answer}
                       key={answer}
                       style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
                     />
@@ -280,6 +305,7 @@ const Socioeconomic = () => {
                       value={answer}
                       control={<Radio color="primary" />}
                       label={`${letters[index]}) ${answer}`}
+                      checked={searchedData[question.fieldName] === answer}
                       key={answer}
                       style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
                     />
@@ -297,7 +323,7 @@ const Socioeconomic = () => {
         <S.ButtonContainer>
           <ButtonForm
             disabled={isFormError}
-            loading={loading}
+            loading={createIsloading}
             onClick={handleCreateSocioeconomic}
           >
             Salvar dados socioeconômicos
