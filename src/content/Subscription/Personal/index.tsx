@@ -1,7 +1,17 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Grid, TextField } from '@material-ui/core';
+import {
+  Grid,
+  TextField,
+  Backdrop,
+  CircularProgress,
+  RadioGroup,
+  Radio,
+} from '@material-ui/core';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import Page from '@/components/Page';
 import Alert from '@/components/Alert';
@@ -22,19 +32,30 @@ const FORM = {
   rg: { value: '', error: '' },
   citizen: { value: '', error: '' },
   course: { value: '', error: '' },
+  school_bus: { value: '', error: '' },
 };
 
 const Personal = () => {
   const router = useRouter();
   const [personal, setPersonal] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
-  const { createCandidate, loading, feedbackError } = useCandidate();
+  const {
+    createCandidate,
+    createIsloading,
+    feedbackError,
+    searchCandidate,
+    searchIsloading,
+  } = useCandidate();
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
+
+  useEffect(() => {
+    searchCandidate(setPersonal);
+  }, [searchCandidate]);
 
   const handleChangeField = useCallback(
     event => {
@@ -83,6 +104,14 @@ const Personal = () => {
   const handleCreateCandidate = useCallback(() => {
     createCandidate(personal, handleNavigation);
   }, [createCandidate, handleNavigation, personal]);
+
+  if (searchIsloading) {
+    return (
+      <Backdrop open>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
 
   return (
     <Page align="center">
@@ -213,13 +242,62 @@ const Personal = () => {
               onBlur={handleChangeField}
             />
           </Grid>
+
+          <Grid
+            item
+            xs={12}
+            lg={12}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '2.5rem',
+              marginBottom: '1rem',
+            }}
+          >
+            <FormControl component="fieldset">
+              <FormLabel
+                component="legend"
+                style={{
+                  textAlign: 'initial',
+                  fontWeight: 'bold',
+                  color: '#000',
+                  marginBottom: '0.5rem',
+                  lineHeight: 1.2,
+                }}
+              >
+                Você possui interesse em utilizar o transporte escolar?
+              </FormLabel>
+              <RadioGroup
+                aria-label="school_bus"
+                name="school_bus"
+                onChange={handleChangeField}
+              >
+                <FormControlLabel
+                  value="sim"
+                  control={<Radio color="primary" />}
+                  label="Sim"
+                  checked={personal.school_bus.value === 'sim'}
+                  key="sim"
+                  style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
+                />
+                <FormControlLabel
+                  value="não"
+                  control={<Radio color="primary" />}
+                  label="Nao"
+                  checked={personal.school_bus.value === 'não'}
+                  key="não"
+                  style={{ textAlign: 'initial', marginBottom: '0.5rem' }}
+                />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
         </Grid>
 
         {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}
 
         <S.ButtonContainer>
           <ButtonForm
-            loading={loading}
+            loading={createIsloading}
             disabled={isFormError}
             onClick={handleCreateCandidate}
           >
