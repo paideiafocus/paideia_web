@@ -14,7 +14,7 @@ interface IRadio extends HTMLElement {
   checked?: boolean;
 }
 
-const lastQuestion = 50; // ultima pergunta simulado
+const lastQuestion = 30; // ultima pergunta simulado
 
 const Simulado = () => {
   // EVITA COPIAR CONTEUDO:
@@ -72,8 +72,8 @@ const Simulado = () => {
   const verificaHoraFim = useCallback(horaFim => {
     let horaFimFinal = '00';
     // ADICIONANDO 3 HORAS, LOGO TOTAL DE 3 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
-    if (Number(horaFim) + 3 < 24) {
-      horaFimFinal = horaFim + 3;
+    if (Number(horaFim) + 4 < 24) {
+      horaFimFinal = horaFim + 4;
     }
     return horaFimFinal;
   }, []);
