@@ -1,7 +1,14 @@
+/* eslint-disable react/no-danger */
 import { memo, useEffect, useCallback, useState } from 'react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { CircularProgress } from '@material-ui/core';
 import Page from '@/components/Page';
 import api from '@/utils/api';
@@ -23,12 +30,13 @@ const FORM = {
 };
 
 const selectOptions = [
+  'Português',
+  'Matemática',
   'Física',
   'Biologia',
   'História',
   'Química',
   'Geografia',
-  'Matemática',
   'Sociologia',
   'Filosofia',
   'Gramática',
@@ -42,7 +50,13 @@ const SimuladoCadastro = () => {
   const [question, setQuestion] = useState(FORM);
   const [isFormError, setIsFormError] = useState(true);
   const [loadingQuantity, setLoadingQuantity] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { loading, createQuestion } = useCreateQuestion();
+
+  const handleOpenOrCloseModal = useCallback(
+    () => setModalIsOpen(oldState => !oldState),
+    []
+  );
 
   const loadQuestionsQuantity = useCallback(async () => {
     setLoadingQuantity(true);
@@ -215,6 +229,10 @@ const SimuladoCadastro = () => {
         </S.GroupField>
 
         <S.GroupField center>
+          <ButtonForm onClick={handleOpenOrCloseModal}>Preview</ButtonForm>
+        </S.GroupField>
+
+        <S.GroupField center>
           <ButtonForm
             onClick={onSubmit}
             disabled={isFormError}
@@ -223,6 +241,145 @@ const SimuladoCadastro = () => {
             Salvar
           </ButtonForm>
         </S.GroupField>
+
+        <Dialog
+          open={modalIsOpen}
+          onClose={handleOpenOrCloseModal}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" />
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <div style={{ minWidth: '100%' }}>
+                <table>
+                  <thead>
+                    <tr style={{ border: '1rem solid black' }}>
+                      <th style={{ textAlign: 'center' }}>
+                        <u>
+                          <div className="ques">Questão</div>
+                          {Number(questionsQuantity) + 1}
+                        </u>
+                      </th>
+                      <td className="col-10 bordas flex-center-align">
+                        <div>
+                          <h4>{question.materia.value}</h4>
+                          <div className="p-2">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: question.enunciado.value,
+                              }}
+                            />
+
+                            {question.img.value && (
+                              <img
+                                src={question.img.value}
+                                alt={`${Number(questionsQuantity) + 1} ${question.materia.value
+                                  }`}
+                                style={{ width: '100%', marginTop: '1rem' }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-evenly',
+                          alignItems: 'center',
+                          fontWeight: 'bolder',
+                          minHeight: '6rem',
+                        }}
+                      >
+                        a)
+                      </td>
+                      <td>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: question.resp_a.value,
+                          }}
+                        />
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-evenly',
+                          alignItems: 'center',
+                          fontWeight: 'bolder',
+                          minHeight: '6rem',
+                        }}
+                      >
+                        b)
+                      </td>
+                      <td>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: question.resp_b.value,
+                          }}
+                        />
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-evenly',
+                          alignItems: 'center',
+                          fontWeight: 'bolder',
+                          minHeight: '6rem',
+                        }}
+                      >
+                        c)
+                      </td>
+                      <td>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: question.resp_c.value,
+                          }}
+                        />
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-evenly',
+                          alignItems: 'center',
+                          fontWeight: 'bolder',
+                          minHeight: '6rem',
+                        }}
+                      >
+                        d)
+                      </td>
+                      <td>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: question.resp_d.value,
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleOpenOrCloseModal} color="primary">
+              OK
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </Page>
   );
