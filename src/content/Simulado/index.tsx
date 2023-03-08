@@ -60,7 +60,7 @@ const Simulado = () => {
     });
 
     setLoading(false);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     // caso o aluno ja tenha respondido todas as questões
@@ -71,9 +71,12 @@ const Simulado = () => {
 
   const verificaHoraFim = useCallback(horaFim => {
     let horaFimFinal = '00';
-    // ADICIONANDO 3 HORAS, LOGO TOTAL DE 3 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
+
+    // ADICIONANDO 4 HORAS, LOGO TOTAL DE 4 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
     if (Number(horaFim) + 4 < 24) {
       horaFimFinal = horaFim + 4;
+    } else {
+      horaFimFinal = String(4 + (horaFim - 24));
     }
     return horaFimFinal;
   }, []);
