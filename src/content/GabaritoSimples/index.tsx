@@ -1,58 +1,15 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { memo, useCallback, useEffect, useState } from 'react';
-//import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { makeStyles } from '@material-ui/core/styles'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-//import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
 import Page from '@/components/Page';
-import styled from 'styled-components';
 import api from '@/utils/api';
+import * as S from './styles';
 
 interface IGabaritoSimples {
   pergunta: number;
   materia: string;
   acertou: 's' | 'n';
 }
-const StyledTableCellCustom = styled.table`
-  head {
-    background-color: #000;
-    color: #fff;
-    font-size: 16;
-  }
-
-  body {
-    font-size: 14;
-  }
-`;
-
-const StyledTableRowCustom = styled.table`
-  &:nth-of-type(odd) {
-    background-color: hover;
-  }
-`;
-
-//const StyledTableCellCustom = withStyles(theme => ({
-//  head: {
-//    color: theme.palette.common.white,
-//    fontSize: 16,
-//  },
-//  body: {
-//    fontSize: 14,
-//  },
-//}))(TableCell);
-
-//const StyledTableRow = withStyles(theme => ({
-//  root: {
-//    '&:nth-of-type(odd)': {
-//      backgroundColor: theme.palette.action.hover,
-//    },
-//  },
-//}))(TableRow);
 
 const useStyles = makeStyles({
   table: {
@@ -117,37 +74,34 @@ const GabaritoSimples = () => {
       <br />
 
       <div>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                {/* <StyledTableCellCustom align="right">Carbs&nbsp;(g)</StyledTableCellCustom> */}
-                <StyledTableCellCustom>Pergunta</StyledTableCellCustom>
-                <StyledTableCellCustom>Materia</StyledTableCellCustom>
-                <StyledTableCellCustom>Acertou?</StyledTableCellCustom>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {results &&
-                results.map(result => (
-                  <StyledTableRowCustom key={result.pergunta}>
-                    <StyledTableCellCustom>{result.pergunta}</StyledTableCellCustom>
-                    <StyledTableCellCustom>{result.materia}</StyledTableCellCustom>
-                    <StyledTableCellCustom>
-                      <div
-                        style={{
-                          fontWeight: 'bold',
-                          color: result.acertou === 's' ? 'green' : 'red',
-                        }}
-                      >
-                        {result.acertou === 's' ? 'Sim' : 'Não'}
-                      </div>
-                    </StyledTableCellCustom>
-                  </StyledTableRowCustom>
-                ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <S.ResultTable className={classes.table} aria-label="customized table">
+          <thead>
+            <tr>
+              <S.ResultTableTh>Pergunta</S.ResultTableTh>
+              <S.ResultTableTh>Matéria</S.ResultTableTh>
+              <S.ResultTableTh>Acertou?</S.ResultTableTh>
+            </tr>
+          </thead>
+          <tbody>
+            {results &&
+              results.map(result => (
+                <tr key={result.pergunta}>
+                  <S.ResultTableTd>{result.pergunta}</S.ResultTableTd>
+                  <S.ResultTableTd>{result.materia}</S.ResultTableTd>
+                  <S.ResultTableTd>
+                    <div
+                      style={{
+                        fontWeight: 'bold',
+                        color: result.acertou === 's' ? 'green' : 'red',
+                      }}
+                    >
+                      {result.acertou === 's' ? 'Sim' : 'Não'}
+                    </div>
+                  </S.ResultTableTd>
+                </tr>
+              ))}
+          </tbody>
+        </S.ResultTable>
         <div style={{ margin: '2rem 0' }}>
           <h2>Total</h2>
 
