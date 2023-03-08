@@ -30,10 +30,8 @@ const InitialTerm = ({ iniciarSimulado }) => {
               <strong>
                 As <b>questões objetivas</b> (Testes) versarão sobre o conteúdo
                 abordado no E.M. (Ensino Médio). As áreas do conhecimento
-                relacionadas são: Matemática, Química, Física, Biologia,
-                Geografia, História, Sociologia, Filosofia, Literatura e
-                Gramática. Também fará parte da Prova Diagnóstica a elaboração
-                de uma Redação. O{' '}
+                relacionadas são: Matemática e Português. Também fará parte da
+                Prova Diagnóstica a elaboração de uma Redação. O{' '}
                 <b>link para acessar o arquivo da folha de redação e o tema</b>{' '}
                 seguem abaixo:
                 <br />
@@ -72,13 +70,12 @@ const InitialTerm = ({ iniciarSimulado }) => {
           </li>
           <li>
             <div>
-              A Prova Diagnóstica terá a duração de{' '}
-              <b>3 (três) horas e 30 (trinta) minutos</b>. <b>ATENÇÃO</b>: A
-              realização da prova não admite interrupção. Uma vez iniciada a
-              prova é acionado, automaticamente, o cronômetro que contabiliza o
-              tempo de execução já pré-estabelecido. Ao final do tempo
-              programado para a resolução da prova ela será bloqueada e não
-              haverá mais possibilidade de respondê-la.
+              A Prova Diagnóstica terá a duração de <b>4 (quatro) horas</b>.{' '}
+              <b>ATENÇÃO</b>: A realização da prova não admite interrupção. Uma
+              vez iniciada a prova é acionado, automaticamente, o cronômetro que
+              contabiliza o tempo de execução já pré-estabelecido. Ao final do
+              tempo programado para a resolução da prova ela será bloqueada e
+              não haverá mais possibilidade de respondê-la.
             </div>
           </li>
           <li>
