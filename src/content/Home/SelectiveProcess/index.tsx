@@ -32,7 +32,7 @@ const SelectiveProcess: React.FC = () => {
           title="Manual inscrição"
         />
         <OptionCard
-          pdfLink="REQUERIMENTO - 2018.pdf"
+          pdfLink="requerimento.pdf"
           imageSrc="requerimento.png"
           title="Requerimento"
         />
