@@ -158,6 +158,10 @@ const SubscriberDetails = () => {
                     <b>Telefone: </b>
                     {subscribersData[0].phone1}
                   </p>
+                  <p>
+                    <b>Possui interesse no transporte escolar?: </b>
+                    {subscribersData[0].school_bus}
+                  </p>
                 </div>
 
                 <div style={{ width: '50%' }}>
@@ -190,8 +194,8 @@ const SubscriberDetails = () => {
                 <S.CardAnswer key={question.fieldName}>
                   <p>
                     <b>
-                      {`${index + questionsOneAnswer1.length + 1}) ${question.text
-                        }`}
+                      {`${index + questionsOneAnswer1.length + 1})
+                      ${question.text}`}
                     </b>
                   </p>
                   <p>
@@ -205,7 +209,8 @@ const SubscriberDetails = () => {
                 <S.CardAnswer key={question.text}>
                   <p>
                     <b>
-                      {`${index +
+                      {`
+                      ${index +
                         questionsOneAnswer2.length +
                         questionsOneAnswer1.length +
                         1

@@ -46,6 +46,7 @@ interface ISubscriber {
   work_candidate: string;
   work_father: string;
   transport: string;
+  school_bus: string;
 }
 
 interface ISubscribersHook {
