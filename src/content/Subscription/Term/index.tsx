@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { FC, memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 import Page from '@/components/Page';
 
 import Alert from '@/components/Alert';
@@ -12,13 +12,18 @@ const Term: FC = () => {
   const [isConfirm, setIsConfirm] = useState(false);
   const router = useRouter();
 
+  const year = useMemo(() => {
+    const date = new Date();
+    return date.getFullYear();
+  }, []);
+
   const handleNavigation = useCallback(() => {
     router.push('/inscricao/pessoal');
   }, [router]);
 
   return (
     <Page>
-      <h1>INSCRIÇÃO FOCUS CURSINHO 2022</h1>
+      <h1>INSCRIÇÃO FOCUS CURSINHO {year}</h1>
 
       <div style={{ textAlign: 'center' }}>
         <h3>TERMO DE RESPONSABILIDADE</h3>
