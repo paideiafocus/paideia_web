@@ -13,19 +13,14 @@ import InformationArea from './InformationArea';
 
 const cardsSelectiveProcess = [
   {
-    pdfLink: 'edital.pdf',
-    imageSrc: 'edital.png',
-    title: 'Manual do candidato',
-  },
-  {
     pdfLink: 'secretaria_projetos.pdf',
     imageSrc: 'edital.png',
-    title: 'Carta de serviços ao usuário da secretaria de projetos',
+    title: 'Cartão Cidadão',
   },
   {
     pdfLink: 'manual_inscricao.pdf',
     imageSrc: 'info_basica.png',
-    title: 'Manual inscrição',
+    title: 'Tutorial',
   },
   {
     pdfLink: 'requerimento.pdf',
@@ -40,9 +35,14 @@ const cardsSelectiveProcess = [
 
 const cardsTransparence = [
   {
+    pdfLink: 'edital.pdf',
+    imageSrc: 'edital.png',
+    title: 'Edital nº 1/2023',
+  },
+  {
     pdfLink: 'sorvetada.pdf',
     imageSrc: 'edital.png',
-    title: 'Sorvetada',
+    title: '3ª Sorvetada',
   },
 ];
 
