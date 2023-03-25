@@ -9,7 +9,42 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Page from '@/components/Page';
 import Banner from './Banner';
 import Depositions from './Depositions';
-import SelectiveProcess from './SelectiveProcess';
+import InformationArea from './InformationArea';
+
+const cardsSelectiveProcess = [
+  {
+    pdfLink: 'edital.pdf',
+    imageSrc: 'edital.png',
+    title: 'Manual do candidato',
+  },
+  {
+    pdfLink: 'secretaria_projetos.pdf',
+    imageSrc: 'edital.png',
+    title: 'Carta de serviços ao usuário da secretaria de projetos',
+  },
+  {
+    pdfLink: 'manual_inscricao.pdf',
+    imageSrc: 'info_basica.png',
+    title: 'Manual inscrição',
+  },
+  {
+    pdfLink: 'requerimento.pdf',
+    imageSrc: 'requerimento.png',
+    title: 'Requerimento',
+  },
+  {
+    imageSrc: 'perguntas_frequentes.png',
+    title: 'Perguntas frequentes',
+  },
+];
+
+const cardsTransparence = [
+  {
+    pdfLink: 'sorvetada.pdf',
+    imageSrc: 'edital.png',
+    title: 'Sorvetada',
+  },
+];
 
 const Home: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -59,7 +94,12 @@ const Home: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      <SelectiveProcess />
+      <InformationArea
+        titleArea="Processo Seletivo"
+        cards={cardsSelectiveProcess}
+      />
+
+      <InformationArea titleArea="Transparência" cards={cardsTransparence} />
 
       <Depositions />
     </Page>
