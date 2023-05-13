@@ -41,6 +41,8 @@ const selectOptions = [
   'Filosofia',
   'Gramática',
   'Literatura',
+  'Arte',
+  'Inglês',
 ];
 
 const alternatives = ['resp_a', 'resp_b', 'resp_c', 'resp_d'];
