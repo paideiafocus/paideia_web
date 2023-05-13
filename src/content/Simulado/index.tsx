@@ -14,7 +14,7 @@ interface IRadio extends HTMLElement {
   checked?: boolean;
 }
 
-const lastQuestion = 30; // ultima pergunta simulado
+const lastQuestion = 53; // ultima pergunta simulado
 
 const Simulado = () => {
   // EVITA COPIAR CONTEUDO:
@@ -71,12 +71,13 @@ const Simulado = () => {
 
   const verificaHoraFim = useCallback(horaFim => {
     let horaFimFinal = '00';
+    const totalDuration = 3;
 
     // ADICIONANDO 4 HORAS, LOGO TOTAL DE 4 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
-    if (Number(horaFim) + 4 < 24) {
-      horaFimFinal = horaFim + 4;
+    if (Number(horaFim) + totalDuration < 24) {
+      horaFimFinal = horaFim + totalDuration;
     } else {
-      horaFimFinal = String(4 + (horaFim - 24));
+      horaFimFinal = String(totalDuration + (horaFim - 24));
     }
     return horaFimFinal;
   }, []);
@@ -235,11 +236,18 @@ const Simulado = () => {
                         />
 
                         {retorno.img && (
-                          <img
-                            src={retorno.img}
-                            alt={`${retorno.pergunta} ${retorno.materia}`}
-                            style={{ width: '100%', marginTop: '1rem' }}
-                          />
+                          <a
+                            href={retorno.img}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Ver imagem em outra janela"
+                          >
+                            <img
+                              src={retorno.img}
+                              alt={`${retorno.pergunta} ${retorno.materia}`}
+                              style={{ width: '100%', marginTop: '1rem' }}
+                            />
+                          </a>
                         )}
                       </div>
                     </div>

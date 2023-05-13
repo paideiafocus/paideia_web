@@ -13,6 +13,21 @@ const useStyles = makeStyles({
   },
 });
 
+const totalQuestionsMaterias = {
+  Arte: 4,
+  Biologia: 4,
+  Filosofia: 4,
+  Física: 4,
+  Geografia: 4,
+  Gramática: 4,
+  História: 4,
+  Inglês: 4,
+  Literatura: 4,
+  Matemática: 7,
+  Química: 6,
+  Sociologia: 4,
+};
+
 const SimuladoResultado = () => {
   const classes = useStyles();
   const {
@@ -56,8 +71,8 @@ const SimuladoResultado = () => {
                   <S.ResultTableTd
                     key={`${materia.user_id}_${materias[index]}`}
                   >
-                    {materia.correct}
-                    /15
+                    {`${materia.correct}/
+                    ${totalQuestionsMaterias[materia.name]}`}
                   </S.ResultTableTd>
                 ))}
                 <S.ResultTableTd>

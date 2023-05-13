@@ -30,7 +30,10 @@ const InitialTerm = ({ iniciarSimulado }) => {
               <strong>
                 As <b>questões objetivas</b> (Testes) versarão sobre o conteúdo
                 abordado no E.M. (Ensino Médio). As áreas do conhecimento
-                relacionadas são: Matemática e Português. Também fará parte da
+                relacionadas são: Arte, Biologia, Filosofia, Geografia,
+                Gramática, História, Física, Inglês, Literatura, Matemática,
+                Química e Sociologia.
+                {/* Também fará parte da
                 Prova Diagnóstica a elaboração de uma Redação. O{' '}
                 <b>link para acessar o arquivo da folha de redação e o tema</b>{' '}
                 seguem abaixo:
@@ -41,7 +44,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
                 <br />
                 <a href="/assets/pdf/redacao_folha.pdf" target="_blank">
                   Folha de redação
-                </a>
+                </a> */}
               </strong>
             </div>
           </li>
@@ -54,7 +57,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
               realização da prova.
             </div>
           </li>
-          <li>
+          {/* <li>
             <div>
               Sobre a redação: leia com atenção o{' '}
               <a href="/assets/pdf/redacao_tema.pdf" target="_blank">
@@ -67,15 +70,16 @@ const InitialTerm = ({ iniciarSimulado }) => {
               e a faça de forma manuscrita, digitalize e envie para nosso e-mail{' '}
               <b>contato@associacaopaideia.org.br</b>
             </div>
-          </li>
+          </li> */}
           <li>
             <div>
-              A Prova Diagnóstica terá a duração de <b>4 (quatro) horas</b>.{' '}
+              A Prova {/* Diagnóstica */}
+              terá a duração de <b>2:30 (duas horas e trinta minutos)</b>.{' '}
               <b>ATENÇÃO</b>: A realização da prova não admite interrupção. Uma
               vez iniciada a prova é acionado, automaticamente, o cronômetro que
               contabiliza o tempo de execução já pré-estabelecido. Ao final do
               tempo programado para a resolução da prova ela será bloqueada e
-              não haverá mais possibilidade de respondê-la.
+              não não haverá mais possibilidade de respondê-la.
             </div>
           </li>
           <li>
@@ -92,12 +96,12 @@ const InitialTerm = ({ iniciarSimulado }) => {
               liberadas uma a uma conforme a sua resolução.
             </div>
           </li>
-          <li>
+          {/* <li>
             <div>
               Recomendamos que na resolução dos exercícios dessa primeira prova
               sejam gastos em média <b>3 minutos</b> por questão.
             </div>
-          </li>
+          </li> */}
           <li>
             <div>
               Ao final da prova será exibido um relatório simplificado do
