@@ -54,7 +54,7 @@ const Personal = () => {
   }, []);
 
   useEffect(() => {
-    searchCandidate(setPersonal);
+    searchCandidate(setPersonal, setIsFormError);
   }, [searchCandidate]);
 
   const handleChangeField = useCallback(

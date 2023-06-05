@@ -1,14 +1,27 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import Page from '@/components/Page';
+import decode from 'jwt-decode';
 
 import Alert from '@/components/Alert';
-import { Grid, TextField } from '@material-ui/core';
+import {
+  Grid,
+  TextField,
+  Backdrop,
+  CircularProgress,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@material-ui/core';
 import { useRouter } from 'next/router';
 import ButtonForm from '@/components/ButtonForm';
 import WarningMessage from '@/components/WarningMessage';
 import * as S from './styles';
 import useFile from './useFile';
+import useVerifyFiles from './useVerifyFiles';
 
 const FORM = {
   RG: { value: '' },
@@ -40,13 +53,27 @@ const Files = () => {
   const router = useRouter();
   const [files, setFiles] = useState(FORM);
   const [fieldErrors, setFieldErrors] = useState([]);
-  const { createFiles, loading, feedbackError } = useFile();
+  const {
+    createFiles,
+    loading: createFileIsLoading,
+    feedbackError,
+  } = useFile();
+  const {
+    filesIsVerified,
+    verifyFiles,
+    loading: searchFileIsLoading,
+  } = useVerifyFiles();
+  const [modalIsOpen, setModalIsOpen] = useState(true);
 
   useEffect(() => {
     if (window) {
       window.scroll(0, 0);
     }
   }, []);
+
+  useEffect(() => {
+    verifyFiles();
+  }, [verifyFiles]);
 
   const convertBase64 = useCallback(event => {
     const { name } = event.target;
@@ -113,6 +140,20 @@ const Files = () => {
       createFiles(files, handleNavigation);
     }
   }, [createFiles, files, handleNavigation]);
+
+  const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
+
+  const handleConfirmModal = useCallback(() => handleNavigation(), [
+    handleNavigation,
+  ]);
+
+  if (searchFileIsLoading) {
+    return (
+      <Backdrop open>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
 
   return (
     <Page align="center">
@@ -294,11 +335,40 @@ const Files = () => {
         {feedbackError && <WarningMessage>{feedbackError}</WarningMessage>}
 
         <S.ButtonContainer>
-          <ButtonForm loading={loading} onClick={handleCreateFiles}>
+          <ButtonForm loading={createFileIsLoading} onClick={handleCreateFiles}>
             Salvar arquivos
           </ButtonForm>
         </S.ButtonContainer>
       </S.Form>
+
+      {filesIsVerified && (
+        <div>
+          <Dialog
+            open={modalIsOpen}
+            onClose={handleCloseModal}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              Seus documentos ainda estão no sistema
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Foi identificado que você já possui os arquivos dos documentos
+                em seu cadastro, deseja atualiza-los?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseModal}>
+                Sim, desejo atualizar meus documentos
+              </Button>
+              <Button onClick={handleConfirmModal} autoFocus>
+                Não, meus documentos já estão corretos
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )}
     </Page>
   );
 };
