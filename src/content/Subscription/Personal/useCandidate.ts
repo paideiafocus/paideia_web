@@ -81,7 +81,7 @@ const useCandidate = (): ICandidateHook => {
     []
   );
 
-  const searchCandidate = useCallback(updatePersonal => {
+  const searchCandidate = useCallback((updatePersonal, setIsFormError) => {
     setSearchIsLoading(true);
     setFeedbackError('');
 
@@ -107,6 +107,8 @@ const useCandidate = (): ICandidateHook => {
           course: { value: course || '', error: '' },
           school_bus: { value: school_bus || '', error: '' },
         });
+
+        setIsFormError(false);
       })
       .catch(() => {
         setFeedbackError('Erro!');
