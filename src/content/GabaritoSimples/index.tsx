@@ -58,7 +58,7 @@ const GabaritoSimples = () => {
     <Page>
       <h1>Resultados</h1>
 
-      {/* <div>
+      <div>
         Caso ainda não tenha feito a redação: leia com atenção o{' '}
         <a href="/assets/pdf/redacao_tema.pdf" target="_blank">
           tema
@@ -69,7 +69,7 @@ const GabaritoSimples = () => {
         </a>{' '}
         e a faça de forma manuscrita, digitalize e envie para nosso e-mail{' '}
         <b>contato@associacaopaideia.org.br</b>
-      </div> */}
+      </div>
 
       <br />
 

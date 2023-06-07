@@ -14,18 +14,8 @@ const useStyles = makeStyles({
 });
 
 const totalQuestionsMaterias = {
-  Arte: 4,
-  Biologia: 4,
-  Filosofia: 4,
-  Física: 4,
-  Geografia: 4,
-  Gramática: 4,
-  História: 4,
-  Inglês: 4,
-  Literatura: 4,
-  Matemática: 7,
-  Química: 6,
-  Sociologia: 4,
+  Matemática: 15,
+  Português: 15,
 };
 
 const SimuladoResultado = () => {

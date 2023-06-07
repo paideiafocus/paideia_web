@@ -30,10 +30,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
               <strong>
                 As <b>questões objetivas</b> (Testes) versarão sobre o conteúdo
                 abordado no E.M. (Ensino Médio). As áreas do conhecimento
-                relacionadas são: Arte, Biologia, Filosofia, Geografia,
-                Gramática, História, Física, Inglês, Literatura, Matemática,
-                Química e Sociologia.
-                {/* Também fará parte da
+                relacionadas são: Português e Matemática. Também fará parte da
                 Prova Diagnóstica a elaboração de uma Redação. O{' '}
                 <b>link para acessar o arquivo da folha de redação e o tema</b>{' '}
                 seguem abaixo:
@@ -44,7 +41,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
                 <br />
                 <a href="/assets/pdf/redacao_folha.pdf" target="_blank">
                   Folha de redação
-                </a> */}
+                </a>
               </strong>
             </div>
           </li>

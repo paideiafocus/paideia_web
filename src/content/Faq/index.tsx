@@ -62,7 +62,7 @@ const Faq = () => {
           </a>
         </p>
         <Alert kind="danger">
-          <b>ATENÇÃO!</b> Todo o processo de inscrição é realizado
+          <b>ATENÇÃO!</b> Todo o processo de inscrição é realizado{' '}
           <b>exclusivamente</b> pela internet através do site da Associação
           Paideia{' '}
           <a href="https://www.associacaopaideia.org.br">
@@ -164,7 +164,7 @@ const Faq = () => {
           o <b>whatsapp</b> para atendimento da comunidade estudantil. Além
           desses dois canais de comunicação, o e-mail institucional e o
           telefone, a comunidade estudantil poderá se informar através das
-          nossas redes sociais como
+          nossas redes sociais como{' '}
           <b>Instagram</b> e <b>Facebook</b> . ATENÇÃO!Você que pretende fazer o
           cursinho conosco divulgue entre seus amigos, colegas e conhecidos as
           nossas mídias sociais. Ajude a Associação Paideia e o Focus
