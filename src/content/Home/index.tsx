@@ -112,7 +112,10 @@ const Home: React.FC = () => {
                   : 'proximas_inscricoes_mobile.png'
               }
               alt="próximas inscrições"
-              style={{ width: '100%' }}
+              style={{
+                width: '100%',
+                height: deviceSize >= 995 ? '80vh' : 'auto',
+              }}
             />
           </DialogContentText>
         </DialogContent>

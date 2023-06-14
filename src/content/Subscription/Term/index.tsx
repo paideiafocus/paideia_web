@@ -52,6 +52,19 @@ const Term: FC = () => {
           </a>
         </Alert>
 
+        <Alert kind="danger">
+          <b>
+            Antes de começar a inscrição leia com atenção o{' '}
+            <a
+              href="https://www.associacaopaideia.org.br/edital_2_2023.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Edital
+            </a>
+          </b>
+        </Alert>
+
         <S.Confirm>
           <label htmlFor="confirm-term">
             <input
