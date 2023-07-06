@@ -54,7 +54,7 @@ const cardsTransparence = [
 ];
 
 const Home: React.FC = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [deviceSize, setDeviceSize] = useState(0);
 
   const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
