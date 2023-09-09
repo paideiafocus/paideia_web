@@ -15,7 +15,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
           <li>
             <div>
               O simulado é composto por <b>questões objetivas</b> (Testes) com{' '}
-              <b>quatro alternativas</b> (A,B,C,D), das quais somente uma é
+              <b>cinco alternativas</b> (A,B,C,D,E), das quais somente uma é
               correta.
             </div>
           </li>
@@ -30,8 +30,12 @@ const InitialTerm = ({ iniciarSimulado }) => {
               <strong>
                 As <b>questões objetivas</b> (Testes) versarão sobre o conteúdo
                 abordado no E.M. (Ensino Médio). As áreas do conhecimento
-                relacionadas são: Português e Matemática. Também fará parte da
-                Prova Diagnóstica a elaboração de uma Redação. O{' '}
+                relacionadas são: Português, Matemática, Física, Biologia,
+                História, Química, Geografia, Sociologia, Filosofia, Arte e
+                Inglês.
+                {/* REDAÇÃO */}
+                {/* Também fará parte da Prova Diagnóstica a elaboração de
+                uma Redação. O{' '}
                 <b>link para acessar o arquivo da folha de redação e o tema</b>{' '}
                 seguem abaixo:
                 <br />
@@ -41,7 +45,7 @@ const InitialTerm = ({ iniciarSimulado }) => {
                 <br />
                 <a href="/assets/pdf/redacao_folha.pdf" target="_blank">
                   Folha de redação
-                </a>
+                </a> */}
               </strong>
             </div>
           </li>

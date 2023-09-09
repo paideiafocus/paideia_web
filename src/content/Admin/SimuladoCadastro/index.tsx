@@ -25,6 +25,7 @@ const FORM = {
   resp_b: field,
   resp_c: field,
   resp_d: field,
+  resp_e: field,
   correta: field,
   img: field,
 };
@@ -45,7 +46,7 @@ const selectOptions = [
   'Inglês',
 ];
 
-const alternatives = ['resp_a', 'resp_b', 'resp_c', 'resp_d'];
+const alternatives = ['resp_a', 'resp_b', 'resp_c', 'resp_d', 'resp_e'];
 
 const SimuladoCadastro = () => {
   const [questionsQuantity, setQuestionsQuantity] = useState<number>(0);
@@ -367,6 +368,27 @@ const SimuladoCadastro = () => {
                         <div
                           dangerouslySetInnerHTML={{
                             __html: question.resp_d.value,
+                          }}
+                        />
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-evenly',
+                          alignItems: 'center',
+                          fontWeight: 'bolder',
+                          minHeight: '6rem',
+                        }}
+                      >
+                        e)
+                      </td>
+                      <td>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: question.resp_e.value,
                           }}
                         />
                       </td>

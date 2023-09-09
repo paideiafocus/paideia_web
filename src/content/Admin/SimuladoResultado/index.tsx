@@ -14,8 +14,17 @@ const useStyles = makeStyles({
 });
 
 const totalQuestionsMaterias = {
-  Matemática: 15,
-  Português: 15,
+  Matemática: 10,
+  Português: 5,
+  Física: 10,
+  Biologia: 10,
+  História: 10,
+  Química: 10,
+  Geografia: 10,
+  Sociologia: 5,
+  Filosofia: 5,
+  Arte: 5,
+  Inglês: 5,
 };
 
 const SimuladoResultado = () => {

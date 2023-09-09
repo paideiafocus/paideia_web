@@ -22,6 +22,7 @@ const useCreateQuestion = (): ICreateQuestion => {
         resp_b: question.resp_b.value,
         resp_c: question.resp_c.value,
         resp_d: question.resp_d.value,
+        resp_e: question.resp_e.value,
         correta: question.correta.value,
         img: question.img.value,
       },
