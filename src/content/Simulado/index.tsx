@@ -71,9 +71,9 @@ const Simulado = () => {
 
   const verificaHoraFim = useCallback(horaFim => {
     let horaFimFinal = '00';
-    const totalDuration = 3;
+    const totalDuration = 5;
 
-    // ADICIONANDO 4 HORAS, LOGO TOTAL DE 4 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
+    // ADICIONANDO 5 HORAS, LOGO TOTAL DE 5 HORAS DE DURAÇÃO DE SIMULADO MAXIMO
     if (Number(horaFim) + totalDuration < 24) {
       horaFimFinal = horaFim + totalDuration;
     } else {
