@@ -75,12 +75,12 @@ const InitialTerm = ({ iniciarSimulado }) => {
           <li>
             <div>
               A Prova {/* Diagnóstica */}
-              terá a duração de <b>2:30 (duas horas e trinta minutos)</b>.{' '}
-              <b>ATENÇÃO</b>: A realização da prova não admite interrupção. Uma
-              vez iniciada a prova é acionado, automaticamente, o cronômetro que
-              contabiliza o tempo de execução já pré-estabelecido. Ao final do
-              tempo programado para a resolução da prova ela será bloqueada e
-              não não haverá mais possibilidade de respondê-la.
+              terá a duração de <b>5h (cinco horas)</b>. <b>ATENÇÃO</b>: A
+              realização da prova não admite interrupção. Uma vez iniciada a
+              prova é acionado, automaticamente, o cronômetro que contabiliza o
+              tempo de execução já pré-estabelecido. Ao final do tempo
+              programado para a resolução da prova ela será bloqueada e não não
+              haverá mais possibilidade de respondê-la.
             </div>
           </li>
           <li>
