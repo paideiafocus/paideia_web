@@ -34,10 +34,10 @@ const cardsSelectiveProcess = [
     title: 'Perguntas frequentes',
   },
   {
-    pdfLink: 'edital_2_2023.pdf',
+    pdfLink: 'edital_1_2024.pdf',
     imageSrc: 'edital.png',
-    title: 'Edital nº 2/2023',
-  },
+    title: 'Edital nº 1/2024',
+  }
 ];
 
 const cardsTransparence = [
@@ -45,6 +45,11 @@ const cardsTransparence = [
     pdfLink: 'edital_1_2023.pdf',
     imageSrc: 'edital.png',
     title: 'Edital nº 1/2023',
+  },
+  {
+    pdfLink: 'edital_2_2023.pdf',
+    imageSrc: 'edital.png',
+    title: 'Edital nº 2/2023',
   },
   {
     pdfLink: 'sorvetada.pdf',
