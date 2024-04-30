@@ -13,14 +13,17 @@ const useStyles = makeStyles({
   },
 });
 
+// deixar dinâmico
 const totalQuestionsMaterias = {
-  Matemática: 10,
+  Multidisciplinar: 9,
+  Lógica: 5,
+  Matemática: 5,
   Português: 5,
-  Física: 10,
-  Biologia: 10,
-  História: 10,
-  Química: 10,
-  Geografia: 10,
+  Física: 5,
+  Biologia: 5,
+  História: 5,
+  Química: 5,
+  Geografia: 5,
   Sociologia: 5,
   Filosofia: 5,
   Arte: 5,

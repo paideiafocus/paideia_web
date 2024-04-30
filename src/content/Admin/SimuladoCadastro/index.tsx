@@ -33,6 +33,8 @@ const FORM = {
 const selectOptions = [
   'Português',
   'Matemática',
+  'Multidisciplinar',
+  'Lógica',
   'Física',
   'Biologia',
   'História',
