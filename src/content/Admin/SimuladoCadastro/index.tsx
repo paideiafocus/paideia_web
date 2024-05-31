@@ -150,6 +150,30 @@ const SimuladoCadastro = () => {
         </S.GroupField>
 
         <S.GroupField>
+          <span style={{ fontSize: '1.1rem' }}>Correta?</span>
+          <Select
+            labelId="demo-select-correta"
+            id="select-correta"
+            name="correta"
+            value={question.correta.value}
+            onChange={handleChangeField}
+            displayEmpty
+            error={Boolean(question.correta.error)}
+            style={{ marginTop: '1rem' }}
+          >
+            <MenuItem value="">
+              <em>Selecione</em>
+            </MenuItem>
+
+            {alternatives.map(option => (
+              <MenuItem key={option} value={option.slice(5)}>
+                {option.slice(5)}
+              </MenuItem>
+            ))}
+          </Select>
+        </S.GroupField>
+
+        <S.GroupField>
           <TextField
             id="img"
             name="img"
@@ -207,30 +231,6 @@ const SimuladoCadastro = () => {
               </tr>
             ))}
           </S.Table>
-        </S.GroupField>
-
-        <S.GroupField>
-          <span style={{ fontSize: '1.1rem' }}>Correta?</span>
-          <Select
-            labelId="demo-select-correta"
-            id="select-correta"
-            name="correta"
-            value={question.correta.value}
-            onChange={handleChangeField}
-            displayEmpty
-            error={Boolean(question.correta.error)}
-            style={{ marginTop: '1rem' }}
-          >
-            <MenuItem value="">
-              <em>Selecione</em>
-            </MenuItem>
-
-            {alternatives.map(option => (
-              <MenuItem key={option} value={option.slice(5)}>
-                {option.slice(5)}
-              </MenuItem>
-            ))}
-          </Select>
         </S.GroupField>
 
         <S.GroupField center>

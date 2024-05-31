@@ -10,6 +10,12 @@ export const InfosInitialAlert = styled.div`
   }
 `;
 
+export const TextContainer = styled.div`
+  img {
+    width: 100% !important;
+  }
+`;
+
 export const Term = styled.div`
   background-color: #e0e0e0;
   border-radius: 0.5rem;
