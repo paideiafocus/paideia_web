@@ -107,8 +107,9 @@ const useCandidate = (): ICandidateHook => {
           course: { value: course || '', error: '' },
           school_bus: { value: school_bus || '', error: '' },
         });
-
-        setIsFormError(false);
+        if(cpf){
+          setIsFormError(false);
+        }
       })
       .catch(() => {
         setFeedbackError('Erro!');

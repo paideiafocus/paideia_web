@@ -56,7 +56,7 @@ const Term: FC = () => {
           <b>
             Antes de começar a inscrição leia com atenção o{' '}
             <a
-              href="https://www.associacaopaideia.org.br/edital_1_2024.pdf"
+              href="https://www.associacaopaideia.org.br/edital_2_2024.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
