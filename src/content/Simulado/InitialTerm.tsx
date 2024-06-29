@@ -30,8 +30,8 @@ const InitialTerm = ({ iniciarSimulado }) => {
               <strong>
                 As <b>questões objetivas</b> (Testes) versarão sobre o conteúdo
                 abordado no E.M. (Ensino Médio). As áreas do conhecimento
-                relacionadas são: História, Filosofia, Geografia, Sociologia, Física, Química, Biologia,
-                Matemática, Português, Literatura e Inglês.
+                relacionadas são: Português (e Literatura), Artes, Inglês, História, Geografia, Sociologia,
+                Filosofia, Química, Biologia, Física e Matemática.
                 {/* REDAÇÃO */}
                 {/* Também fará parte da Prova Diagnóstica a elaboração de
                 uma Redação. O{' '}

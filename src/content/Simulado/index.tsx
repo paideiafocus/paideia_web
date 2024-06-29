@@ -14,7 +14,7 @@ interface IRadio extends HTMLElement {
   checked?: boolean;
 }
 
-const lastQuestion = 80; // ultima pergunta simulado
+const lastQuestion = 90; // ultima pergunta simulado
 
 const Simulado = () => {
   // EVITA COPIAR CONTEUDO:
