@@ -13,9 +13,14 @@ const InitialTerm = ({ iniciarSimulado }) => {
       <S.Term>
         <ol>
           <li>
-            <div>
+            {/* <div>
               O simulado é composto por <b>questões objetivas</b> (Testes) com{' '}
               <b>cinco alternativas</b> (A,B,C,D,E), das quais somente uma é
+              correta.
+            </div> */}
+            <div>
+              O simulado é composto por <b>questões objetivas</b> (Testes) com{' '}
+              <b>quatro alternativas</b> (A,B,C,D), das quais somente uma é
               correta.
             </div>
           </li>

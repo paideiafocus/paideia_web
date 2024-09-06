@@ -14,7 +14,7 @@ interface IRadio extends HTMLElement {
   checked?: boolean;
 }
 
-const lastQuestion = 89; // ultima pergunta simulado
+const lastQuestion = 90; // ultima pergunta simulado
 
 const Simulado = () => {
   // EVITA COPIAR CONTEUDO:
@@ -164,7 +164,7 @@ const Simulado = () => {
   );
 
   const answers = useMemo(
-    () => ['resp_a', 'resp_b', 'resp_c', 'resp_d', 'resp_e'],
+    () => ['resp_a', 'resp_b', 'resp_c', 'resp_d'],
     []
   );
 
