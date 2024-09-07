@@ -15,15 +15,15 @@ const useStyles = makeStyles({
 
 // deixar dinâmico
 const totalQuestionsMaterias = {
-  Matemática: 12,
+  Matemática: 14,
   Química: 11,
-  Física: 12,
-  Biologia: 9,
-  Português: 7,
-  Literatura: 11,
+  Física: 10,
+  Biologia: 11,
+  Português: 14,
+  // Literatura: 11,
   Geografia: 11,
   História: 11,
-  Inglês: 5,
+  Inglês: 8,
 };
 
 const SimuladoResultado = () => {
