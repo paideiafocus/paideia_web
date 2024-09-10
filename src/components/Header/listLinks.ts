@@ -27,8 +27,8 @@ export const linksToActiveUsers: INavLinks[] = [
 
 export const linksToSubscriberUsers: INavLinks[] = [
   ...allNavLinks,
-  { id: 6, path: '/simulado', label: 'Simulado' },
-  // { id: 6, path: '/gabarito-simples', label: 'Simulado' },
+  // { id: 6, path: '/simulado', label: 'Simulado' },
+  { id: 6, path: '/gabarito-simples', label: 'Simulado' },
   // { id: 7, path: '/inscricao/termo', label: 'Quero me inscrever' },
   { id: 7, path: '/sair', label: 'Sair' },
 ];
