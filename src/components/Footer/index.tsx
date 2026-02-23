@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           Copyright © Associação Paideia - Todos os direitos reservados
         </Grid>
         <Grid item xs={1}>
-          <a href="https://www.facebook.com/focuscursinho/" target="_blank">
+          <a href="https://www.facebook.com/focuscursinho/" target="_blank" rel="noreferrer">
             <Image src="/face_light.png" width="38" height="38" />
           </a>
         </Grid>
